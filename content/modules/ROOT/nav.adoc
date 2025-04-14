@@ -1,6 +1,6 @@
-* xref:module-01.adoc[1. Introduction & Overview]
+* xref:module-01.adoc[1. Introduction and Overview]
 
-* xref:module-02.adoc[2. Model Deployment and Configuration]
+* xref:module-02.adoc[2. Serving LLMs with OpenShift AI]
 ** xref:module-02.adoc#connection-verify[Connection verification with OpenShift AI]
 ** xref:module-02.adoc#review-pipeline-workbench[Review Pipeline and Workbench]
 ** xref:module-02.adoc#review-model-deployed[Review Granite Model Deployed]
@@ -10,14 +10,16 @@
 ** xref:module-02.adoc#connect-to-model[Model Connection]
 ** xref:module-02.adoc#why-3scale[Direct Model Access limitations and Why 3Scale?]
 
-* xref:module-03.adoc[3. API Gateway - 3scale]
+* xref:module-03.adoc[3. 3Scale API Gateway]
 ** xref:module-03.adoc#3scale-identify-config[3Scale and Identity Deployment and Configuration]
 ** xref:module-03.adoc#3scale-dev-portal[Developer Portal]
 ** xref:module-03.adoc#3scale-api[API-Setup]
 ** xref:module-03.adoc#3scale-small-model-connect[Connect to small model using 3scale]
 
 * xref:module-04.adoc[4. Connect App to LLM as a Service Model]
-** xref:module-04.adoc#llm-as-a-service[Connect and Work with LLM as a Service]
-** xref:module-04.adoc#anything-llm[Anything LLM]
+** xref:module-04.adoc#creating-applications[Creating applications]
+** xref:module-04.adoc#connecting-jupyterlab[Connection with JupyterLab]
+** xref:module-04.adoc#connecting-anythingllm[Connection with AnythingLLM]
+** xref:module-04.adoc#analytics[Analytics]
 
 * xref:module-05.adoc[5. Closing Summary]

@@ -1,17 +1,47 @@
 = Model Deployment and Configuration
 
-In this
+In this module, we will quickly review the different OpenShift AI components, and learn how to deploy a model with it.
 
 [#connection-verify]
-== Connection verification with OpenShift AI
+== Getting connected to OpenShift AI
 
-. Execute the  
+For the purposes of this workshop session, we have provisioned an OpenShift Container Platform cluster for each participant, with Red Hat OpenShift AI deployed on it.
 
+Each person attending this lab has a full admin access (`cluster-admin``) to their cluster to be able to do their work and check the various configurations.
+
+If you are using this instructions through the workshop, the information below will render properly. If not, you will see placeholder values instead.
+
+* Your account id: `{user}`
+* Your password: `{password}`
+
+In a new window or tab, open the following URL and log in:
+
+* The {rhoai} Dashboard URL for our shared environment:
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
+* Click on the `Login with OpenShift` button:
 +
-[source,sh,role=execute]
-----
-cli goes here
-----
+[.bordershadow]
+image::02/02-01-login3.png[]
+* Enter your credentials (as detailed above)
+* The result should look like:
++
+[.bordershadow]
+image::02/02-01-login1.png[]
+
+* Because the password is so simple (`{password}`), your browser might display a scary message such as:
++
+[.bordershadow]
+image::02/02-01-login-scary.png[]
+* It is safe here to ignore this message when it pops up.
+
+* After you authenticate, the result should look like:
++
+[.bordershadow]
+image::02/02-01-rhoai-front-page.png[]
+
+If you got this far and saw all that, congratulations, you properly connected to the {rhoai} Dashboard Application!
+
+We are now ready to start!.
 
 
 [#review-pipeline-workbench]

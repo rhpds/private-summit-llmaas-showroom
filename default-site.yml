@@ -1,9 +1,10 @@
 ---
 site:
-  title: ""
+  title: "LLM as a Service for Enterprise: Building Your Custom Large Language Model Platform"
   start_page: modules::index.adoc
 
 content:
+  edit_url: 'https://github.com/rhpds/llmaas-showroom/edit/dev/{path}'
   sources:
     - url: .
       start_path: content
@@ -11,6 +12,7 @@ content:
 ui:
   bundle:
     url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/rh-summit-2025/ui-bundle.zip
+  supplemental_files: ./content/supplemental-ui
 
 runtime:
   cache_dir: ./.cache/antora

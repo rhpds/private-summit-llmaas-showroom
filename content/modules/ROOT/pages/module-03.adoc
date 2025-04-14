@@ -1,4 +1,4 @@
-= API Gateway - 3Scale
+= 3Scale API Gateway
 
 In this
 

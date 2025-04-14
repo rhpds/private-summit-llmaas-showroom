@@ -1,14 +1,33 @@
-= Introduction & Overview
+= Introduction and Overview of the Workshop
 
-== Downloading the UBI
+== Infrastructure as a Service can be costly
 
-In this lab, you will be 
+Self-Service is good for plentiful resources & small teams... But:
 
-. Execute the  
+- Throwing GPUs at the problem is risky
+- Few people know how to use them correctly
+- Leads to duplication and underutilization
+- Leads to high costs
+- Most people want an LLM endpoint, not a GPU
 
-+
-[source,sh,role=execute]
-----
-cli goes here
-----
+[.bordershadow]
+image::02/iaas.png[]
 
+== Models as a Service
+
+Offering AI models as a service to a larger audience solves many of these problems:
+
+* IT serves common models centrally
+** Generative AI focus, applicable to any model
+** Centralized pool of hardware 
+** Platform Engineering for AI
+** AI management (versioning, regression testing, etc)
+* Models available through API Gateway
+* Developers consume models, build AI applications
+** For end users (private assistants, etc) 
+** To improve products or services through AI 
+* Shared Resources business model keeps costs down
+
+
+[.bordershadow]
+image::02/maas.png[]
