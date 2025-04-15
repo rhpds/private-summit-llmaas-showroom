@@ -16,7 +16,7 @@
 ** xref:module-03.adoc#3scale-api[API-Setup]
 ** xref:module-03.adoc#3scale-small-model-connect[Connect to small model using 3scale]
 
-* xref:module-04.adoc[4. 3scale]
+* xref:module-04.adoc[4. Connect App to LLM as a Service Model]
 ** xref:module-04.adoc#llm-as-a-service[Connect and Work with LLM as a Service]
 ** xref:module-04.adoc#anything-llm[Anything LLM]
 
