@@ -1,0 +1,26 @@
+= API Gateway - 3Scale
+
+In this
+
+[#3scale-identify-config]
+== 3Scale and Identity Deployment and Configuration
+
+. Execute the  
+
++
+[source,sh,role=execute]
+----
+cli goes here
+----
+
+
+[#3scale-dev-portal]
+== Developer Portal
+
+
+[#3scale-api]
+== Review Granite Model Deployed
+
+
+[#3scale-small-model-connect]
+== Connect to small model using 3scale

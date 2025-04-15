@@ -1,0 +1,19 @@
+= Connect App to LLM as a Service Model
+
+In this
+
+[#llm-as-a-service]
+== Connect and Work with LLM as a Service
+
+. Execute the  
+
++
+[source,sh,role=execute]
+----
+cli goes here
+----
+
+
+[#anything-llm]
+== Anything LLM
+

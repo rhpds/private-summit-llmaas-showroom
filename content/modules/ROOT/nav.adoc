@@ -7,10 +7,10 @@
 ** xref:module-02.adoc#small-model-check[Small Model Efficiency issue]
 ** xref:module-02.adoc#review-data-connections[Review Data Connections]
 ** xref:module-02.adoc#review-minio-storage[Review Minio Storage]
-** xref:module-02.adoc#connect-to-model[Model-Connect]
-** xref:module-02.adoc#why-3scale[Why 3scale and limitations of direct model connection]
+** xref:module-02.adoc#connect-to-model[Model Connection]
+** xref:module-02.adoc#why-3scale[Direct Model Access limitations and Why 3Scale?]
 
-* xref:module-03.adoc[3. 3scale]
+* xref:module-03.adoc[3. API Gateway - 3scale]
 ** xref:module-03.adoc#3scale-identify-config[3Scale and Identity Deployment and Configuration]
 ** xref:module-03.adoc#3scale-dev-portal[Developer Portal]
 ** xref:module-03.adoc#3scale-api[API-Setup]
