@@ -33,11 +33,8 @@ image::02/02-01-rhsso.png[]
 [.bordershadow]
 image::02/02-01-login1.png[]
 
-* Because the password is so simple (`{password}`), your browser might display a scary message such as:
-+
-[.bordershadow]
-image::02/02-01-login-scary.png[]
-* It is safe here to ignore this message when it pops up. Don't worry if you do not see the scary message.
+* Because the password is so simple (`{password}`), your browser might display a scary message.It is safe here to ignore this message when it pops up. 
+* Don't worry if you do not see this scary message.
 
 * After you authenticate, the result should look like:
 +
