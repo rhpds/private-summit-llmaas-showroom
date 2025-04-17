@@ -22,8 +22,13 @@ In a new window or tab, open the following URL and log in:
 +
 [.bordershadow]
 image::02/02-01-login3.png[]
+
+* Select rhsso
++
+[.bordershadow]
+image::02/02-01-rhsso.png[]
+
 * Enter your credentials (as detailed above)
-* The result should look like:
 +
 [.bordershadow]
 image::02/02-01-login1.png[]
@@ -32,7 +37,7 @@ image::02/02-01-login1.png[]
 +
 [.bordershadow]
 image::02/02-01-login-scary.png[]
-* It is safe here to ignore this message when it pops up.
+* It is safe here to ignore this message when it pops up. Don't worry if you do not see the scary message.
 
 * After you authenticate, the result should look like:
 +
