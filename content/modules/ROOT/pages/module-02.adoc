@@ -68,3 +68,5 @@ We are now ready to start!.
 
 [#why-3scale]
 == Direct Model Access limitations and Why 3Scale?
+
+Access openshift console using `{openshift_cluster_console_url}`
