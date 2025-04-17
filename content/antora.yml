@@ -24,7 +24,7 @@ asciidoc:
     password: openshift
     openshift_api_url: https://api.cluster-guid.guid.sandbox.opentlc.com:6443
     openshift_cluster_ingress_domain: apps.cluster-guid.guid.sandbox.opentlc.com
-    openshift_cluster_console_url: https://console-openshift-console.apps.cluster-guid.guid.sandbox.opentlc.com
+    openshift_cluster_console_url: https://console-openshift-console.{openshift_cluster_ingress_domain}
     openshift_cluster_admin_username: username
     openshift_cluster_admin_password: password
     rhoai_dashboard_url: https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/
