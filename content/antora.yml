@@ -43,9 +43,7 @@ asciidoc:
     productname-long: Red Hat OpenShift AI
     productname-short: OpenShift AI
     page-user: "{user}"
-    page-links:
-      - url: "{rhoai_dashboard_url}"
-        text: OpenShift AI Dashboard
-      - url: "{openshift_cluster_console_url}"
-        text: OpenShift Console
+    page-links: links
+    page-rhoai_dashboard_url: "https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/"
+    page-openshift_cluster_console_url: "https://console-openshift-console.{openshift_cluster_ingress_domain}"
     imagesdir: ../assets/images
