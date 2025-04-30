@@ -1,14 +1,11 @@
 * xref:module-01.adoc[1. Introduction and Overview]
 
 * xref:module-02.adoc[2. Serving LLMs with OpenShift AI]
-** xref:module-02.adoc#connection-verify[Connection verification with OpenShift AI]
-** xref:module-02.adoc#review-pipeline-workbench[Review Pipeline and Workbench]
-** xref:module-02.adoc#review-model-deployed[Review Granite Model Deployed]
-** xref:module-02.adoc#small-model-check[Small Model Efficiency issue]
-** xref:module-02.adoc#review-data-connections[Review Data Connections]
-** xref:module-02.adoc#review-minio-storage[Review Minio Storage]
-** xref:module-02.adoc#connect-to-model[Model Connection]
-** xref:module-02.adoc#why-3scale[Direct Model Access limitations and Why 3Scale?]
+** xref:module-02.adoc#getting-connected[Getting Connected]
+** xref:module-02.adoc#openshift-ai-overview[OpenShift AI Overview]
+** xref:module-02.adoc#reviewing-deployed-model[Reviewing the Deployed Model]
+** xref:module-02.adoc#deploying-a-model[Deploying a Model]
+
 
 * xref:module-03.adoc[3. 3Scale API Gateway]
 ** xref:module-03.adoc#3scale-identify-config[3Scale and Identity Deployment and Configuration]
