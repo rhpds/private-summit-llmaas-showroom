@@ -6,7 +6,7 @@ Self-Service is good for plentiful resources & small teams... But:
 
 - Throwing GPUs at the problem is risky
 - Few people know how to use them correctly
-- Leads to duplication and underutilization
+- Leads to duplication and under-utilization
 - Leads to high costs
 - Most people want an LLM endpoint, not a GPU
 
@@ -31,3 +31,12 @@ Offering AI models as a service to a larger audience solves many of these proble
 
 [.bordershadow]
 image::02/maas.png[]
+
+== Workshop Goals
+
+In this workshop, we will:
+
+* Get an overview of the OpenShift AI platform
+* Deploy a Generative AI model on OpenShift AI
+* Configure 3Scale API Gateway to expose the model
+* Use the model in a chat application
