@@ -15,7 +15,7 @@ image::02/iaas.png[]
 
 == Models as a Service
 
-Offering AI models as a service to a larger audience solves many of these problems:
+Offering AI models as a service to a larger audience, especially Large Language Models (LLMs), solves many of these problems:
 
 * IT serves common models centrally
 ** Generative AI focus, applicable to any model
