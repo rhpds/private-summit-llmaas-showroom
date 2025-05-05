@@ -48,7 +48,7 @@ oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}
 Now you can log into the 3Scale admin portal at https://maas-admin.{openshift_cluster_ingress_domain}/[https://maas-admin.{openshift_cluster_ingress_domain}/,window=_blank] using the credentials you just retrieved.
 
 You will be prompted by a wizard window. Close it by clicking on the top right corner of the screen.
-+
+
 [.bordershadow]
 image::03/03-3scale-close-wizard.png[]
 
@@ -506,7 +506,7 @@ You can now test this new Product in the same way you did for `Granite` in the p
 * Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you. You can now use this key to access the API.
 +
 [.bordershadow]
-image::03-3scale-tinyllama-info.png[]
+image::03/03-3scale-tinyllama-info.png[]
 
 * You can now test the API using the `curl` command in your terminal. Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
 +
