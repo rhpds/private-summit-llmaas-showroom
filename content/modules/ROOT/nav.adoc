@@ -8,15 +8,13 @@
 
 
 * xref:module-03.adoc[3. 3Scale API Gateway]
-** xref:module-03.adoc#3scale-identify-config[3Scale and Identity Deployment and Configuration]
+** xref:module-03.adoc#3scale-overview[3Scale Overview]
 ** xref:module-03.adoc#3scale-dev-portal[Developer Portal]
-** xref:module-03.adoc#3scale-api[API-Setup]
-** xref:module-03.adoc#3scale-small-model-connect[Connect to small model using 3scale]
+** xref:module-03.adoc#creating-a-new-product[Creating a new Product in 3Scale]
 
 * xref:module-04.adoc[4. Connect App to LLM as a Service Model]
-** xref:module-04.adoc#creating-applications[Creating applications]
-** xref:module-04.adoc#connecting-jupyterlab[Connection with JupyterLab]
-** xref:module-04.adoc#connecting-anythingllm[Connection with AnythingLLM]
+** xref:module-04.adoc#connection[Creating a Connection]
+** xref:module-04.adoc#anythingllm[Connection with AnythingLLM]
 ** xref:module-04.adoc#analytics[Analytics]
 
 * xref:module-05.adoc[5. Closing Summary]
