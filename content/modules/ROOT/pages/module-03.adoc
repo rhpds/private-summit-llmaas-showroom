@@ -2,7 +2,7 @@
 
 In this module, you will learn how to configure 3Scale API Gateway to give access to the models deployed in the previous module.
 
-[#3scale-identify-config]
+[#3scale-overview]
 == 3Scale Overview
 
 === Connection to 3Scale Admin Portal
@@ -196,6 +196,7 @@ You should get a response similar to this:
 }
 ```
 
+[#creating-a-new-product]
 == Creating a new Product in 3Scale
 
 Now that you have discovered the Admin and the Developer portals from 3Scale and tested the API access, you are ready to create a new Product based on the model you deployed in the previous module. To do that we are going to use the 3Scale operator. This will show you how you can fully automate the deployment of new models in your service.

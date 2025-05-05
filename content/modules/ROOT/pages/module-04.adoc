@@ -34,7 +34,7 @@ image::04/04-create-connection.png[]
 This connection is now ready to be attached to a Workbench to inject those values as environment variables and configure AnythingLLM.
 
 [#anything-llm]
-== Anything LLM
+== Connection with AnythingLLM
 
 We will create a new Workbench based on a custom image and attach the connection we just created.
 
@@ -69,3 +69,8 @@ image::04/04-open-anythingllm.png[]
 image::04/04-new-workspace.png[]
 
 * Give the workspace a name and click on `Save`. You can now chat with your model!
+
+[#analytics]
+== Analytics
+
+In this section, we will explore the analytics capabilities of the 3Scale API Gateway. We will learn how to monitor the usage of our models.

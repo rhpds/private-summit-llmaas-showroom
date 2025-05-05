@@ -1,3 +1,42 @@
 = Closing Summary
 
+In this workshop, we explored the concept of providing Models as a Service (MaaS) using Red Hat OpenShift AI and 3Scale API Management.
+
+Here's a recap of what we covered:
+
+* **Module 1: Introduction and Overview**
+** We discussed the challenges of managing AI infrastructure (IaaS) like GPUs directly and introduced the benefits of a Models as a Service (MaaS) approach, including cost savings, resource optimization, and centralized management.
+** We outlined the workshop goals: deploying a model, exposing it via an API gateway, and consuming it in an application.
+
+* **Module 2: Model Deployment and Configuration**
+** We familiarized ourselves with the OpenShift AI dashboard and its key components (Workbenches, Models, Connections).
+** We reviewed a pre-deployed `Granite` model, its S3 connection, and explored model files using the ODH-TEC workbench.
+** We learned how to deploy a new model (`TinyLlama`) using a custom Serving Runtime, connecting it to existing S3 storage.
+** We tested both models using `curl` against their internal and external endpoints from a VSCode workbench.
+
+* **Module 3: 3Scale API Gateway**
+** We learned how to access the 3Scale Admin and Developer Portals.
+** We created an application in the Developer Portal to obtain API credentials for the pre-deployed `Granite` model and tested access via `curl`.
+** We used the 3Scale Operator in the OpenShift Console to define a new Backend and Product for the `TinyLlama` model, linking it to the model deployed in Module 2.
+** We promoted the new API configuration to production, added API documentation (ActiveDocs), subscribed a user to the new product, and tested access.
+
+* **Module 4: Connect App to LLM as a Service Model**
+** We created a custom Connection in OpenShift AI, storing the 3Scale API endpoint and key for one of our models.
+** We launched an `AnythingLLM` application using a custom Workbench image.
+** We attached the custom Connection to the AnythingLLM workbench, allowing it to automatically configure itself to use the selected LLM via the 3Scale gateway.
+** We interacted with the model through the AnythingLLM chat interface.
+
+**Key Lessons Learned:**
+
+* OpenShift AI provides a robust platform for deploying and managing AI/ML models, including LLMs.
+* Using custom Serving Runtimes allows flexibility in deploying different types of models.
+* Connections simplify the process of securely injecting credentials and configurations into Workbenches and model servers.
+* 3Scale API Gateway is essential for managing access, security, and usage policies for your model APIs.
+* Automating 3Scale configuration via its Operator streamlines the process of exposing new models.
+* By combining OpenShift AI and 3Scale, you can build a scalable and manageable MaaS platform, enabling developers to easily consume AI capabilities in their applications.
+
+Congratulations on completing the workshop! You now have hands-on experience deploying, managing, and consuming Models as a Service.
+
+
+
 
