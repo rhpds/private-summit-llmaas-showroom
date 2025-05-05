@@ -267,6 +267,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tinylla
 In both cases, the answer should take some more time than previously as we are running on a CPU (and you may need to try a few times to get something meaningful), and look like this:
 
 [source,json]
+----
 {
     "id":"cmpl-061bbe3b71394ef98765f44e93c0df9b",
     "object":"text_completion",

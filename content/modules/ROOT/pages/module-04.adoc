@@ -10,12 +10,12 @@ To ease the process of creating our application, we will use a custom connection
 This connection type is called "Anything LLM" and is specifically designed to work with the AnythingLLM application.
 
 * In the OpenShift AI dashboard, navigate to the `Connections` section and click on `Add connection`.
-
++
 [.bordershadow]
 image::04/04-add-connection.png[]
 
 * In the `Add connection` dialog, select the `Anything LLM` connection type from the list of available connection types.
-
++
 [.bordershadow]
 image::04/04-select-anytingllm.png[]
 
@@ -27,7 +27,7 @@ image::04/04-select-anytingllm.png[]
 ** Chat Model Name: enter the model name from 3Scale, for example: `granite` or `tinyllama/tinyllama-1.1b-chat-v1.0`
 ** Leave all other fields as default.
 ** Click `Create` to create the connection.
-
++
 [.bordershadow]
 image::04/04-create-connection.png[]
 
@@ -39,32 +39,32 @@ This connection is now ready to be attached to a Workbench to inject those value
 We will create a new Workbench based on a custom image and attach the connection we just created.
 
 * In the OpenShift AI dashboard, navigate to the `Workbenches` section and click on `Create Workbench`.
-
++
 [.bordershadow]
 image::04/04-create-workbench.png[]
 
 * In the `Create Workbench` form, give a name your workbench and select the `Custom Image: AnythingLLM 1.7.5` image from the list of available images.
-
++
 [.bordershadow]
 image::04/04-anythingllm-wb-1.png[]
 
 * Leave the default values for the other fields up to the Connection section. Here click on `Attach existing connection` and select the connection you created in the previous step.
-
++
 [.bordershadow]
 image::04/04-attach-connection.png[]
 
 * Click on `Create workbench`.
-
++
 [.bordershadow]
 image::04/04-anythingllm-wb-2.png[]
 
 * Once the workbench is started, click on `Open` to access the AnythingLLM environment.
-
++
 [.bordershadow]
 image::04/04-open-anythingllm.png[]
 
 * In the AnythingLLM, click on `New Workspace` to create a new workspace.
-
++
 [.bordershadow]
 image::04/04-new-workspace.png[]
 

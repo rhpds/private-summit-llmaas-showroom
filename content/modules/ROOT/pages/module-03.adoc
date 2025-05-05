@@ -17,29 +17,40 @@ We can also get them in this way:
 
 * From a Terminal (in your VSCode environment, or on your laptop) log into OpenShift. If you don't know how to do this, here is the recipe:
 ** On the OpenShift Web Console, click on your user name then the `Copy Login Command` button in the top right corner of the screen. You will need to authenticate with your OpenShift credentials, and eventually accept a certificate if prompted.
-
++
 [.bordershadow]
 image::03/03-copy-login.png[]
 
 ** Copy the command and paste it into your terminal. It should look like this:
-```bash
++
+[source,bash,subs="attributes"]
+----
 oc login -u <your-username> -p <your-password> --server=https://api.<your-cluster-name>.openshift.com:6443
-```
+----
+
 (approve the certificate when prompted to allow insecure connections)
 
 * Now that you are logged in, you can get the secret values with the following commands:
-
-```bash
++
+[source,bash,subs="attributes"]
+----
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_USER}' | base64 --decode
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_PASSWORD}' | base64 --decode
-```
+----
 
 * Want to do it all in one command? Here you go:
-```bash
++
+[source,bash,subs="attributes"]
+----
 oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}{{if or (eq $key "ADMIN_USER") (eq $key "ADMIN_PASSWORD")}}{{printf "%s: " $key}}{{ $value | base64decode }}{{"\n"}}{{end}}{{end}}'
-```
+----
 
-Now you can log into the 3Scale admin portal at `https://maas-admin.{openshift_cluster_ingress_domain}` using the credentials you just retrieved.
+Now you can log into the 3Scale admin portal at https://maas-admin.{openshift_cluster_ingress_domain}/[https://maas-admin.{openshift_cluster_ingress_domain}/,window=_blank] using the credentials you just retrieved.
+
+You will be prompted by a wizard window. Close it by clicking on the top right corner of the screen.
++
+[.bordershadow]
+image::03/03-3scale-close-wizard.png[]
 
 === 3Scale Admin Portal
 
@@ -51,7 +62,7 @@ The dashboard is divided into several sections:
 * In the APIs section, you have an overview of:
 ** Products: this is where you can create the Products that people will have access to. You can see there are two products already created: `granite-3dot2-8b-instruct`, which is connected to the model that was pre-deployed,  and `API`, which is a default 3Scale echo API for testing.
 ** Backends: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the the `granite-3dot2-8b-instruct` product.
-
++
 [.bordershadow]
 image::03/03-3scale-admin-dashboard.png[]
 
@@ -69,12 +80,12 @@ However, we will come back to certain specific areas when we create a new produc
 Although you may have seen that a user was already created for you in 3Scale (Audience->Accounts->Listing), you will need to configure the developer portal to allow users to access it.
 
 * On the Audience section, got o Developer Portal->Settings->Domains & Access.
-
++
 [.bordershadow]
 image::03/03-3scale-portal-menu.png[]
 
 * The Developer Portal Access Code is used to control the access the developer portal. You can use the default value in the next section to connect to it, or simply delete it and click on `Update Account`. This will remove the access code and allow anyone to access the developer portal, although they will still need to authenticate. This is what we will do in this workshop.
-
++
 [.bordershadow]
 image::03/03-3scale-remove-access-code.png[]
 
@@ -83,7 +94,7 @@ image::03/03-3scale-remove-access-code.png[]
 
 === Accessing the Developer Portal
 
-You can now access the developer portal at `https://maas.{openshift_cluster_ingress_domain}`. You can log in using your workshop credentials (the same as the ones you used to log into the OpenShift console), because they are the ones we used to pre-create a user in 3Scale.
+You can now access the developer portal at https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank]. You can log in using your workshop credentials (the same as the ones you used to log into the OpenShift console), because they are the ones we used to pre-create a user in 3Scale.
 
 Here they are again:
 
@@ -93,11 +104,12 @@ Here they are again:
 Signing in:
 
 * Click on the `Sign In` button in the top right corner of the screen
++
 [.bordershadow]
 image::03/03-3scale-signin-button.png[]
 
 * Click on `Private login` and enter your credentials.
-
++
 [.bordershadow]
 image::03/03-3scale-signin.png[]
 
@@ -112,27 +124,27 @@ image::03/03-3scale-developer-loggedin.png[]
 Creating an application is the first step to getting an API key.
 
 * Click on the `See your Applications and their credentials` link on the front page.
-
++
 [.bordershadow]
 image::03/03-3scale-see-applications.png[]
 
 * You will be taken to the `Apps and API Keys` section, where you can see that there is an application that was already created for you (the 3Scale default Echo API). Start creating a new application by clicking on the `Create new application` button.
-
++
 [.bordershadow]
 image::03/03-3scale-create-application.png[]
 
 * Select the Service you want to use. In this case, we will use the `granite-3dot2-8b-instruct` service that has been pre-deployed.
-
++
 [.bordershadow]
 image::03/03-3scale-select-service.png[]
 
 * Give a name to your application, for example `Granite application`. Click on `Create Application`.
-
++
 [.bordershadow]
 image::03/03-3scale-application-name.png[]
 
 * Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you. You can now use this key to access the API.
-
++
 [.bordershadow]
 image::03/03-3scale-key-generated.png[]
 
@@ -141,8 +153,9 @@ image::03/03-3scale-key-generated.png[]
 Now that you have created an application, you can test the API. You can do this using the `curl` command in your terminal.
 
 * Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
-
-```bash
++
+[source,bash,subs="attributes"]
+----
 curl -X 'POST' \
     'https://Endpoint_URL/v1/completions' \
     -H 'accept: application/json' \
@@ -154,11 +167,12 @@ curl -X 'POST' \
     "max_tokens": 15,
     "temperature": 0
 }'
-```
+----
 
 Example:
 
-```bash
+[source,bash,subs="attributes"]
+----
 curl -X 'POST' \
     'https://granite-3dot2-8b-instruct-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1/completions' \
     -H 'accept: application/json' \
@@ -170,11 +184,12 @@ curl -X 'POST' \
     "max_tokens": 15,
     "temperature": 0
 }'
-```
+----
 
 You should get a response similar to this:
 
-```json
+[source,json]
+----
 {
   "id": "cmpl-7e1a2c3b9cc911b982c7ac7bb15201ea",
   "object": "text_completion",
@@ -194,7 +209,7 @@ You should get a response similar to this:
     "total_tokens": 19
   }
 }
-```
+----
 
 [#creating-a-new-product]
 == Creating a new Product in 3Scale
@@ -206,17 +221,17 @@ To work with to the 3Scale operator, you can use the OpenShift Web Console or th
 === Navigating to the 3Scale Operator
 
 * In the OpenShift Web Console, click on the `Operators` menu on the left side of the screen, then select `Installed Operators`. On the top `Project` dropdown, select the `3scale` project.
-
++
 [.bordershadow]
 image::03/03-3scale-operator-menu.png[]
 
 * Click on `Red Hat Integration - 3scale` operator from the list.
-
++
 [.bordershadow]
 image::03/03-3scale-operator-item.png[]
 
 * You will be taken to the operator details page.
-
++
 [.bordershadow]
 image::03/03-3scale-operator-details.png[]
 
@@ -225,18 +240,19 @@ image::03/03-3scale-operator-details.png[]
 The first element you need to create is a Backend. This is the service that will be used by the Product to connect to the model endpoint.
 
 * Click on the `3scale Backend` tab. You will see that there is already a backend created for the `granite-3dot2-8b-instruct` model.
-
++
 [.bordershadow]
 image::03/03-3scale-backend.png[]
 
 * To deploy the new backend for TinyLlama, click on the `Create Backend` button.
-
++
 [.bordershadow]
 image::03/03-3scale-create-backend.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will create a new backend for the `TinyLlama` model.
-
-```yaml
++
+[source,yaml,subs="attributes"]
+----
 kind: Backend
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
@@ -246,16 +262,16 @@ spec:
   name: TinyLlama
   privateBaseURL: 'https://tinyllama-llm-hosting.{openshift_cluster_ingress_domain}'
   systemName: tinyllama
-```
+----
 
 * After a few seconds, you should see the new backend in the list of backends.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-backend.png[]
 
 
 * You can also switch to the 3Scale Admin Portal and check that the new backend is listed there.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-backend-portal.png[]
 
@@ -264,18 +280,19 @@ image::03/03-3scale-tinyllama-backend-portal.png[]
 We are now ready to create the new Product that will use this backend. The Product is the element that will be used by the users to access the model.
 
 * In the OpenShift Console, on the 3Scale operator, click on the `3scale Product` tab. You will see that there is already a product created for the `granite-3dot2-8b-instruct` model.
-
++
 [.bordershadow]
 image::03/03-3scale-product.png[]
 
 * To deploy the new product for TinyLlama, click on the `Create Product` button.
-
++
 [.bordershadow]
 image::03/03-3scale-create-product.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will create a new product for the `TinyLlama` model. You can see that the configuration is more complex than the backend, as it includes the mapping rules, policies, and methods that will be used by the product.
-
-```yaml
++
+[source,yaml,subs="attributes"]
+----
 apiVersion: capabilities.3scale.net/v1beta1
 kind: Product
 metadata:
@@ -380,31 +397,32 @@ spec:
       appsRequireApproval: false
       name: Standard Plan
       published: true
-```
+----
 
 * After a few seconds, you should see the new product in the list of products.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-product.png[]
 
 * You can also switch to the 3Scale Admin Portal and check that the new product is listed there.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-product-portal.png[]
 
 * When a new Product is created, it is only available in a "staging" environment. This means that it is not yet available to the users. You need to publish it to make it available. This can be done in the 3Scale Admin Portal, or using the operator. In the operator view, click on the `ProxyConfig Promote` tab.
-
++
 [.bordershadow]
 image::03/03-3scale-proxyconfig-promote.png[]
 
 * Click on the `Create ProxyConfigPromote` button.
-
++
 [.bordershadow]
 image::03/03-3scale-proxyconfig-promote-button.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will publish the product to the production environment.
-
-```yaml
++
+[source,yaml,subs="attributes"]
+----
 kind: ProxyConfigPromote
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
@@ -413,21 +431,22 @@ metadata:
 spec:
   productCRName: tinyllama
   production: true
-```
+----
 
 * In the 3Scale Admin Portal, you can see that the product is now published to production. Got to `Products`, select the `TinyLlama` product and go to ̀Integration->Configuration`. You can see that the `Production APIcast` environment is now available.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-proxyconfig-applied.png[]
 
 * We must now create the API Documentation for the new product. We will again use the 3Scale operator to do this. Click on the `ActiveDoc` tab and click on the `Create ActiveDoc` button.
-
++
 [.bordershadow]
 image::03/03-3scale-create-activedoc.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will create the API documentation for the product. As the APIDoc can be complex, we already created a JSON file that contains the API documentation for the `TinyLlama` model and we will only need to reference it in the YAML.
-
-```yaml
++
+[source,yaml,subs="attributes"]
+----
 apiVersion: capabilities.3scale.net/v1beta1
 kind: ActiveDoc
 metadata:
@@ -443,30 +462,30 @@ spec:
   published: true
   skipSwaggerValidations: true
   systemName: tinyllama
-```
+----
 
 * Finally, we must subscribe our user to this new product, like enabling them to use it. This is normally something you would automated as part of of a deployment of a new product, but this can be done in the 3Scale Admin Portal. Go to `Audience->Listing`, select `user1` account.
-
++
 [.bordershadow]
 image::03/03-3scale-user-product-activate.png[]
 
 * In the account section, select the `Service Subscriptions` tab at the right.
-
++
 [.bordershadow]
 image::03/03-3scale-service-subscription-tab.png[]
 
 * At the bottom right of the page, click on the `Subscribe` button on the `tinyllama` item.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-subscribe.png[]
 
 * Select the `Default Plan` and click on `Create subscription`.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-create-subscription.png[]
 
 * `user1` is now subscribed to the `TinyLlama` product. You can see that the subscription is active and the plan is set to `Default Plan`.
-
++
 [.bordershadow]
 image::03/03-3scale-tinyllama-subscribed.png[]
 
@@ -485,13 +504,14 @@ You can now test this new Product in the same way you did for `Granite` in the p
 * Enter a name for your application, for example `TinyLlama application`. Click on `Create Application`.
 
 * Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you. You can now use this key to access the API.
-
++
 [.bordershadow]
 image::03-3scale-tinyllama-info.png[]
 
 * You can now test the API using the `curl` command in your terminal. Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
-
-```bash
++
+[source,bash,subs="attributes"]
+----
 curl -X 'POST' \
     'https://Endpoint_URL/v1/completions' \
     -H 'accept: application/json' \
@@ -503,11 +523,12 @@ curl -X 'POST' \
     "max_tokens": 15,
     "temperature": 0
 }'
-```
+----
 
 Example:
 
-```bash
+[source,bash,subs="attributes"]
+----
 curl -X 'POST' \
     'https://tinyllama-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1/completions' \
     -H 'accept: application/json' \
@@ -519,6 +540,6 @@ curl -X 'POST' \
     "max_tokens": 15,
     "temperature": 0
 }'
-```
+----
 
 Congratulations! You have successfully created a new Product in 3Scale and connected it to the `TinyLlama` model.
