@@ -79,7 +79,7 @@ However, we will come back to certain specific areas when we create a new produc
 
 Although you may have seen that a user was already created for you in 3Scale (Audience->Accounts->Listing), you will need to configure the developer portal to allow users to access it.
 
-* On the Audience section, got o Developer Portal->Settings->Domains & Access.
+* On the Audience section, got to Developer Portal->Settings->Domains & Access.
 +
 [.bordershadow]
 image::03/03-3scale-portal-menu.png[]
@@ -88,6 +88,30 @@ image::03/03-3scale-portal-menu.png[]
 +
 [.bordershadow]
 image::03/03-3scale-remove-access-code.png[]
+
+=== Subscribing a User to a Service
+
+In this configuration, a user is not automatically subscribed to a new service. You need to subscribe them to the service you want them to use.
+
+* On the Audience section, got to Accounts->Listing and click on `{user}`.
++
+[.bordershadow]
+image::03/03-user-config.png[]
+
+* In the `Service Subscriptions` tab, you can see that the user is not subscribed to the `granite-3dot2-8b-instruct` service. Click on the `Subscribe` button at the right.
++
+[.bordershadow]
+image::03/03-user-subscribe-granite.png[]
+
+* On the window that opens, select the `Default Plan` and click on `Create subscription`.
++
+[.bordershadow]
+image::03/03-create-sub-granite.png[]
+
+{user} is now subscribed to the `granite-3dot2-8b-instruct` service. You can see that the subscription is active and the plan is set to `Default Plan`.
+
+In a production environment, you would normally automate this process as part of the deployment of a new product. In this workshop, we do it manually to show you how it works.
+
 
 [#3scale-dev-portal]
 == Developer Portal
@@ -210,6 +234,8 @@ You should get a response similar to this:
   }
 }
 ----
+
+Perfect! You have successfully tested the API access to the Granite LLM using the API key generated for your application.
 
 [#creating-a-new-product]
 == Creating a new Product in 3Scale
@@ -443,7 +469,7 @@ image::03/03-3scale-tinyllama-proxyconfig-applied.png[]
 [.bordershadow]
 image::03/03-3scale-create-activedoc.png[]
 
-* In the YAML view, replace the default content with the following YAML and click on create. This will create the API documentation for the product. As the APIDoc can be complex, we already created a JSON file that contains the API documentation for the `TinyLlama` model and we will only need to reference it in the YAML.
+* In the YAML view, replace the default content with the following YAML and click on `Create`. This will create the API documentation for the product. As the APIDoc can be complex, we already created a JSON file that contains the API documentation for the `TinyLlama` model and we will only need to reference it in the YAML.
 +
 [source,yaml,subs="attributes"]
 ----
@@ -464,7 +490,7 @@ spec:
   systemName: tinyllama
 ----
 
-* Finally, we must subscribe our user to this new product, like enabling them to use it. This is normally something you would automated as part of of a deployment of a new product, but this can be done in the 3Scale Admin Portal. Go to `Audience->Listing`, select `user1` account.
+* Finally, we must subscribe our user to this new product, as we did previously for Granite. Again. this is normally something you would automate as part of a deployment of a new product, but here we are going to do it in the 3Scale Admin Portal. Go to `Audience->Listing`, select `user1` account.
 +
 [.bordershadow]
 image::03/03-3scale-user-product-activate.png[]
@@ -474,7 +500,7 @@ image::03/03-3scale-user-product-activate.png[]
 [.bordershadow]
 image::03/03-3scale-service-subscription-tab.png[]
 
-* At the bottom right of the page, click on the `Subscribe` button on the `tinyllama` item.
+* At the bottom right of the page, click on the `Subscribe` button on the `tinyLlama` item.
 +
 [.bordershadow]
 image::03/03-3scale-tinyllama-subscribe.png[]
