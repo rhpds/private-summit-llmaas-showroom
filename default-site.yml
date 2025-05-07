@@ -1,6 +1,6 @@
 ---
 site:
-  title: "LLM as a Service for Enterprise: Building Your Custom Large Language Model Platform"
+  title: "LB1816 - LLM as a Service for Enterprise: Building Your Custom Large Language Model Platform"
   start_page: modules::index.adoc
 
 content:

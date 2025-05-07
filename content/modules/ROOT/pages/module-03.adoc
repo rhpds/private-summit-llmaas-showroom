@@ -23,7 +23,7 @@ image::03/03-copy-login.png[]
 
 ** Copy the command and paste it into your terminal. It should look like this:
 +
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 oc login -u <your-username> -p <your-password> --server=https://api.<your-cluster-name>.openshift.com:6443
 ----
@@ -32,7 +32,7 @@ oc login -u <your-username> -p <your-password> --server=https://api.<your-cluste
 
 * Now that you are logged in, you can get the secret values with the following commands:
 +
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_USER}' | base64 --decode
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_PASSWORD}' | base64 --decode
@@ -40,7 +40,7 @@ oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_PASSWORD}' | base6
 
 * Want to do it all in one command? Here you go:
 +
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}{{if or (eq $key "ADMIN_USER") (eq $key "ADMIN_PASSWORD")}}{{printf "%s: " $key}}{{ $value | base64decode }}{{"\n"}}{{end}}{{end}}'
 ----
@@ -178,7 +178,7 @@ Now that you have created an application, you can test the API. You can do this 
 
 * Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
 +
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
     'https://Endpoint_URL/v1/completions' \
@@ -195,7 +195,7 @@ curl -X 'POST' \
 
 Example:
 
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
     'https://granite-3dot2-8b-instruct-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1/completions' \
@@ -212,7 +212,7 @@ curl -X 'POST' \
 
 You should get a response similar to this:
 
-[source,json]
+[source,json,role="execute",subs="+macros,+attributes"]
 ----
 {
   "id": "cmpl-7e1a2c3b9cc911b982c7ac7bb15201ea",
@@ -277,7 +277,7 @@ image::03/03-3scale-create-backend.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will create a new backend for the `TinyLlama` model.
 +
-[source,yaml,subs="attributes"]
+[source,yaml,role="execute",subs="+macros,+attributes"]
 ----
 kind: Backend
 apiVersion: capabilities.3scale.net/v1beta1
@@ -317,7 +317,7 @@ image::03/03-3scale-create-product.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will create a new product for the `TinyLlama` model. You can see that the configuration is more complex than the backend, as it includes the mapping rules, policies, and methods that will be used by the product.
 +
-[source,yaml,subs="attributes"]
+[source,yaml,role="execute",subs="+macros,+attributes"]
 ----
 apiVersion: capabilities.3scale.net/v1beta1
 kind: Product
@@ -447,7 +447,7 @@ image::03/03-3scale-proxyconfig-promote-button.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on create. This will publish the product to the production environment.
 +
-[source,yaml,subs="attributes"]
+[source,yaml,role="execute",subs="+macros,+attributes"]
 ----
 kind: ProxyConfigPromote
 apiVersion: capabilities.3scale.net/v1beta1
@@ -471,7 +471,7 @@ image::03/03-3scale-create-activedoc.png[]
 
 * In the YAML view, replace the default content with the following YAML and click on `Create`. This will create the API documentation for the product. As the APIDoc can be complex, we already created a JSON file that contains the API documentation for the `TinyLlama` model and we will only need to reference it in the YAML.
 +
-[source,yaml,subs="attributes"]
+[source,yaml,role="execute",subs="+macros,+attributes"]
 ----
 apiVersion: capabilities.3scale.net/v1beta1
 kind: ActiveDoc
@@ -536,7 +536,7 @@ image::03/03-3scale-tinyllama-info.png[]
 
 * You can now test the API using the `curl` command in your terminal. Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
 +
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
     'https://Endpoint_URL/v1/completions' \
@@ -553,7 +553,7 @@ curl -X 'POST' \
 
 Example:
 
-[source,bash,subs="attributes"]
+[source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
     'https://tinyllama-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1/completions' \

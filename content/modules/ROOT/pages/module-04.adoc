@@ -24,7 +24,7 @@ image::04/04-select-anytingllm.png[]
 ** LLM Provider Type: `generic-openai` (don't change this default value)
 ** Base URL: enter the Endpoint URL from 3Scale, adding `/v1` at the end (OpenAI API standard). For example: `https://granite-3dot2-8b-instruct-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1`
 ** API Key: enter the API key from 3Scale
-** Chat Model Name: enter the model name from 3Scale, for example: `granite` or `tinyllama/tinyllama-1.1b-chat-v1.0`
+** Chat Model Name: enter the model name from 3Scale, for example: `ibm-granite/granite-3.2-8b-instruct` or `tinyllama/tinyllama-1.1b-chat-v1.0`
 ** Leave all other fields as default.
 ** Click `Create` to create the connection.
 +
@@ -58,7 +58,7 @@ image::04/04-attach-connection.png[]
 [.bordershadow]
 image::04/04-anythingllm-wb-2.png[]
 
-* Once the workbench is started, click on `Open` to access the AnythingLLM environment.
+* Once the workbench is started (this should take 20 seconds), click on `Open` to access the AnythingLLM environment.
 +
 [.bordershadow]
 image::04/04-open-anythingllm.png[]
@@ -69,8 +69,43 @@ image::04/04-open-anythingllm.png[]
 image::04/04-new-workspace.png[]
 
 * Give the workspace a name and click on `Save`. You can now chat with your model!
++
+[.bordershadow]
+image::04/04-anythingllm-chat.png[]
 
 [#analytics]
 == Analytics
 
 In this section, we will explore the analytics capabilities of the 3Scale API Gateway. We will learn how to monitor the usage of our models.
+
+=== The Developer View
+
+* In the 3Scale developer portal, navigate to the `Statistics` tab at the top.
++
+[.bordershadow]
+image::04/04-dev-stats-panel.png[]
+
+* You have a drop-down with all the applications you have created. Click on any to view its statistics.
++
+[.bordershadow]
+image::04/04-dev-stats-metrics.png[]
+
+As a developer, you can view the statistics of your applications and monitor their usage. You can also view the number of calls made to the API, and the different methods use.
+
+=== The Admin View
+
+* In the 3Scale admin portal, navigate to the `Products` and select one (Granite in this example).
++
+[.bordershadow]
+image::04/04-admin-stats-start.png[]
+
+* Click on the `Analytics->Traffic` menu to view the statistics for the selected product.
++
+[.bordershadow]
+image::04/04-admin-stats-view.png[]
+
+From this admin perspective, you can view the statistics of all the applications that are using the selected product. You can also view the number of calls made to the API, and the different methods used.
+
+You can test the different views to see which are the top applications using the API, and which are the most used methods, when they are mostly used, etc.
+
+Congratulations! You have successfully connected your application to a large language model (LLM) as a service and explored the analytics capabilities of the 3Scale API Gateway. You can now use this knowledge to build powerful applications that leverage the capabilities of LLMs.

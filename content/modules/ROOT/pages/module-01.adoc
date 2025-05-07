@@ -39,4 +39,7 @@ In this workshop, we will:
 * Get an overview of the OpenShift AI platform
 * Deploy a Generative AI model on OpenShift AI
 * Configure 3Scale API Gateway to expose the model
-* Use the model in a chat application
+* Use the published model in a chat application
+* Get some usage statistics from 3Scale
+
+At the end of thw workshop, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.

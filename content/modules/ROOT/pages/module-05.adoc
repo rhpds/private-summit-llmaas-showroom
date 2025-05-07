@@ -25,6 +25,7 @@ Here's a recap of what we covered:
 ** We launched an `AnythingLLM` application using a custom Workbench image.
 ** We attached the custom Connection to the AnythingLLM workbench, allowing it to automatically configure itself to use the selected LLM via the 3Scale gateway.
 ** We interacted with the model through the AnythingLLM chat interface.
+** We explored the analytics on model usage in the 3Scale Developer and Admin Portal.
 
 **Key Lessons Learned:**
 
