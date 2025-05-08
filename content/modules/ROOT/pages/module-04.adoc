@@ -20,11 +20,11 @@ image::04/04-add-connection.png[]
 image::04/04-select-anytingllm.png[]
 
 * Fill in the required fields for the connection, including the connection name and any other necessary parameters. At this point you can choose to connect to the Granite or the Tinyllama model. Use the information you get from the 3Scale developer portal to fill in the required fields.
-** Connection name: `Granite` or `Tinyllama`
-** LLM Provider Type: `generic-openai` (don't change this default value)
-** Base URL: enter the Endpoint URL from 3Scale, adding `/v1` at the end (OpenAI API standard). For example: `https://granite-3dot2-8b-instruct-maas-apicast-production.apps.cluster-br294.br294.sandbox5291.opentlc.com:443/v1`
-** API Key: enter the API key from 3Scale
-** Chat Model Name: enter the model name from 3Scale, for example: `ibm-granite/granite-3.2-8b-instruct` or `tinyllama/tinyllama-1.1b-chat-v1.0`
+** Connection name: `Granite` or `Tinyllama`.
+** LLM Provider Type: `generic-openai` (don't change this default value).
+** Base URL: enter the Endpoint URL from 3Scale (in the developer portal), adding `/v1` at the end (OpenAI API standard).
+** API Key: enter the API key from 3Scale (in the developer portal).
+** Chat Model Name: enter the model name from 3Scale, for example: `ibm-granite/granite-3.2-8b-instruct` or `tinyllama/tinyllama-1.1b-chat-v1.0`.
 ** Leave all other fields as default.
 ** Click `Create` to create the connection.
 +
@@ -73,6 +73,8 @@ image::04/04-new-workspace.png[]
 [.bordershadow]
 image::04/04-anythingllm-chat.png[]
 
+Well done! You have successfully chatted with your model using the AnythingLLM application. You can now use this application to interact with your LLM and explore its capabilities.
+
 [#analytics]
 == Analytics
 
@@ -80,7 +82,7 @@ In this section, we will explore the analytics capabilities of the 3Scale API Ga
 
 === The Developer View
 
-* In the 3Scale developer portal, navigate to the `Statistics` tab at the top.
+* In the 3Scale **developer portal**, navigate to the `Statistics` tab at the top.
 +
 [.bordershadow]
 image::04/04-dev-stats-panel.png[]
@@ -94,7 +96,7 @@ As a developer, you can view the statistics of your applications and monitor the
 
 === The Admin View
 
-* In the 3Scale admin portal, navigate to the `Products` and select one (Granite in this example).
+* In the 3Scale **admin portal**, navigate to the `Products` and select one (Granite in this example).
 +
 [.bordershadow]
 image::04/04-admin-stats-start.png[]
