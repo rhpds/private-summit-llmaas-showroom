@@ -35,6 +35,10 @@ oc login -u <your-username> -p <your-password> --server=https://api.<your-cluste
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_USER}' | base64 --decode
+----
++
+[source,bash,role="execute",subs="+macros,+attributes"]
+----
 oc get secret system-seed -n 3scale -o jsonpath='{.data.ADMIN_PASSWORD}' | base64 --decode
 ----
 
@@ -71,13 +75,13 @@ Using the dropdown menu at the top, you can access and explore the different adm
 [.bordershadow]
 image::03/03-3scale-section-menu.png[]
 
-As this workshop is not a full tutorial on 3Scale, we will not go into details about the different sections. You can find more information in the https://docs.redhat.com/en/documentation/red_hat_3scale_api_management/2.15[3Scale documentation].
+As this workshop is not a full tutorial on 3Scale, we will not go into details about the different sections. You can find more information in the https://docs.redhat.com/en/documentation/red_hat_3scale_api_management/2.15[3Scale documentation,window=_blank].
 
 However, we will come back to certain specific areas when we create a new product and connect it to the model that was deployed in the previous module.
 
 === Enabling the Developer Portal
 
-Although you may have seen that a user was already created for you in 3Scale (Audience->Accounts->Listing), you will need to configure the developer portal to allow users to access it.
+A user was already created for you in 3Scale in (Audience->Accounts->Listing), but you still need to configure the developer portal to allow users to access it.
 
 * On the Audience section, got to Developer Portal->Settings->Domains & Access.
 +
@@ -103,12 +107,12 @@ image::03/03-user-config.png[]
 [.bordershadow]
 image::03/03-user-subscribe-granite.png[]
 
-* On the window that opens, select the `Default Plan` and click on `Create subscription`.
+* On the window that opens, select the `Default` Plan and click on `Create subscription`.
 +
 [.bordershadow]
 image::03/03-create-sub-granite.png[]
 
-{user} is now subscribed to the `granite-3dot2-8b-instruct` service. You can see that the subscription is active and the plan is set to `Default Plan`.
+{user} is now subscribed to the `granite-3dot2-8b-instruct` service. You can see that the subscription is active and the plan is set to `Default` Plan.
 
 In a production environment, you would normally automate this process as part of the deployment of a new product. In this workshop, we do it manually to show you how it works.
 
@@ -118,7 +122,9 @@ In a production environment, you would normally automate this process as part of
 
 === Accessing the Developer Portal
 
-You can now access the developer portal at https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank]. You can log in using your workshop credentials (the same as the ones you used to log into the OpenShift console), because they are the ones we used to pre-create a user in 3Scale.
+You can now access the developer portal at https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
+
+You can log in using your workshop credentials, because they are the ones we used to pre-create a user in 3Scale.
 
 Here they are again:
 
@@ -176,17 +182,17 @@ image::03/03-3scale-key-generated.png[]
 
 Now that you have created an application, you can test the API. You can do this using the `curl` command in your terminal.
 
-* Open a terminal in your VSCode environment (or on your laptop) and run the following command, replacing the placeholder values with the ones you got from the previous step:
+* Open a terminal in your VSCode environment and run the following command, replacing the placeholder values with the ones you got from the previous step:
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
-    'https://Endpoint_URL/v1/completions' \
+    '___Endpoint_URL___/v1/completions' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer API_KEY' \
+    -H 'Authorization: Bearer ___API_KEY___' \
     -d '{
-    "model": "Model_Name",
+    "model": "___MODEL_NAME___",
     "prompt": "San Francisco is a",
     "max_tokens": 15,
     "temperature": 0
@@ -459,7 +465,7 @@ spec:
   production: true
 ----
 
-* In the 3Scale Admin Portal, you can see that the product is now published to production. Got to `Products`, select the `TinyLlama` product and go to ̀Integration->Configuration`. You can see that the `Production APIcast` environment is now available.
+* In the 3Scale Admin Portal, you can see that the product is now published to production. Got to `Products`, select the `TinyLlama` product and go to `Integration->Configuration`. You can see that the `Production APIcast` environment is now available.
 +
 [.bordershadow]
 image::03/03-3scale-tinyllama-proxyconfig-applied.png[]
@@ -490,7 +496,7 @@ spec:
   systemName: tinyllama
 ----
 
-* Finally, we must subscribe our user to this new product, as we did previously for Granite. Again. this is normally something you would automate as part of a deployment of a new product, but here we are going to do it in the 3Scale Admin Portal. Go to `Audience->Listing`, select `user1` account.
+* Finally, we must subscribe our user to this new product, as we did previously for Granite. Again, this is normally something you would automate as part of a deployment of a new product, but here we are going to do it in the 3Scale Admin Portal. Go to `Audience->Listing`, select `user1` account.
 +
 [.bordershadow]
 image::03/03-3scale-user-product-activate.png[]
@@ -505,12 +511,12 @@ image::03/03-3scale-service-subscription-tab.png[]
 [.bordershadow]
 image::03/03-3scale-tinyllama-subscribe.png[]
 
-* Select the `Default Plan` and click on `Create subscription`.
+* Select the `Default` Plan and click on `Create subscription`.
 +
 [.bordershadow]
 image::03/03-3scale-tinyllama-create-subscription.png[]
 
-* `user1` is now subscribed to the `TinyLlama` product. You can see that the subscription is active and the plan is set to `Default Plan`.
+* `user1` is now subscribed to the `TinyLlama` product. You can see that the subscription is active and the plan is set to `Default` Plan.
 +
 [.bordershadow]
 image::03/03-3scale-tinyllama-subscribed.png[]
@@ -519,7 +525,7 @@ image::03/03-3scale-tinyllama-subscribed.png[]
 
 You can now test this new Product in the same way you did for `Granite` in the previous module.
 
-* Connect to the Developer Portal at `https://maas.{openshift_cluster_ingress_domain}` and log in using your credentials.
+* Connect to the Developer Portal at `https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank]` and log in using your credentials.
 
 * Click on the `See your Applications and their credentials` link on the front page.
 
@@ -539,12 +545,12 @@ image::03/03-3scale-tinyllama-info.png[]
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
 curl -X 'POST' \
-    'https://Endpoint_URL/v1/completions' \
+    '___ENDPOINT_URL___/v1/completions' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer API_KEY' \
+    -H 'Authorization: Bearer ___API_KEY___' \
     -d '{
-    "model": "Model_Name",
+    "model": "___MODEL_NAME___",
     "prompt": "San Francisco is a",
     "max_tokens": 15,
     "temperature": 0

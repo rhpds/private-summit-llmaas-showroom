@@ -35,7 +35,7 @@ image::02/02-01-rhsso.png[]
 [.bordershadow]
 image::02/02-01-login1.png[]
 
-* Because the password is so simple (`{password}`), your browser might display a scary message.It is safe here to ignore this message when it pops up. 
+* Because the password is so simple (`{password}`), your browser might display a scary message. It is safe here to ignore this message when it pops up. 
 * Don't worry if you do not see this scary message.
 
 * After you authenticate, your browser window should look like:
@@ -89,7 +89,7 @@ The different components of OpenShift AI that you can access through the differe
 [.bordershadow]
 image::02/02-granite-model-overview.png[]
 
-* If you click on the expand button at the left of the model, you will see more information about its configura, such as the resources allocated to it.
+* If you click on the expand button at the left of the model, you will see more information about its configuration, such as the resources allocated to it.
 +
 [.bordershadow]
 image::02/02-granite-details.png[]
@@ -136,7 +136,7 @@ image::02/02-odh-tec-open.png[]
 [.bordershadow]
 image::02/02-odh-tec.png[]
 
-As you can see, `ODH-TEC` is already configured to use the **`models` connection** we just reviewed. You can see the different buckets available in the Minio server, as well as the files stored in each bucket. You can take some time to look at the different folders and files available. Two model are available: the `Granite` model we saw, and `TinyLlama`. We are going to deploy this one in the next section.
+As you can see, `ODH-TEC` is already configured to use the **`models` connection** we just reviewed. You can see the different buckets available in the Minio server, as well as the files stored in each bucket. You can take some time to look at the different folders and files available. Two models are available: the `Granite` model we saw, and `TinyLlama`. We are going to deploy this one in the next section.
 
 You can leave this tab open for now, we will come back to it later.
 
@@ -224,10 +224,10 @@ image::02/02-deploy-model-button.png[]
 ** **Model deployment name**: `TinyLlama`
 ** **Serving runtime**: `Custom - vLLM ServingRuntime-CPU`
 ** **Number of model server replicas to deploy**: `1`
-** **Model server size**: `Medium` !Important
+** **Model server size**: `Medium` **(IMPORTANT)**
 ** **Accelerator**: `None`
-** **Model route**: Checked (!Important)
-** **Token authentication**: Unchecked (!Important)
+** **Model route**: Checked **(IMPORTANT)**
+** **Token authentication**: Unchecked **(IMPORTANT)**
 ** **Source model location**: `Existing connection`
 ** **Connection**: `models`
 ** **Path**: `TinyLlama/TinyLlama-1.1B-Chat-v1.0`
