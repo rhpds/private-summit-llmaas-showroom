@@ -157,6 +157,10 @@ image::02/02-create-workbench.png[]
 ** **Accelerator**: None
 ** **Persistent storage size**: 5 GiB (default)
 
++
+[.bordershadow]
+image::02/02-create-workbench-full.png[]
+
 * Then click on `Create workbench` at the bottom.
 +
 [.bordershadow]
@@ -248,6 +252,7 @@ image::02/02-new-model-endpoints.png[]
 
 Once the model is deployed, you can test it using the same method as before. You can use the same `Model-Test` workbench we created earlier, or create a new one if you prefer.
 
+* Please get back to the OpenShift AI Dashboard.
 * In the `Model-Test` workbench, open a terminal.
 ** To test the internal endpoint, run the following command:
 +

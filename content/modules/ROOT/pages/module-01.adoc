@@ -42,4 +42,4 @@ In this workshop, we will:
 * Use the published model in a chat application
 * Get some usage statistics from 3Scale
 
-At the end of thw workshop, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.
+At the end of the workshop, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.
