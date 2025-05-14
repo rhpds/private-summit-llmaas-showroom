@@ -157,6 +157,15 @@ image::02/02-create-workbench.png[]
 ** **Accelerator**: None
 ** **Persistent storage size**: 5 GiB (default)
 
+* See screenshot below for reference:
+
++
+[.bordershadow]
+image::02/02-create-workbench-full-1.png[width=800]
++
+[.bordershadow]
+image::02/02-create-workbench-full-2.png[width=800]
+
 * Then click on `Create workbench` at the bottom.
 +
 [.bordershadow]
@@ -173,8 +182,10 @@ image::02/02-open-terminal.png[]
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{"model":"ibm-granite/granite-3.2-8b-instruct" ,"prompt": "Hello, how are you?"}' http://granite-3dot2-8b-instruct-predictor.llm-hosting.svc.cluster.local:8080/v1/completions
+curl -X POST -H "Content-Type: application/json" -d '{"model":"ibm-granite/granite-3.2-8b-instruct" ,"prompt": "Hello, how are you?"}' http://granite-3dot2-8b-instruct-predictor.llm-hosting.svc.cluster.local:8080/v1/completions | jq
 ----
++
+NOTE: When pasting content for the first time, your workbench may prompt you to grant paste access. Please allow it to enable copy-paste functionality.
 
 * The answer should look like this:
 +
@@ -248,12 +259,13 @@ image::02/02-new-model-endpoints.png[]
 
 Once the model is deployed, you can test it using the same method as before. You can use the same `Model-Test` workbench we created earlier, or create a new one if you prefer.
 
+* Please go back to the OpenShift AI Dashboard.
 * In the `Model-Test` workbench, open a terminal.
 ** To test the internal endpoint, run the following command:
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
-curl -k -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tinyllama-1.1b-chat-v1.0" ,"prompt": "Hello, how are you?"}' https://tinyllama.llm-hosting.svc.cluster.local/v1/completions
+curl -k -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tinyllama-1.1b-chat-v1.0" ,"prompt": "Hello, how are you?"}' https://tinyllama.llm-hosting.svc.cluster.local/v1/completions | jq
 ----
 (the `-k` option is used to ignore the certificate, as the internal endpoint uses a self-signed certificate in the Istio mesh)
 
@@ -261,7 +273,7 @@ curl -k -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tiny
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tinyllama-1.1b-chat-v1.0" ,"prompt": "Hello, how are you?"}' https://tinyllama-llm-hosting.{openshift_cluster_ingress_domain}/v1/completions
+curl -X POST -H "Content-Type: application/json" -d '{"model":"tinyllama/tinyllama-1.1b-chat-v1.0" ,"prompt": "Hello, how are you?"}' https://tinyllama-llm-hosting.{openshift_cluster_ingress_domain}/v1/completions | jq
 ----
 
 In both cases, the answer should take some more time than previously as we are running on a CPU (and you may need to try a few times to get something meaningful as the model has to be "warmed-up"), and look like this:

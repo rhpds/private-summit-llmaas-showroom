@@ -19,7 +19,13 @@ image::04/04-add-connection.png[]
 [.bordershadow]
 image::04/04-select-anytingllm.png[]
 
-* Fill in the required fields for the connection, including the connection name and any other necessary parameters. At this point you can choose to connect to the Granite or the Tinyllama model. Use the information you get from the 3Scale developer portal to fill in the required fields.
+* Before  filling in the required fields, you'll need to get some information from the https://maas.{openshift_cluster_ingress_domain}[developer portal,window=_blank].
+* In the developer portal, open your Granite or Tinyllamma application, depening on which model you want to use.
++
+[.bordershadow]
+image::04/04-devportal-application.png[]
++
+* Now back to add connection in OpenShift AI, fill in the required fields for the connection, including the connection name and any other necessary parameters. You can choose to connect to the Granite or the Tinyllama model. Use the information you got from the 3Scale developer portal to fill in the required fields.
 ** Connection name: `Granite` or `Tinyllama`.
 ** LLM Provider Type: `generic-openai` (don't change this default value).
 ** Base URL: enter the Endpoint URL from 3Scale (in the developer portal), adding `/v1` at the end (OpenAI API standard).

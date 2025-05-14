@@ -13,21 +13,13 @@ As the deployment of 3Scale itself is not the purpose of this workshop and may t
 
 To connect to the 3Scale admin portal, you will need the admin_user and admin_password values. They can be found in the `system-seed` secret in the `3scale` namespace.
 
-We can also get them in this way:
-
-* From a Terminal (in your VSCode environment, or on your laptop) log into OpenShift. If you don't know how to do this, here is the recipe:
-** On the OpenShift Web Console, click on your user name then the `Copy Login Command` button in the top right corner of the screen. You will need to authenticate with your OpenShift credentials, and eventually accept a certificate if prompted.
-+
-[.bordershadow]
-image::03/03-copy-login.png[]
-
-** Copy the command and paste it into your terminal. It should look like this:
+* From a Terminal (in your VSCode workbench) log into OpenShift.
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
-oc login -u <your-username> -p <your-password> --server=https://api.<your-cluster-name>.openshift.com:6443
+oc login -u {user} -p {password} --server={openshift_api_url}
 ----
-
++
 (approve the certificate when prompted to allow insecure connections)
 
 * Now that you are logged in, you can get the secret values with the following commands:
@@ -80,6 +72,8 @@ As this workshop is not a full tutorial on 3Scale, we will not go into details a
 However, we will come back to certain specific areas when we create a new product and connect it to the model that was deployed in the previous module.
 
 === Enabling the Developer Portal
+
+Developer Portal allows API providers to create a customizable, branded interface for onboarding developers, sharing API documentation, and managing access credentials. It supports content management, theming, and integration with backend services to streamline API consumption.
 
 A user was already created for you in 3Scale in (Audience->Accounts->Listing), but you still need to configure the developer portal to allow users to access it.
 
