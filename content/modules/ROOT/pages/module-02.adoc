@@ -157,9 +157,14 @@ image::02/02-create-workbench.png[]
 ** **Accelerator**: None
 ** **Persistent storage size**: 5 GiB (default)
 
+* See screenshot below for reference:
+
 +
 [.bordershadow]
-image::02/02-create-workbench-full.png[]
+image::02/02-create-workbench-full-1.png[width=800]
++
+[.bordershadow]
+image::02/02-create-workbench-full-2.png[width=800]
 
 * Then click on `Create workbench` at the bottom.
 +
@@ -179,8 +184,8 @@ image::02/02-open-terminal.png[]
 ----
 curl -X POST -H "Content-Type: application/json" -d '{"model":"ibm-granite/granite-3.2-8b-instruct" ,"prompt": "Hello, how are you?"}' http://granite-3dot2-8b-instruct-predictor.llm-hosting.svc.cluster.local:8080/v1/completions | jq
 ----
-
-_When pasting content for the first time, your workbench may prompt you to grant paste access. Please allow it to enable copy-paste functionality._
++
+NOTE: When pasting content for the first time, your workbench may prompt you to grant paste access. Please allow it to enable copy-paste functionality.
 
 * The answer should look like this:
 +
@@ -254,7 +259,7 @@ image::02/02-new-model-endpoints.png[]
 
 Once the model is deployed, you can test it using the same method as before. You can use the same `Model-Test` workbench we created earlier, or create a new one if you prefer.
 
-* Please get back to the OpenShift AI Dashboard.
+* Please go back to the OpenShift AI Dashboard.
 * In the `Model-Test` workbench, open a terminal.
 ** To test the internal endpoint, run the following command:
 +
