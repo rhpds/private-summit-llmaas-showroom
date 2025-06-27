@@ -1,10 +1,10 @@
 ---
 site:
-  title: "LB1816 - LLM as a Service for Enterprise: Building Your Custom Large Language Model Platform"
+  title: "Private LLM as a Service - A Practical Introduction with OpenShift AI"
   start_page: modules::index.adoc
 
 content:
-  edit_url: 'https://github.com/rhpds/llmaas-showroom/edit/dev/{path}'
+  edit_url: 'https://github.com/rhpds/private-summit-llmaas-showroom/edit/dev/{path}'
   sources:
     - url: .
       start_path: content
