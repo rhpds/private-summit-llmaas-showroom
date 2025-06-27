@@ -1,6 +1,6 @@
 ---
 site:
-  title: "Summit Connect: Private LLM as a Service - A Practical Introduction with OpenShift AI"
+  title: "Private LLM as a Service - A Practical Introduction with OpenShift AI"
   start_page: modules::index.adoc
 
 content:
