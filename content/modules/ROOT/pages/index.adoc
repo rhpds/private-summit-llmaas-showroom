@@ -1,3 +1,3 @@
-= LLM as a Service for Enterprise: Building Your Custom Large Language Model Platform
+= Private LLM as a Service - A Practical Introduction with OpenShift AI
 
-Welcome to the LLM as a Service for Enterprise documentation! This guide will help you understand how to build and deploy your own custom large language model (LLM) platform tailored to your enterprise needs.
+Welcome to the Private LLM as a Service - A Practical Introduction with OpenShift AI documentation! This guide will help you understand how to build and deploy your own custom large language model (LLM) platform tailored to your enterprise needs.
