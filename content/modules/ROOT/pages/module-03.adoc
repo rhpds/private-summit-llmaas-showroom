@@ -17,7 +17,7 @@ To connect to the 3Scale admin portal, you will need the admin_user and admin_pa
 +
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
-oc login -u {user} -p {password} --server={openshift_api_url}
+{login_command}
 ----
 +
 (approve the certificate when prompted to allow insecure connections)
