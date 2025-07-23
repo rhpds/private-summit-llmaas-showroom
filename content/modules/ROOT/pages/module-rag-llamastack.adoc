@@ -1,0 +1,339 @@
+= Deploying RAG with Llamastack
+
+This comprehensive lab provides a hands-on experience developing intelligent AI agents with OpenShift, Llama Stack and Model Context Protocol (MCP). Participants will learn how to build agents that can use a wide variety of tools to increase their access to different data sources and interact with external systems. This will be done by building an AI agent that has access to a RAG tool, an OpenShift MCP and a Slack MCP tool. This agent will be capable of reviewing pod logs, searching our vector database for specific solutions, and sending results to Slack. This agent will be built, step-by-step through a series of progressive Jupyter notebooks on Red Hat OpenShift AI (RHOAI).
+
+[#workbench-exploration]
+== Explore the Workbench and Data Science Project
+
+=== Objectives
+
+* Learn how to use Retrieval Augmented Generation (RAG) with Llama Stack for information retrieval from custom data sources.
+* Develop agents with the ability to use a wide array of tools that will expand their capabilities and tailor them to specific domains.
+* Explore advanced agentic patterns, like prompt chaining and the ReAct framework for complex reasoning and decision-making.
+* Integrate RAG, AI agents, and Model Context Protocol (MCP) to build sophisticated automated systems, such as an incident response system within OpenShift.
+
+=== Environment - Red Hat OpenShift AI
+
+For this lab, we built notebooks running in a Red Hat OpenShift AI (RHOAI) environment. RHOAI is a comprehensive, flexible, and scalable platform engineered to support the full lifecycle of AI and ML application development and deployment. Built upon the enterprise-grade Kubernetes foundation of Red Hat OpenShift, it provides a consistent and robust environment for data scientists, developers, and MLOps engineers to collaborate. RHOAI facilitates a wide array of tasks including data acquisition and preparation, model training and fine-tuning, model serving, and ongoing monitoring, all while supporting hardware acceleration to optimize performance.
+
+The platform is designed to streamline AI/ML workflows and accelerate the delivery of AI-powered intelligent applications across hybrid cloud environments, encompassing on-premises, public cloud, and edge deployments. By integrating a suite of tested and supported open-source AI/ML tools and frameworks, such as Jupyter notebooks, Model Registry, Training Operator and PyTorch, alongside capabilities for managing AI accelerators like GPU, RHOAI aims to reduce operational complexity. This allows teams to focus on innovation and efficiently build, scale, and manage their AI models and applications with enhanced security and consistency.
+
+For this lab, an OpenShift environment will be deployed for you with the following components:
+
+* RHOAI
+    ** vLLM Model Servers 
+        *** IBM Granite 3.2 8B Instruct 
+        *** Meta LLama 3.2 3B Instruct
+    ** Workbench
+        *** Jupyter notebooks levels 1-6
+* Llama Stack server
+* MCP servers
+    ** OpenShift
+    ** Slack
+
+=== RHOAI model deployment via vLLM 
+
+RHOAI model deployment makes LLMs accessible as scalable and manageable API endpoints. This enables developers and data scientists to integrate these models with LLama Stack applications. For our lab, we use https://docs.vlslm.ai/[vLLM] as a runtime for RHOAI model deployment. vLLM is an open-source, high-performance inference engine designed to optimize the deployment of large language models (LLMs) in real-time applications. At its core, vLLM introduces the PagedAttention algorithm, which draws inspiration from operating system paging techniques to manage key-value (KV) cache memory efficiently.
+
+==== Models
+
+For this lab, we deploy two LLM models:
+
+* **IBM Granite 3.2 8B Instruct**: is an 8-billion-parameter, long-context AI model fine-tuned for thinking capabilities. Built on top of Granite-3.1-8B-Instruct, it has been trained using a mix of permissively licensed open-source datasets and internally generated synthetic data designed for reasoning tasks. The model allows controllability of its thinking capability, ensuring it is applied only when required.
+* **Meta LLama 3.2 3B Instruct**: The Llama 3.2 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction-tuned generative models in 1B and 3B sizes (text in/text out). The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. They outperform many of the available open source and closed chat models on common industry benchmarks.
+
+We use the IBM Granite 3.2 8B Instruct model as a default in all the notebooks for a consistent performance. However, you can also experiment and try out the Meta LLama 3.2 3B Instruct model to compare the performance and characteristics of both the models.
+
+=== Llama Stack Server
+
+https://github.com/meta-llama/llama-stack[Llama Stack] is a comprehensive, open-source framework started at Meta, designed to streamline the creation, deployment, and scaling of generative AI applications. It provides a standardized set of tools and APIs that encompass the entire AI development lifecycle, including inference, fine-tuning, evaluation, safety protocols, and the development of agentic systems capable of complex task execution. By offering a unified interface, Llama Stack aims to simplify the often complex process of integrating advanced AI capabilities into various applications and infrastructures.
+
+The core purpose of Llama Stack is to empower developers by reducing friction and complexity, allowing them to focus on building innovative and transformative AI solutions. It codifies best practices within the generative AI ecosystem, offering pre-built tools and support for features like tool calling and retrieval augmented generation (RAG). This standardization facilitates a more consistent development experience, whether deploying locally, on-premises, or in the cloud, and fosters greater interoperability within the rapidly evolving generative AI community. Ultimately, Llama Stack seeks to accelerate the adoption and advancement of generative AI by providing a robust and accessible platform for developers of all sizes.
+
+==== Built-in Tools with Llama Stack
+
+Llama Stack provides built-in tools to extend the capabilities of agents. We leverage the following built-in tools in this lab:
+
+**RAG**
+
+The Llama Stack https://llama-stack.readthedocs.io/en/latest/building_applications/rag.html[RAG] tool facilitates document ingestion and semantic search using vector databases such as Milvus and FAISS. It supports ingesting documents from various sources like URLs and files, automatically chunking them for processing. For semantic search in this demo, the tool utilizes the all-MiniLM-L6-v2 model to embed the document chunks.
+
+**Websearch**
+
+The https://llama-stack.readthedocs.io/en/latest/building_applications/tools.html#web-search-providers[WebSearch] tool enables agents to conduct web searches using providers like Brave, Bing, and Tavily. This tool requires an API key from the selected search provider. Our demos utilizes Tavily Search and a Tavily API key to gather real time information.
+
+=== Model Context Protocol Servers
+
+The open-source https://modelcontextprotocol.io/introduction[Model Context Protocol] defines a standard way to connect LLMs to nearly any type of external resources like files, APIs, and databases. It's built on a client-server system, so applications can easily feed LLMs the context they need.
+
+==== Servers
+
+In this lab, we use two MCP servers, an OpenShift MCP server and a Slack MCP server, both of which are deployed in the OpenShift environment.
+
+**OpenShift MCP Server**
+
+The https://github.com/manusa/kubernetes-mcp-server[OpenShift Model Context Protocol (MCP) Server] lets LLMs interact directly with Kubernetes and OpenShift clusters without needing additional software like kubectl or Helm. It enables operations such as managing pods, viewing logs, installing Helm charts, listing namespaces, etc.—all through a unified interface. This server is lightweight and doesn't require any external dependencies, making it easy to integrate into existing systems. In the advanced level notebooks, we use this server to connect to the OpenShift cluster, check the status of pods running on the cluster, and report their health and activity.
+
+**Slack MCP Server**
+
+The https://github.com/modelcontextprotocol/servers/tree/main/src/slack[Slack MCP Server] offers a standard interface for LLMs to interact with Slack workspaces. Its capabilities include listing channels, posting messages, replying to threads, adding emoji reactions, retrieving message history, and accessing user profiles. This enables AI agents to seamlessly engage in Slack conversations, manage communication, and gain insights from user context. In the advanced level notebooks, we use this server to connect to a public Slack workspace and send status updates about our running pods, along with error resolution steps.
+
+=== Exploring the Lab Environment
+
+The lab is designed to be interactive and hands-on, allowing you to explore the capabilities of LlamaStack and OpenShift AI in a practical setting. The lab environment is pre-configured with all necessary components, so you can focus on learning and experimentation without worrying about setup or configuration issues.
+
+==== OpenShift Console
+
+Log in to the cluster: Navigate to the OpenShift cluster and login with the provided credentials.
+
+The URL for the OpenShift console is: {openshift_console_url}
+
+image::exploring-login.png[OpenShift Login, width=100%]
+
+Once you are logged in, click on the `Home -> Projects` tab on the left side of the console to view all the namespaces on the cluster:
+
+image::exploring-projects.png[OpenShift Projects, width=50%]
+
+Search and select the `llama-serve` namespace, this is the namespace where all the lab components have been deployed.
+
+image::exploring-namespace.png[OpenShift Namespace, width=100%]
+
+To view the pods running on the `llama-serve` namespace
+
+Click on `Workloads -> Pods` to view all the components deployed and running as pods for this lab:
+
+image::exploring-pods.png[OpenShift Pods, width=50%]
+
+You should see the following pods running, each of which correspond to a specific component required for the lab:
+
+image::exploring-pods-list.png[OpenShift Pods List, width=100%]
+
+==== Red Hat OpenShift AI Console
+
+To view the models running on Openshift AI, use the following URL https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/ or click on the `Red Hat OpenShift AI` application as shown below:
+
+image::exploring-RHOAI.png[RHOAI page, width=100%]
+
+Navigate to the `Model deployments` tab that is located on the left hand side:
+
+image::exploring-models.png[OpenShift Models, width=100%]
+
+You will see two models running via the RHOAI vLLM ServingRuntime:
+
+* granite3.2-8b
+* llama3.2-3b
+
+[#chatbot-access]
+== Create Access for a Chatbot Application
+
+=== Jupyter Notebook Workbench
+
+To launch the Jupyter notebook workbench use the following link https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/projects/llama-serve?section=workbenches or follow the steps as shown below:
+
+Your Jupyter workbench can be found in `Data science projects` (located on the left hand side of the console). Select the project `llama-serve`:
+
+image::exploring-RHOAI-DS-Projects.png[RHOAI DS Projects, width=100%]
+
+Once you have selected `llama-serve` as the data science project, you will see a `workbenches` tab as shown below:
+
+image::exploring-RHOAI-llama-serve.png[RHOAI Llama Serve, width=100%]
+
+Click on the blue arrow next to "lab" to access the Jupyter workbench. You will need to sign in again with your username and password. Upon opening this workbench, you'll find a list of interactive notebooks that will walk you through different Llama Stack demos.
+
+Now let's start running these notebooks!
+
+[#jupyter-notebooks]
+== Jupyter Notebooks - Parasol Examples
+
+The lab includes a series of https://jupyter.org/[Jupyter notebooks] that run in a RHOAI workbench in the `llama-serve` project. The notebooks progressively increase in complexity to help guide participants from defining a "Simple RAG" application with Llama Stack all the way to building an Agent that integrates MCP and RAG tools with advanced agent patterns.
+
+=== Level 0 - Setting up the environment
+
+Before starting the demo, it's essential to execute the Level 0 notebook to configure your environment. This includes tasks such as installing necessary packages and setting up environment variables using the `.env` file.
+
+image::level0.png[Level 0 - Setting up the environment]
+
+==== Tavily key
+
+For running some of these notebooks, you will need a Tavily key. 
+Go to https://tavily.com/ and register for a free account. This is needed to enable the Llama Stack built-in web search tool. 
+Once logged in, access the `Overview` section where you will find your default API key listed under `API keys`. Copy this API key and store it securely as it will be used to configure your environment variables later in this tutorial. Ensure that the copied key is an exact match to avoid any issues.
+
+image::tavily_key.png[Tavily Key]
+
+==== Add your Tavily key to .env
+
+We will now add the Tavily key to our `.env` file. Once you have obtained your Tavily key, go back to your Jupyter workbench and navigate to `File -> New -> Terminal` to open a terminal window within the workbench.
+
+image::terminal.png[Launching a terminal]
+
+Next, run `ls -a` to show all the files under the current directory, including the hidden files like `.env` which stores our environment variables.
+
+image::repo_files.png[List files under worbench directory]
+
+Lets use `cat .env` to look at what's inside this file. We have set all the default environment variables as follows:
+
+image::env_file.png[Diplay .env file]
+
+Next, we need to update this file via the `vi .env` command to add your Tavily key. Once opened, type `i` to edit the file. Update `TAVILY_SEARCH_API_KEY` with your api key.
+
+image::update_env_file.png[Update .env file]
+
+After editing, hit the `esc` key on your keyboard to exit from insert mode, and type `:wq` to save and exit.
+Now we are ready to run the notebook!
+
+==== Run Notebook 0
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 1 - Simple RAG
+
+In this notebook we will be using Llama Stack to run a simple RAG example.
+
+==== Learning Objectives
+
+**Understand the core mechanics of RAG and Vector Databases in LlamaStack.**
+
+* **Vector Database Interaction**: How to connect to a vector database, insert documents and submit queries. 
+* **Retrieval Mechanism:** How LlamaStack identifies and extracts relevant information.
+* **Basic Question Answering:** Using retrieved content in conjunction with inference to generate dataset specific answers.
+
+==== Run Notebook 1
+
+To run this notebook, please select `Level1_simple_RAG.ipynb` from the file browser.
+
+image::Level1_intro.png[Level 1 - Simple RAG]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 2 - Simple Agent with Web Search
+
+In this notebook, we will be building a simple web search agent using Llama Stack.
+
+==== Learning Objectives
+
+* **Understand how to equip an agent** with Llama Stack's built-in tools, specifically web search
+* **Utilize tools to fulfill user requests**
+* **Grasp the basic architecture of an agent framework and the concept of tool invocation**
+
+==== Run Notebook 2
+
+To run this notebook, please select `Level2_simple_agent_with_websearch.ipynb` from the file browser.
+
+image::Level2_intro.png[Level 2 - Simple Agent with websearch]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 3 - Advanced Agentic with Prompt Chaining & ReAct
+
+In this notebook, we will be using Llama Stack to build an advanced agent with prompt chaining and ReAct functionalities.
+
+==== Learning Objectives
+
+* **Understand how to build agents that are capable of complex reasoning through prompt chaining**
+* **Employ the ReAct framework for structured action planning**
+* **Learn how to integrate effective prompt chains for multi-turn interactions**
+
+==== Running Notebook 3
+
+To run this notebook, please select `Level3_advanced_agent_with _Prompt_Chaining_and_ReAct.ipynb` from the file browser.
+
+image::Level3_intro.png[Level 3: Advanced Agents with Prompt Chaining & ReAct]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 4 - Agentic RAG
+
+In this notebook we will be building a RAG agent using Llama Stack.
+
+==== Learning Objectives
+
+* **Understand how to define and implement Retrieval Augmented Generation (RAG) within an AI agent framework**
+* **How to enable agents to autonomously decide when to use RAG and when to answer questions directly**
+
+==== Run Notebook 4
+
+To run this notebook, please select `Level4_RAG_Agent.ipynb` from the file browser.
+
+image::Level4_intro.png[Level 4 - Agentic RAG]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 5 - Agentic and MCP
+
+In this notebook, we will be building an advanced agent using Llama Stack that interacts with multiple external MCP tools.
+
+==== Learning Objectives
+
+* **Understand how to build and utilize agents that can interact directly with any external system by leveraging MCP tools.**
+
+==== Slack Pre-Requisite
+
+We will be interacting with a Slack MCP server in this notebook for which you will need to join the public Slack channel workspace using this invite link: https://join.slack.com/t/octo-emerging-tech/shared_invite/zt-35pmx4q0i-OFwWNE6nIcPEmbM7YS55yg
+
+Once logged into the workspace make sure to join the link:https://app.slack.com/client/T08M9UTL2DC/C08MUDSNHED[#demos] channel.
+
+==== Run Notebook 5
+
+To run this notebook, please select `Level5_agents_and_mcp.ipynb` from the file browser.
+
+image::Level5_intro.png[Level 5 - Agentic and MCP]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Level 6 - Agentic MCP and RAG
+
+In this notebook, we will be building an advanced agent that interacts with multiple tools including external MCP tools and the built-in Llama Stack RAG tool.
+
+==== Learning Objectives
+
+* **Understand how to combine advanced agentic capabilities** including prompt chaining, RAG-based knowledge retrieval, and MCP-driven OpenShift and Slack interactions, into a cohesive incident response system.
+* **Learn how to design prompts that guide the agent through complex tasks** 
+* **Learn how to leverage RAG to inject relevant contextual information for problem-solving** 
+* **Learn how to utilize MCP tools to execute actions within our infrastructure and communicate findings effectively.**
+
+==== Slack Pre-Requisite
+
+We will be interacting with a Slack MCP server in this notebook for which you will need to join the public Slack channel workspace using this invite link: https://join.slack.com/t/octo-emerging-tech/shared_invite/zt-35pmx4q0i-OFwWNE6nIcPEmbM7YS55yg
+
+Once logged into the workspace make sure to join the link:https://app.slack.com/client/T08M9UTL2DC/C08MUDSNHED[#demos] channel.
+
+==== Run Notebook 6
+
+To run this notebook, please select `Level6_agents_MCP_and_RAG.ipynb` from the file browser.
+
+image::Level6_intro.png[Level6 - agents_MCP_and_RAG]
+
+To execute the notebook cells, navigate to the top toolbar. Click the fast-forward (⏩) icon to restart the kernel and execute all cells sequentially from top to bottom.
+
+image::run_notebook.png[Run Notebook]
+
+=== Summary
+
+This lab teaches participants how to build AI agents capable of navigating intricate tasks, retrieving relevant information from multiple sources, and automating operational workflows within an enterprise-grade OpenShift environment.
+
+**Key Takeaways:**
+
+* **Level 0**: Environment setup with Tavily API key configuration
+* **Level 1**: Introduction to basic RAG principles for information retrieval from internal documents
+* **Level 2**: Build an agent that can use web search for additional information gathering
+* **Level 3**: Implement location awareness, prompt chaining, and use the ReAct pattern to build agents with more complex decision-making capabilities
+* **Level 4**: Strategically integrate RAG as a tool within the agent's decision-making process
+* **Level 5**: Utilize MCP tools to interact with OpenShift and Slack for operational automation and communication
+* **Level 6**: Combine advanced agentic patterns, RAG, and MCP tools to develop a complete, automated incident response system
+
+=== Feedback
+
+If you have any feedback on this demo series we'd love to hear it! Please go to https://www.feedback.redhat.com/jfe/form/SV_8pQsoy0U9Ccqsvk and help us improve our demos. 
