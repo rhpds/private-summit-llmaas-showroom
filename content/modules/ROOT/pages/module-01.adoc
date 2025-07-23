@@ -32,9 +32,9 @@ Offering AI models as a service to a larger audience, especially Large Language 
 [.bordershadow]
 image::02/maas.png[]
 
-== Workshop Goals
+== Module Goals
 
-In this workshop, we will:
+In this modle, we will:
 
 * Get an overview of the OpenShift AI platform
 * Deploy a Generative AI model on OpenShift AI
@@ -42,4 +42,4 @@ In this workshop, we will:
 * Use the published model in a chat application
 * Get some usage statistics from 3Scale
 
-At the end of the workshop, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.
+At the end of the module, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.
