@@ -118,7 +118,7 @@ Navigate to the `Model deployments` tab that is located on the left hand side:
 
 image::exploring-models.png[OpenShift Models, width=100%]
 
-You will see two models running via the RHOAI vLLM ServingRuntime:
+You will see three models running via the RHOAI vLLM ServingRuntime of which two mentioned below are used in this module:
 
 * granite3.2-8b
 * llama3.2-3b
