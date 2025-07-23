@@ -143,7 +143,7 @@ Click on the blue arrow next to "lab" to access the Jupyter workbench. You will 
 Now let's start running these notebooks!
 
 [#jupyter-notebooks]
-== Jupyter Notebooks - Parasol Examples
+== Jupyter Notebooks
 
 The lab includes a series of https://jupyter.org/[Jupyter notebooks] that run in a RHOAI workbench in the `llama-serve` project. The notebooks progressively increase in complexity to help guide participants from defining a "Simple RAG" application with Llama Stack all the way to building an Agent that integrates MCP and RAG tools with advanced agent patterns.
 
