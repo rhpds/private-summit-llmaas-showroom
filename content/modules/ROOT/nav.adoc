@@ -22,7 +22,7 @@
 * xref:module-rag-llamastack.adoc[Deploying RAG with Llamastack]
 ** xref:module-rag-llamastack.adoc#workbench-exploration[Explore the Workbench and Data Science Project]
 ** xref:module-rag-llamastack.adoc#chatbot-access[Create Access for a Chatbot Application]
-** xref:module-rag-llamastack.adoc#jupyter-notebooks[Jupyter Notebooks with Examples]
+** xref:module-rag-llamastack.adoc#jupyter-notebooks[Jupyter Notebooks - Parasol Examples]
 
 * xref:module-analytics.adoc[Analytics and Reporting]
 ** xref:module-analytics.adoc#analytics-overview[Explore Analytics and Model Usage]

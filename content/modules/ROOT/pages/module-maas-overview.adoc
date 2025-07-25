@@ -11,10 +11,29 @@ This module covers the foundational concepts and practical aspects of working wi
 During this 10-15 minute exploration, you will:
 
 * **Explore different aspects of the MaaS platform**
+  - Understanding the service architecture
+  - Platform capabilities and features
+  - Integration points and APIs
 
 * **Models Management**
+  - Browse available models
+  - Model versioning and lifecycle
+  - Performance characteristics
+
+* **Add and Deploy Models**
+  - Model deployment process
+  - Configuration options
+  - Resource allocation
 
 * **User Access and Management**
+  - Authentication and authorization
+  - Role-based access control
+  - Security policies
+
+* **Create Access for a New Team**
+  - Team provisioning workflow
+  - Resource quotas and limits
+  - Collaboration features
 
 == Platform Architecture
 

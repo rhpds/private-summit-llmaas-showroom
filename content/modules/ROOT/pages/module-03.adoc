@@ -91,7 +91,8 @@ image::03/03-3scale-remove-access-code.png[]
 
 In this configuration, a user is not automatically subscribed to a new service. You need to subscribe them to the service you want them to use.
 
-* On the Audience section, got to Accounts->Listing and click on `{user}`.
+#* On the Audience section, got to Accounts->Listing and click on `{user}`.
+* On the Audience section, got to Accounts->Listing and click on `alice-org`.
 +
 [.bordershadow]
 image::03/03-user-config.png[]
@@ -122,8 +123,10 @@ You can log in using your workshop credentials, because they are the ones we use
 
 Here they are again:
 
-* Your username: `{user}`
-* Your password: `{password}`
+#* Your username: `{user}`
+#* Your password: `{password}`
+* Your username: `alice`
+* Your password: `alice123`
 
 Signing in:
 
