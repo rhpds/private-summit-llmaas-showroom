@@ -124,17 +124,17 @@ In order to connect our model to the Roo Code extension we must provide the exte
 
 // image
 
-2. Base URL: the Endpoint URL from our MaaS application. Add /v1 to the end of the URL.
+2. Base URL: the Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
 
-// image
+image::../assets/images/code/base_url.png[]
 
 3. API Key: The API Key from the MaaS application.
 
-// image
+image:../assets/images/code/api_key.png[]
 
 4. Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
 
-// image
+image:../assets/images/code/model_name.png[]
 
 5. Leave all other fields in their default positions. Select `Save`.
 
@@ -142,12 +142,7 @@ In order to connect our model to the Roo Code extension we must provide the exte
 
 Now that the model is set you can begin chatting with it. 
 
-== 
-Feel free to chat with any of the models a bit to see how they perform. The only model that will not work is the Qwen model from the RHEL AI machine (you'll have to go back and serve that one instead of Granite for it to be activated here).
-
-Note the performance differences between the local smaller models and our RHEL AI Granite model.
-
-Now, let's get to work with some real coding exercises.
+// The below is a placeholder activity. Currently working through creating a kubernetes job that queries an AI model to summarize call records. (Not quite working, will have a similar path of trial and error+ a working directory as below. Will tie in directory to next activity). May still include creating one game as a first pass activity to be less dry...
 
 == Game Time
 

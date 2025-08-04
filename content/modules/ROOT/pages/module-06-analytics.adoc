@@ -30,23 +30,24 @@ This kind of insight enables:
 
 Navigate back to the 3Scale Developer Portal dashboard:
 
-//URL
+//URL to developer portal
 
 * In the 3Scale **developer portal**, navigate to the `Statistics` tab at the top.
 +
 [.bordershadow]
-image::04/04-dev-stats-panel.png[]
+image::../assets/images/04/04-dev-stats-panel.png[]
 
 * You have a drop-down with all the applications you have created. Click on any to view its statistics.
 +
 [.bordershadow]
-image::04/04-dev-stats-metrics.png[]
+image::../assets/images/04/04-dev-stats-metrics.png[]
 
 As a developer, you can view the statistics of your applications and monitor their usage. You can also view the number of calls made to the API, and the different methods use.
 
 == Compute Utilization
 
+// RHOAI dashboard or console view
+
 == Tying it All Together
 
-[#chargeback-showback]
-== Chargeback and Showback Capabilities 
+// Impact of utilization on overall cost, future decisions, planning, etc.

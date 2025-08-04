@@ -1,6 +1,8 @@
-= 3Scale API Gateway
+= AI at Scale with an API Gateway
 
 Now, in this next step, you will learn how to configure 3Scale API Gateway to give access to the model deployed in the previous module.
+
+// More info explaining how API gateway facilitates "model as a service" functionality.
 
 [#3scale-overview]
 == API Gateway Overview: Why It Matters
