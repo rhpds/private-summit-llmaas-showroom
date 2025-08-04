@@ -49,11 +49,15 @@ Allows LLM agents to interact with the live OpenShift cluster through a standard
 
 Ideal for safe observability and diagnostics
 
+== OpenShift Console, View LlamaStack Deployment
+
+// Navigate in console to view the deployment in the llama-serve namespace
+
 == Setup the Chat Application Interface
 
 Navigate to the LlamaStack playground.
 
-//URL Info, get through cluster interface?
+// URL Info, get through cluster interface?
 
 // image
 
@@ -82,10 +86,12 @@ Everything else can remain with the default settings.
 
 === Query Cluster Resources
 
-=== Query Specific Activity
+// Identify specific commands that the model will handle well with available tools
 
-== Running Your Notebook
+=== Query Deployed Job
 
-This section we will connect a generated notebook from the previous module and run through it here.
+// Query related to the activity of last module which should have succeeded in a deployment
+
+// === More interesting section around processing a notebook in a workbench, related to the kubernetes job, maybe analyzing results in a secondary way to the chatbot interface, via a more manual notebook path.
 
 == Summary
