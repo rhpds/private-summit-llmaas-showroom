@@ -1,0 +1,7 @@
+= Closing Summary
+
+ This hands-on workshop demonstrated how generative AI and agentic systems can be deployed, monitored, and managed within an enterprise OpenShift AI environment. Across four modules, participants explored both the developer and platform perspectives—with a constant focus on how these technologies can drive measurable value.
+
+
+
+

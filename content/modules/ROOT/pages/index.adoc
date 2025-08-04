@@ -1,3 +1,24 @@
 = Private LLM as a Service - A Practical Introduction with OpenShift AI
 
-Welcome to the Private LLM as a Service - A Practical Introduction with OpenShift AI documentation! This guide will help you understand how to build and deploy your own custom large language model (LLM) platform tailored to your enterprise needs.
+Welcome to our workshop!
+
+In this hands-on session, you’ll learn how to set up a scalable Model-as-a-Service (MaaS) platform designed for real-world enterprise use. We’ll walk through deploying foundation models in a secure, flexible infrastructure environment—then show how to connect them to practical applications, including a code assistant and an agentic system. Whether you're a platform engineer, infrastructure specialist, or technical decision maker, this workshop will equip you with the architectural patterns and operational strategies needed to deliver AI workloads reliably and at scale.
+
+== Workshop Agenda
+
+=== **Module 1:** Setting Up Model-as-a-Service Infrastructure
+
+=== **Module 2:** Configuring a Code Assistant With Your MaaS
+
+=== **Module 3:** Monitoring Our OpenShift Cluster with MCP and LlamaStack
+
+=== **Module 4:** Closing
+
+=== **Module 5:** Additional Activites (Optional)
+
+== Workshop Environment
+
+For our workshop, we have provisioned an OpenShift Container Platform cluster for each participant, with Red Hat OpenShift AI deployed.
+
+Each person attending this lab has a full admin access (`cluster-admin`) to their cluster to be able to do some of the exercises requiring admin priveleges.
+

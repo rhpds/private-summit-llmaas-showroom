@@ -1,19 +1,19 @@
-= Introduction and Overview of the Workshop
+= [Module 1] Setting Up Model-as-a-Service Infrastructure
 
-== Infrastructure as a Service can be costly
+== Introduction: The Cost of Infrastructure-as-a-Service
 
-Self-Service is good for plentiful resources & small teams... But:
+Self-service infrastructure access is good when you have plentiful resources and small-scale teams...however:
 
-- Throwing GPUs at the problem is risky
-- Few people know how to use them correctly
-- Leads to duplication and under-utilization
-- Leads to high costs
-- Most people want an LLM endpoint, not a GPU
+- Very few people know how to use these resources correctly
+- Throwing GPUs at a problem can be risky
+- Leads to duplication and resource under-utilization
+- Leads to high infrastructure costs
+- Most people want an LLM endpoint, not a GPU for themselves.
 
 [.bordershadow]
-image::02/iaas.png[]
+image::../assets/images/02/iaas.png[]
 
-== Models as a Service
+== Models-as-a-Service
 
 Offering AI models as a service to a larger audience, especially Large Language Models (LLMs), solves many of these problems:
 
@@ -30,16 +30,14 @@ Offering AI models as a service to a larger audience, especially Large Language 
 
 
 [.bordershadow]
-image::02/maas.png[]
+image::../assets/images/02/maas.png[]
 
 == Module Goals
 
-In this modle, we will:
+In this first module, you will:
 
 * Get an overview of the OpenShift AI platform
 * Deploy a Generative AI model on OpenShift AI
-* Configure 3Scale API Gateway to expose the model
-* Use the published model in a chat application
-* Get some usage statistics from 3Scale
+* Configure 3Scale API Gateway to expose the model to end users
 
 At the end of the module, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.

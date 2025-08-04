@@ -1,0 +1,254 @@
+= [Module 2] Coding with AI
+
+== Introduction to Code Assistants
+
+When we think of code assistants, we might imagine simple autocomplete or boilerplate generators. But today’s tools have evolved into powerful, intelligent collaborators—and they’re changing how we write software.
+
+Modern code assistants are powered by large language models (LLMs) trained on vast amounts of code, technical documentation, and development patterns. But the real value comes from how they integrate into your workflow—right inside tools like Visual Studio Code—to help you plan, write, review, and refactor your code in real time.
+
+What Modern Code Assistants Can Do:
+
+**Understand Full Project Context**: Assistants like Cursor, GitHub Copilot, and Roo can read across files and directories, understanding how your code fits together.
+
+**Edit with Natural Language**: You can describe a change—like “add error handling here” or “convert this to async”—and assistants like Roo, Continue, or CodeWhisperer will apply it intelligently.
+
+**Proactively Suggest Improvements**: They catch bugs, highlight inefficiencies, and recommend best-practice patterns.
+
+**Automate Tedious Tasks**: From generating unit tests and docstrings to scaffolding boilerplate or renaming variables across a project—they take care of the grunt work so you can focus on logic and design.
+
+These assistants don’t just write code - they understand your project and help you build better software faster. And the best part? Most of them work seamlessly inside popular IDE's like Visual Studio Code, so you don’t need to switch tools to get started.
+
+Sounds pretty useful right? Let's dive in. 
+
+== Setting Up the Code Assistant in VSCode
+
+[#dev-spaces-interface]
+== Using OpenShift Dev Spaces
+
+We're going to use VSCode via OpenShift DevSpaces, so - let me tell you what that is.
+
+OpenShift Dev Spaces is a cloud-based development environment platform that gives developers instant access to pre-configured, containerized workspaces—all running securely on your OpenShift cluster.
+
+Instead of asking every developer to configure their laptop or match local environments, Dev Spaces provides on-demand VS Code-like workspaces.
+
+That being said, of course you could connect to the remote model endpoint via any preferred IDE. We wanted to call out DevSpaces for a few reasons:
+
+* Consistent
+* Fast to Onboard
+* Secure and Centralized
+* Repeatable
+
+=== Access OpenShift DevSpaces Console
+
+As a developer on a large team, you’ll typically be granted direct access to the OpenShift Dev Spaces console through a dedicated URL provided by your platform administrator or team lead. This ensures you don’t need to navigate through the full OpenShift web console or manage cluster-level details. However, if needed, you can access Dev Spaces from within the OpenShift console under the **Developer Perspective → Dev Spaces**. Once logged in, you’ll see a personalized dashboard where you can launch your workspace with just a few clicks.
+
+=== Select Your Workspace
+
+We have a workspace ready for your use with VSCode and the necessary dependencies. As a developer, you can also create your own workspace without needing to install or configure anything locally. There may however, be some restrictions put in place by your admin around resource limitations or only using approved devfiles (yaml files used to instantiate new workspaces).
+
+Select the pre-created workspace:
+
+// image
+
+It will take a moment for the workspace to start. Once ready, you will see the VSCode interface:
+
+// image
+
+It may ask you to trust the authors. We're not so bad, so go ahead and click "Trust". 
+
+Within the workspace, we already have our working repository cloned from GitHub ready for us to work within. We'll get to this in a moment. First, we need to set up our code extension.
+
+[#roo-continue-dev]
+== Experience the Power of Coding with AI
+
+=== Introducing Roo
+
+Let's meet Roo!
+
+Roo is more than a code extension, it's an AI-powered coding teammate, built to help you write, understand, and refactor code directly inside VSCode.
+
+Unlike traditional code completion tools, Roo is an intelligent, task-driven assistant that you can talk to. You can ask Roo to perform actions like:
+
+**“Add logging to this function”**
+
+**“Generate a unit test for this file”**
+
+**“Refactor this into smaller components”**
+
+**“Explain what this code does”**
+
+And Roo will do it—right in your project, with full awareness of your codebase. 
+
+Many leading code extensions operate in similar ways, and Roo is a great **open-source** example of what AI coding can help us be capable of. 
+
+=== Install the Roo Code Extension
+
+Select the bottom navigation item on the left-hand side to open up the extensions marketplace.
+
+image::../assets/images/code/extensions_tab.png[width=100%]
+
+In the search bar, search for **Roo**. You'll see **Roo Code** as the top option, as shown below:
+
+// image
+
+Click **Install**
+
+Once installed, click on the **settings** button as seen below. We are going to select a specific version to install since things move so quickly around here!
+
+Click **Install Specific Version...**
+
+// image::install_specific_version.png[width=100%]
+
+You will see a drop-down appear with different versions. Please select **v3.25.6**.
+
+Once done installing the proper version, click **Reload Window**
+
+Now, we're ready to configure our model connection!
+
+== Setup our Code Assistant
+
+Navigate to the Roo Code extension in the left-hand side navigation bar:
+
+// image::continue_tab.png[width=100%]
+
+We will do two things in this module:
+
+1. Connect to our Granite model within our company's MaaS platform
+2. Use our model's brain for a critical work task.
+
+In order to connect our model to the Roo Code extension we must provide the extension our model's API key from our MaaS application in the previous module (if you did not document the API key and URL from the previous step, please go back and grab that info.)
+
+=== Input Model Information
+
+1. API Provider field, select **OpenAI Compatible** 
+
+// image
+
+2. Base URL: the Endpoint URL from our MaaS application. Add /v1 to the end of the URL.
+
+// image
+
+3. API Key: The API Key from the MaaS application.
+
+// image
+
+4. Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
+
+// image
+
+5. Leave all other fields in their default positions. Select `Save`.
+
+// image
+
+Now that the model is set you can begin chatting with it. 
+
+== 
+Feel free to chat with any of the models a bit to see how they perform. The only model that will not work is the Qwen model from the RHEL AI machine (you'll have to go back and serve that one instead of Granite for it to be activated here).
+
+Note the performance differences between the local smaller models and our RHEL AI Granite model.
+
+Now, let's get to work with some real coding exercises.
+
+== Game Time
+
+We are going to build some short and sweet (and fun) game programs from scratch! 
+
+You will have 3 game options to choose from to start building. You **do not** have to complete all 3 activities, and you **do not** need to work on them in any particular order. 
+
+As you build the games, you will have the option to work in the following languages:
+
+* Bash
+* Python
+
+If you choose to work in other languages, by all means! However, I will only provide templates, working scripts and execution instructions for Python and Bash for our games. Our RHEL machines are also limited in terms of what we can execute unless you install additional packages. 
+
+We have template scripts with instructions for you to follow as comments in the files. Let's get working.
+
+=== Accessing the activity files
+
+From the left-hand side Explorer, open the `game_templates` folder.
+
+Select the game file of your preference, in the language of your choice. (feel free to do multiple!) Open the files you want to work on in the VS Code editor.
+
+=== Game Summaries
+
+. **Rock Paper Scissors**: Play rock, paper, scissors against the computer!
+. **Word Scramble**: The program scrambles a word and the user has to guess what it is.
+. **Simple Quiz Game**: The program asks a few trivia questions and then gives a final score.
+
+== Get to Coding!
+
+Once you have opened the files you wish to work on, click the `Roo` extension tab again on the left-hand side of the VS Code window. You may toggle between the Files and Continue tabs as you need.
+
+Follow the guidance in the game building activity files. Instructions for each game, including different ways to use the Continue extension are within the comments of the files. Once finished, your file will become your executable game application. 
+
+IMPORTANT: Ensure any text that does not contribute to the game code stays as a comment. You will build out the application code in the second half of the files.
+
+== Testing (and playing) Your Game
+
+Once you've completed the coding activities, save your file(s) that you wish to test.
+
+We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` in the top navigation bar of the VSCode app. Or you may press kbd:[CTRL] + kbd:[`].
+
+Navigate to the directory within which the file you wish to execute is saved.
+
+Example:
+
+[source,console]
+----
+cd /home/dev/rhone_code/game_templates/rock_paper_scissors/
+----
+
+Please follow the following instructions depending on your chosen language.
+
+=== If you are using Python (.py)
+
+Run the following command (substitue your filename):
+
+[source,console]
+----
+python your_filename.py
+----
+
+=== If you are using Bash (.sh)
+
+Make the file executable (you only need to do this once). Substitute your filename:
+
+[source,console]
+----
+chmod +x your_filename.sh
+----
+
+Run the following command (substitue your filename):
+
+[source,console]
+----
+./your_filename.sh
+----
+
+=== Troubleshooting Tips and Reminders
+
+**If you see a "command not found" or "permission denied" error**:
+
+* Double-check the file name is spelled correctly
+
+* Make sure you’re in the correct directory (ls to list files)
+
+* For .sh files, try bash yourfile.sh if ./yourfile.sh doesn't work
+
+**Other error or application isn't working as expected**:
+
+* Use your code assistant to help you debug
+
+* Feed the errors or explain any issues in the chat and have the AI help you correct your code
+
+== Optional: Game Solutions
+
+If you had some trouble getting your game to work and/or you would like to see what working code can look like, navigate to the following directory in your VSCode setup (where you should have the entire cloned repository in view in the `Explorer` tab):
+
+[source,console]
+----
+~/rhone_code/game_solutions/
+----
+
+Use the execution instructions in the above sections to run the code for any of the provided game programs!

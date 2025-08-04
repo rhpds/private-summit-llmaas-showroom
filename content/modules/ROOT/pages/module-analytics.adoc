@@ -1,7 +1,0 @@
-= Analytics and Reporting
-
-[#analytics-overview]
-== Explore Analytics and Model Usage
-
-[#chargeback-showback]
-== Chargeback and Showback Capabilities 
