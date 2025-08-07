@@ -1,5 +1,9 @@
 = [Module 2] Coding with AI
 
+Welcome to the next stage of our journey!
+
+In this module, we’ll step into the shoes of a developer. 
+
 == Introduction to Code Assistants
 
 When we think of code assistants, we might imagine simple autocomplete or boilerplate generators. But today’s tools have evolved into powerful, intelligent collaborators—and they’re changing how we write software.
@@ -46,15 +50,15 @@ As a developer on a large team, you’ll typically be granted direct access to t
 
 We have a workspace ready for your use with VSCode and the necessary dependencies. As a developer, you can also create your own workspace without needing to install or configure anything locally. There may however, be some restrictions put in place by your admin around resource limitations or only using approved devfiles (yaml files used to instantiate new workspaces).
 
-Select the pre-created workspace:
+Select the `Open` hyperlink next to the pre-created workspace:
 
-// image
+image::../assets/images/code/workspace_preset.png[]
 
-It will take a moment for the workspace to start. Once ready, you will see the VSCode interface:
-
-// image
+It will take a moment for the workspace to start. Once ready, you will see the VSCode interface.
 
 It may ask you to trust the authors. We're not so bad, so go ahead and click "Trust". 
+
+image::../assets/images/code/vscode_trust.png[]
 
 Within the workspace, we already have our working repository cloned from GitHub ready for us to work within. We'll get to this in a moment. First, we need to set up our code extension.
 
@@ -87,17 +91,21 @@ Select the bottom navigation item on the left-hand side to open up the extension
 
 image::../assets/images/code/extensions_tab.png[width=100%]
 
-In the search bar, search for **Roo**. You'll see **Roo Code** as the top option, as shown below:
+In the search bar, search for **Roo Code**. You'll see it as the top option, as shown below:
 
-// image
+image::../assets/images/code/roo_code.png[]
 
 Click **Install**
 
-Once installed, click on the **settings** button as seen below. We are going to select a specific version to install since things move so quickly around here!
+image::../assets/images/code/install_roo.png[]
+
+You may get another trust verification message. Select **Trust Publisher & Install**.
+
+Once installed, click on the arrow next to Uninstall -> Install Specific Version as seen below. We are going to select a specific version to install since things move so quickly around here!
 
 Click **Install Specific Version...**
 
-// image::install_specific_version.png[width=100%]
+image::../assets/images/code/install_specific_version.png[]
 
 You will see a drop-down appear with different versions. Please select **v3.25.6**.
 
@@ -109,20 +117,22 @@ Now, we're ready to configure our model connection!
 
 Navigate to the Roo Code extension in the left-hand side navigation bar:
 
-// image::continue_tab.png[width=100%]
+image::../assets/images/code/roo_sidebar.png[]
 
 We will do two things in this module:
 
 1. Connect to our Granite model within our company's MaaS platform
-2. Use our model's brain for a critical work task.
+2. Use our model's "brain" to help us build a Kubernetes deployment
 
-In order to connect our model to the Roo Code extension we must provide the extension our model's API key from our MaaS application in the previous module (if you did not document the API key and URL from the previous step, please go back and grab that info.)
+In order to connect our model to the Roo Code extension we must provide the extension our model's API key from our MaaS application in the previous module (if you did not document the API key and URL from the previous step, please go back to the developer portal and grab that information).
+
+Developer Portal: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
 === Input Model Information
 
 1. API Provider field, select **OpenAI Compatible** 
 
-// image
+image::../assets/images/code/api_provider_roo.png[]
 
 2. Base URL: the Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
 
@@ -136,114 +146,8 @@ image:../assets/images/code/api_key.png[]
 
 image:../assets/images/code/model_name.png[]
 
-5. Leave all other fields in their default positions. Select `Save`.
+5. Leave all other fields in their default positions. Select `Let's go!` at the bottom of the form.
 
-// image
+image:../assets/images/code/save_settings.png[]
 
-Now that the model is set you can begin chatting with it. 
-
-// The below is a placeholder activity. Currently working through creating a kubernetes job that queries an AI model to summarize call records. (Not quite working, will have a similar path of trial and error+ a working directory as below. Will tie in directory to next activity). May still include creating one game as a first pass activity to be less dry...
-
-== Game Time
-
-We are going to build some short and sweet (and fun) game programs from scratch! 
-
-You will have 3 game options to choose from to start building. You **do not** have to complete all 3 activities, and you **do not** need to work on them in any particular order. 
-
-As you build the games, you will have the option to work in the following languages:
-
-* Bash
-* Python
-
-If you choose to work in other languages, by all means! However, I will only provide templates, working scripts and execution instructions for Python and Bash for our games. Our RHEL machines are also limited in terms of what we can execute unless you install additional packages. 
-
-We have template scripts with instructions for you to follow as comments in the files. Let's get working.
-
-=== Accessing the activity files
-
-From the left-hand side Explorer, open the `game_templates` folder.
-
-Select the game file of your preference, in the language of your choice. (feel free to do multiple!) Open the files you want to work on in the VS Code editor.
-
-=== Game Summaries
-
-. **Rock Paper Scissors**: Play rock, paper, scissors against the computer!
-. **Word Scramble**: The program scrambles a word and the user has to guess what it is.
-. **Simple Quiz Game**: The program asks a few trivia questions and then gives a final score.
-
-== Get to Coding!
-
-Once you have opened the files you wish to work on, click the `Roo` extension tab again on the left-hand side of the VS Code window. You may toggle between the Files and Continue tabs as you need.
-
-Follow the guidance in the game building activity files. Instructions for each game, including different ways to use the Continue extension are within the comments of the files. Once finished, your file will become your executable game application. 
-
-IMPORTANT: Ensure any text that does not contribute to the game code stays as a comment. You will build out the application code in the second half of the files.
-
-== Testing (and playing) Your Game
-
-Once you've completed the coding activities, save your file(s) that you wish to test.
-
-We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` in the top navigation bar of the VSCode app. Or you may press kbd:[CTRL] + kbd:[`].
-
-Navigate to the directory within which the file you wish to execute is saved.
-
-Example:
-
-[source,console]
-----
-cd /home/dev/rhone_code/game_templates/rock_paper_scissors/
-----
-
-Please follow the following instructions depending on your chosen language.
-
-=== If you are using Python (.py)
-
-Run the following command (substitue your filename):
-
-[source,console]
-----
-python your_filename.py
-----
-
-=== If you are using Bash (.sh)
-
-Make the file executable (you only need to do this once). Substitute your filename:
-
-[source,console]
-----
-chmod +x your_filename.sh
-----
-
-Run the following command (substitue your filename):
-
-[source,console]
-----
-./your_filename.sh
-----
-
-=== Troubleshooting Tips and Reminders
-
-**If you see a "command not found" or "permission denied" error**:
-
-* Double-check the file name is spelled correctly
-
-* Make sure you’re in the correct directory (ls to list files)
-
-* For .sh files, try bash yourfile.sh if ./yourfile.sh doesn't work
-
-**Other error or application isn't working as expected**:
-
-* Use your code assistant to help you debug
-
-* Feed the errors or explain any issues in the chat and have the AI help you correct your code
-
-== Optional: Game Solutions
-
-If you had some trouble getting your game to work and/or you would like to see what working code can look like, navigate to the following directory in your VSCode setup (where you should have the entire cloned repository in view in the `Explorer` tab):
-
-[source,console]
-----
-~/rhone_code/game_solutions/
-----
-
-Use the execution instructions in the above sections to run the code for any of the provided game programs!
+Now the model is set and we are ready for our coding activity.

@@ -1,6 +1,6 @@
 = [Module 3] System Administration with Agentic AI 
 
-In the previous module, we explored how developers can use a remote model to summarize call center support tickets. Now, we’ll shift perspectives—this time stepping into the shoes of a platform engineer or cluster administrator.
+In the previous module, we acted as a developer and experienced how we can use a remote model to summarize call center support tickets. Now, we’ll shift perspectives—this time stepping into the shoes of a platform engineer or cluster administrator.
 
 But we’re not leaving AI behind. Instead, we’ll take things a step further by integrating our model endpoint into a broader agentic AI system, capable of reasoning, querying, and navigating a real OpenShift environment.
 
@@ -49,17 +49,71 @@ Allows LLM agents to interact with the live OpenShift cluster through a standard
 
 Ideal for safe observability and diagnostics
 
-== OpenShift Console, View LlamaStack Deployment
+== Connect the MaaS Model
 
-// Navigate in console to view the deployment in the llama-serve namespace
+If you did not save the MaaS application URL, navigate back to the 3Scale developer portal and grab it.
 
-== Setup the Chat Application Interface
+Developer Portal: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
-Navigate to the LlamaStack playground.
+=== Add Model Endpoint to LlamaStack Distribution File
 
-// URL Info, get through cluster interface?
+1. Go back to the OpenShift console: 
 
-// image
+https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://console-openshift-console.{openshift_cluster_ingress_domain}/,window=_blank].
+
+2. In the Administrator perspective, select API Explorer.
+
+image:../assets/images/llama/api_explorer.png[]
+
+3. Search `llamastackdistribution` in the search bar and select the resource.
+
+image:../assets/images/llama/llamastackdistribution.png[]
+
+4. Select `Instances` and the available instance.
+
+image:../assets/images/llama/llamastackinstance.png[]
+
+5. Select `YAML` and scroll down to the highlighted section of text.
+
+image:../assets/images/llama/lsd_yaml.png[]
+
+6. In place of the existing Granite URL, input your endpoint URL from the 3scale developer portal. Ensure `/v1` is appended to the string.
+
+image:../assets/images/llama/maas_endpoint.png[]
+
+7. Click save
+
+image:../assets/images/llama/save_yaml.png[]
+
+== View LlamaStack Deployment
+
+1. Navigate back to the OpenShift console:
+
+https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://console-openshift-console.{openshift_cluster_ingress_domain}/,window=_blank]
+
+2. Select the `Developer` perspective.
+
+image:../assets/images/llama/dev_perspective.png[]
+
+3. Search for the `lls-demo` namespace
+
+image:../assets/images/llama/find-namespace.png[]
+
+Here in the Topology view, you will see three pods:
+
+* **LlamaStack**: this is the LlamaStack server itself.
+* **OCP MCP Server**: an MCP Server with tools to help our model interact with and understand OpenShift.
+* **LlamaStack Playground**: A streamlit UI frontend to interact with our model and MCP server. 
+
+Feel free to poke around and explore the deployment.
+
+4. Select the LlamaStack playground hyperlink.
+
+image:../assets/images/llama/playground_link.png[]
+
+Now you will see the "playground" user interface.
+
+== Setup the Playground
 
 Within the application you'll find a familiar chat interface with some selection options on the left-hand side.
 
@@ -78,20 +132,31 @@ image::../assets/images/llama/mcp_server.png[]
 
 Once selected, you can peruse the tools available from the OpenShift MCP server.
 
-4. Next we'll select the available Llama Guard model as the input and output shield. This will add some safeguards to our chat experience to ensure no harmful or biased dialogue gets in our out of the model exchange.
-
-image::../assets/images/llama/guards.png[]
-
 Everything else can remain with the default settings. 
 
 === Query Cluster Resources
 
-// Identify specific commands that the model will handle well with available tools
+With the power of our OpenShift MCP server, the model is capable of interacting with our OpenShift cluster and providing us accurate and informed information about our cluster resources and behavior. 
 
-=== Query Deployed Job
+The tool information will give you guidance into how to interact with the model in chat to activate the tool calls correctly.
+
+Let's test it out:
+
+[source,console,role=execute,subs=attributes+]
+----
+Get pods in the lls-demo namespace
+----
+
+// TO DO: === Query Deployed Job
 
 // Query related to the activity of last module which should have succeeded in a deployment
 
 // === More interesting section around processing a notebook in a workbench, related to the kubernetes job, maybe analyzing results in a secondary way to the chatbot interface, via a more manual notebook path.
+
+=== The Power of Shields
+
+Next we'll select the available Llama Guard model as the input and output shield. This will add some safeguards to our chat experience to ensure no harmful or biased dialogue gets in our out of the model exchange.
+
+image::../assets/images/llama/guards.png[]
 
 == Summary

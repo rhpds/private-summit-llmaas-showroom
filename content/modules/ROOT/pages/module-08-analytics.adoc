@@ -30,7 +30,7 @@ This kind of insight enables:
 
 Navigate back to the 3Scale Developer Portal dashboard:
 
-//URL to developer portal
+https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank]
 
 * In the 3Scale **developer portal**, navigate to the `Statistics` tab at the top.
 +
@@ -44,10 +44,10 @@ image::../assets/images/04/04-dev-stats-metrics.png[]
 
 As a developer, you can view the statistics of your applications and monitor their usage. You can also view the number of calls made to the API, and the different methods use.
 
-== Compute Utilization
+// == Compute Utilization
 
 // RHOAI dashboard or console view
 
-== Tying it All Together
+// == Tying it All Together
 
 // Impact of utilization on overall cost, future decisions, planning, etc.

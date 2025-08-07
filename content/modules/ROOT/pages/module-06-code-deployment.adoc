@@ -1,0 +1,15 @@
+//TO DO: In progress module
+// = [Module 2.2] Building an AI Application
+
+// Now that we've had a bit of fun and gotten warmed up, it's time to get back to our job!
+
+// You’ve been tasked with creating a workflow that automates call center ticket summarization using a large language model (LLM) API. The goal? Streamline support handoffs, reduce resolution time, and prove that AI can deliver measurable value in real-world business processes.
+
+// This is your chance to shape how AI applications are actually built, tested, and deployed — not just in theory, but as part of a larger, evolving platform.
+
+// == Use AI to Understand Code
+
+// == Add Comments
+
+// == Deploying an AI Application in our OpenShift Cluster
+

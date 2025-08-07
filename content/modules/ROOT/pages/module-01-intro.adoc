@@ -1,43 +1,41 @@
 = [Module 1] Setting Up Model-as-a-Service Infrastructure
 
-== Introduction: The Cost of Infrastructure-as-a-Service
+== Introduction: The Hidden Cost of Infrastructure-as-a-Service
 
-Self-service infrastructure access is good when you have plentiful resources and small-scale teams...however:
+As a **platform engineer**, you may inherit clusters filled with GPU nodes and eager teams. But when infrastructure is self-service with no clear guardrails in place, problems can quickly emerge:
 
-- Very few people know how to use these resources correctly
-- Throwing GPUs at a problem can be risky
-- Leads to duplication and resource under-utilization
-- Leads to high infrastructure costs
-- Most people want an LLM endpoint, not a GPU for themselves.
+- Very few people know how to request or size GPU resources correctly
+- Teams duplicate work by deploying their own models repeatedly
+- Expensive GPUs sit idle or overloaded
+- Overall infrastructure costs spiral with no accountability
+- Most people just need model access - not to manage their own GPUs.
 
 [.bordershadow]
 image::../assets/images/02/iaas.png[]
 
-== Models-as-a-Service
+== Models-as-a-Service: A Better Abstraction for AI at Scale
 
-Offering AI models as a service to a larger audience, especially Large Language Models (LLMs), solves many of these problems:
+To address these challenges as a platform engineer, you will design a centralized, reusable, and secure model-serving layer:
 
-* IT serves common models centrally
-** Generative AI focus, applicable to any model
-** Centralized pool of hardware 
-** Platform Engineering for AI
-** AI management (versioning, regression testing, etc)
-* Models available through API Gateway
-* Developers consume models, build AI applications
-** For end users (private assistants, etc) 
-** To improve products or services through AI 
-* Shared Resources business model keeps costs down
-
+* Models are deployed and maintained by platform teams
+** Lifecycle managed: versioning, rollback, testing
+* Served through an API Gateway
+** Authenticated, rate-limited, observable
+* Developers consume the models without touching hardware
+** Build apps, agents, or features - powered by AI
+* Resources are pooled and shared
+** Avoid waste, ensure fairness and reduce cost
 
 [.bordershadow]
 image::../assets/images/02/maas.png[]
 
-== Module Goals
+== Module 1 Goals: Step into the role of the platform engineer
 
-In this first module, you will:
+In this first module, you will take your first step into the role of a platform engineer enabling Generative AI at scale.
 
-* Get an overview of the OpenShift AI platform
-* Deploy a Generative AI model on OpenShift AI
-* Configure 3Scale API Gateway to expose the model to end users
+You will:
 
-At the end of the module, you will have learned how to deploy and manage models on OpenShift AI, especially LLMs, and make them available to a whole organization in a secure, private, and efficient way.
+* Explore the architecture of OpenShift AI and how it supports enterprise model serving
+* Configure an API Gateway to expose the model endpoint securely to end users
+
+By the end, you will understand how to transform raw infrastructure into a scalable, manageable Model-as-a-Service (MaaS) foundation that others in your organization can build on.

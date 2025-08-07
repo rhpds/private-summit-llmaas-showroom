@@ -1,28 +1,30 @@
-= AI at Scale with an API Gateway
+= [Module 1.2] AI at Scale with an API Gateway
 
-Now, in this next step, you will learn how to configure 3Scale API Gateway to give access to the model deployed in the previous module.
+Now, in this next step, you’re still acting as a platform engineer - but your focus now shifts from deploying a model to making it safely consumable across your organization.
 
-// More info explaining how API gateway facilitates "model as a service" functionality.
+Exposing foundation models directly is risky without controls. You’ll now add a governance layer using an API gateway, so other teams can use the model securely, reliably, and at scale—without direct access to the underlying cluster or GPUs.
 
-[#3scale-overview]
-== API Gateway Overview: Why It Matters
+We'll use 3scale API Management to:
+* Secure access to your model
+* Monitor usage
+* Enable future scaling and quotas.
 
-Having an enterprise-grade API management platform is critical to help organizations secure, monitor, monetize, and scale their APIs. As APIs become critical business assets—powering apps, integrations, and services—a powerful API management platform provides the governance needed to deliver them securely and reliably at scale. 
+In production, you may also use any preferred API Gateway provider substituted into this experience.
 
-3Scale is the API management platform we will use in our workshop today, but you may also imagine any preferred API gateway easily substituted into our experience.
+== Step 1: Accessing the 3Scale Admin Portal
 
-Within the 3Scale administration profile you may create and manage API keys, set up rate limits, and monitor API usage across users. 
+Let's log into the 3scale Admin UI and manage access to the `granite-3dot2-8b-instruct` model.
 
-=== Connection to 3Scale Admin Portal
+**Get your 3scale credentials**
+The `admin-user` and `admin-password` values can be found in the `system-seed` secret in the `3scale` namespace.
 
-To connect to the 3Scale admin portal, you will need the admin_user and admin_password values. They can be found in the `system-seed` secret in the `3scale` namespace.
-
-* From a Terminal (in your OpenShift console) you will run a single command to retrieve these values. 
+From a Terminal (in your OpenShift console) you will run a single command to retrieve these values. 
 
 You may also retrieve them by navigating to the location of the secret in the OpenShift console.
-+
 
 1. Navigate to the OpenShift console
+
+https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://console-openshift-console.{openshift_cluster_ingress_domain}/,window=_blank]
 
 2. Select the terminal icon in the top navigation bar
 
@@ -35,97 +37,134 @@ image::../assets/images/02/open-terminal.png[]
 oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}{{if or (eq $key "ADMIN_USER") (eq $key "ADMIN_PASSWORD")}}{{printf "%s: " $key}}{{ $value | base64decode }}{{"\n"}}{{end}}{{end}}'
 ----
 
-Now, you can log into the 3Scale admin portal at https://maas-admin.{openshift_cluster_ingress_domain}/[https://maas-admin.{openshift_cluster_ingress_domain}/,window=_blank] using the credentials you just retrieved.
+**Log into the admin portal**
+
+Go to: https://maas-admin.{openshift_cluster_ingress_domain}/[https://maas-admin.{openshift_cluster_ingress_domain}/,window=_blank] 
+
+Use the credentials you just retrieved.
 
 You will be prompted by a wizard window. Close it by clicking on the top right corner of the screen.
 
 [.bordershadow]
 image::../assets/images/03/03-3scale-close-wizard.png[]
 
-=== 3Scale Admin Portal
+== Step 2: Explore the 3Scale Admin Portal
 
-3Scale admin portal is where you can manage your APIs, create applications, and set up access control. You can also monitor API usage and set up rate limits.
+Now you are in the control plane for the API services!
 
-The dashboard is divided into several sections:
+Here is where platform engineers:
 
-* **Audience**: this gives you information about the users, registrations, etc.
-* **APIs**
-** **Products**: this is where you can create the Products that people will have access to. You can see there are two products already created: `granite-3dot2-8b-instruct`, which is connected to the model that was pre-deployed,  and `API`, which is a default 3Scale echo API for testing.
-** **Backends**: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the the `granite-3dot2-8b-instruct` product.
+* Create API products
+* Define backend services
+* Control rate limits and access policies
+* Monitor traffic and user activity
+
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-admin-dashboard.png[]
 
-Using the dropdown menu at the top, you can access and explore the different admin sections: Audience, Products, Backends, and Account Settings.
+Use the dropdown menu at the top to explore these sections:
+
+* **Audience**: this gives you information about the users, registrations, etc.
+* **Products**: this is where you can create the Products that people will have access to. You can see there are two products already created: `granite-3dot2-8b-instruct`, which is connected to the model that was pre-deployed,  and `API`, which is a default 3Scale echo API for testing.
+* **Backends**: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the the `granite-3dot2-8b-instruct` product.
+
 
 [.bordershadow]
 image::../assets/images/03/03-3scale-section-menu.png[]
 
-This workshop is not a full tutorial on 3Scale, so we will not go into details about the different sections. You can find more information in the https://docs.redhat.com/en/documentation/red_hat_3scale_api_management/2.15[3Scale documentation,window=_blank].
+For now, note the two key items:
 
-=== Subscribing a User to a Service
-
-A user was already created for you in 3Scale in (Audience->Accounts->Listing). In this configuration, our user is automatically subscribed to the `granite-3dot2-8b-instruct` service. In a production environment, you would normally automate this process as part of the deployment of a new product. 
+* A product named `granite-3dot2-8b-instruct` (mapped to your model)
+* A backend service with the same name powering that product
 
 [#3scale-dev-portal]
-== Developer Portal
+== Step 3: Configure Developer Portal Access
+//TODO: clean up below
+Developers access the models via the Developer Portal - your user-friendly frontend for API onboarding.
 
-=== Accessing the Developer Portal
+A user was already created for you in 3Scale in (Audience->Accounts->Listing), but you still need to configure the developer portal to allow users to access it. In this configuration, our user is automatically subscribed to the `granite-3dot2-8b-instruct` service. In a production environment, you would normally automate this process as part of the deployment of a new product. 
 
-You can now access the developer portal at https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
+* In the Audience section, got to Developer Portal->Settings->Domains & Access.
++
+[.bordershadow]
+image::../assets/images/03/03-3scale-portal-menu.png[]
 
-You can log in using your workshop credentials, because they are the ones we used to pre-create a user in 3Scale.
+* The Developer Portal Access Code is used to control the access the developer portal. You could use the default value in the next section to connect to it, but for today simply delete it and click on `Update Account`. This will remove the access code and allow anyone to access the developer portal, although they will still need to authenticate. This is what we will do in this workshop.
++
+[.bordershadow]
+image::../assets/images/03/03-3scale-remove-access-code.png[]
 
-Here they are again:
+
+== Step 4: Log in to the Developer Portal
+
+// Add role shifting phrasing
+
+Visit the portal at: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
+
+You can log in using your workshop credentials:
 
 * Your username: `{user}`
 * Your password: `{password}`
 
 Signing in:
 
-* Click on the `Sign In` button in the top right corner of the screen
+1. Click on the `Sign In` button in the top right corner of the screen
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-signin-button.png[]
 
-* Click on `Private login` and enter your credentials.
+2.  Click on `Private login` and enter your credentials.
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-signin.png[]
 
-You should now be logged into the developer portal. You will be able to see the APIs that are available to you, and you can also create applications to get API keys.
+Once logged in, you will be able to see available APIs, including the model you deployed.
 
 [.bordershadow]
 image::../assets/images/03/03-3scale-developer-loggedin.png[]
 
+== Step 5: Create an Application and Get an API Key
 
-=== Creating an Application
+As a developer, you will need to register an application to get credentials for API access. 
 
-Creating an application is the first step to getting an API key.
+Let's do that now:
 
-* Click on the `See your Applications and their credentials` link on the front page.
+1. Click on the `See your Applications and their credentials` link on the front page.
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-see-applications.png[]
 
-* You will be taken to the `Apps and API Keys` section, where you can see that there is an application that was already created for you (the 3Scale default Echo API). Start creating a new application by clicking on the `Create new application` button.
+2. You will be taken to the `Apps and API Keys` section, where you can see that there is an application that was already created for you (the 3Scale default Echo API). Start creating a new application by clicking on the `Create new application` button.
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-create-application.png[]
 
-* Select the Service you want to use. In this case, we will use the `granite-3dot2-8b-instruct` service that has been pre-deployed.
+3. Select the Service you want to use. In this case, we will use the `granite-3dot2-8b-instruct` service that has been pre-deployed.
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-select-service.png[]
 
-* Give a name to your application, for example `Granite application`. Click on `Create Application`.
+4. Give a name to your application, for example `Granite application`. Click on `Create Application`.
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-application-name.png[]
 
-* Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you. We will now use this key to access the API.
+5. Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you.
 
-Save this information as you will use it in the next module. 
 +
 [.bordershadow]
 image::../assets/images/03/03-3scale-key-generated.png[]
+
+**Copy and save this information** - you will use it in the next module to make real requests to your model.
+
+== Recap: What you just did
+
+You've continued walking in the shoes of our platform engineer and:
+
+* Logged into a production-grade API gateway
+* Located your deployed model as a 3scale product
+* Enabled access via the developer portal
+* Shifted to a developer's perspective and created a client application to securely retrieve an API key.
+
+That API key gives your model its first real consumer. A crucial step in turning infrastructure into a "service". 

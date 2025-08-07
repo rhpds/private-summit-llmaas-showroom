@@ -1,24 +1,50 @@
 = Private LLM as a Service - A Practical Introduction with OpenShift AI
 
-Welcome to our workshop!
+== Step into the world of enterprise Generative AI deployment - one role at a time!
 
-In this hands-on session, you’ll learn how to set up a scalable Model-as-a-Service (MaaS) platform designed for real-world enterprise use. We’ll walk through deploying foundation models in a secure, flexible infrastructure environment—then show how to connect them to practical applications, including a code assistant and an agentic system. Whether you're a platform engineer, infrastructure specialist, or technical decision maker, this workshop will equip you with the architectural patterns and operational strategies needed to deliver AI workloads reliably and at scale.
+=== Welcome to the Workshop
+
+This isn't a simple tutorial. This is the beginning of an adventure into the command center of an AI-powered enterprise.
+
+In this hands-onsession, you will rotate between key personas critical to delivering modern, production-level AI services. 
+
+* As a platform engineer you will design and deploy model serving environments and prepare the infrastructure that makes scalable model hosting possible.
+* As an AI application developer, you will connect real applications to private LLM endpoints, integrate code assistant technology and explore the capabilities of agentic AI.
+* Lastly, as an operations engineer, you will see how to monitor and analyze your model usage across the cluster. 
+
+At the end, you will walk away with practical experience across the lifecycle of model deployment.
 
 == Workshop Agenda
 
-=== **Module 1:** Setting Up Model-as-a-Service Infrastructure
+=== **Module 1:** Setting Up the AI Backbone
+Step into the role of platform engineer. You will see how to provision a scalable, secure Model-as-a-Service stack leveraging OpenShift AI - laying the necessary foundation for internal model hosting at scale.
 
-=== **Module 2:** Configuring a Code Assistant With Your MaaS
+=== **Module 2:** Activate the Code Assistant and Use AI to Enhance your Coding Skills
+Now, shift to the app developer's perspective. Connect to the model endpoint you deployed and then integrate it into a developer facing code assistant to help you develop for your work, bridging infrastructure and app logic.
 
-=== **Module 3:** Monitoring Our OpenShift Cluster with MCP and LlamaStack
+=== **Module 3:** Leverage the power of agentic ai tooling
+With the mindset of a site reliability engineer or app developer monitoring deployments, use model context protocol (mcp) and the LlamaStack API to interact more easily with your openshift cluster.
 
-=== **Module 4:** Closing
+=== **Module 4:** Analytics
+Take on the role of a platform SRE or product owner responsible for understanding how your private LLM is being used, and whether it's operating effectively at scale by exploring model usage analytics. 
 
-=== **Module 5:** Additional Activites (Optional)
+=== **Module 5:** Reflect and Wrap-Up
+Assess what you've built. We'll close with key takeaways, architectural guidance, and patterns you can bring back to your organization.
 
 == Workshop Environment
 
 For our workshop, we have provisioned an OpenShift Container Platform cluster for each participant, with Red Hat OpenShift AI deployed.
 
 Each person attending this lab has a full admin access (`cluster-admin`) to their cluster to be able to do some of the exercises requiring admin priveleges.
+
+== Embody the Role
+You’re not just here to observe—you’re here to build, test, and troubleshoot like the teams responsible for AI in production!
+
+At each phase, step into the persona, ask yourself:
+
+**“If I were responsible for this in a real enterprise, what would I do?”**
+
+**“What tooling do I need to trust this system at scale?”**
+
+**“How can I make this AI infrastructure repeatable, observable, and secure?”**
 
