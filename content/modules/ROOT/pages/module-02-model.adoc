@@ -1,8 +1,8 @@
+[#model-deployment]
 = [Module 1.1] Deploying and Inspecting Your First Foundation Model
 
 Your first task as a platform engineer begins: standing up an enterprise-ready model on OpenShift AI. 
 
-[#getting-connected]
 == Getting connected to OpenShift AI
 
 // If you are accessing these instructions through the workshop, the information below will render properly with unique values. If you are accessing the instructions separately for your own cluster, you will see placeholder values instead.
@@ -71,7 +71,7 @@ Once inside the project, explore the tabs across the top. Here's a quick rundown
 You're not going to build from scratch just yet. You're here to learn how a working deployment is structured. 
 
 Step into the `Models` tab
-+
+
 [.bordershadow]
 image::../assets/images/02/02-granite-model-overview.png[]
 
@@ -88,7 +88,7 @@ image::../assets/images/02/02-granite-details.png[]
 [.bordershadow]
 image::../assets/images/02/02-granite-endpoints.png[]
 
-The model is internal-only, perfect for protected inference behind a gateway!
+The model is **internal-only**, perfect for protected inference behind a gateway!
 
 === Reviewing the Connection
 
@@ -98,12 +98,13 @@ Next, switch to the `Connections` tab. You will see a connection called `models`
 image::../assets/images/02/02-connections-models-overview.png[]
 
 Let's take a look at the configuration. Click on the three dots on the right of the connection and select `Edit`.
-+
+
 [.bordershadow]
 image::../assets/images/02/02-models-connection-edit.png[]
 
 This connection links to a MinIO S3-compatible object storage holding model artifacts. Parameters like `Access Key`, `Secret Key`, `Bucket`, and `Endpoint` are injected automatically into your environment - no hardcoding required. 
-+
+
+
 [.bordershadow]
 image::../assets/images/02/02-models-connection-details.png[]
 
@@ -118,14 +119,15 @@ Let's inspect the storage bucket.
 1. Open the `Workbench` tab in the data science project.
 2. Click the link to launch the `ODH-TEC` environment.
 
-+
+
 [.bordershadow]
 image::../assets/images/02/02-odh-tec-open.png[]
 
 This will open a new tab. After logging in and accepting the license, you will access `ODH-TEC`. It is a simple tool used to manage and view S3 storage. 
 
 Once inside, you will see a simple S3 objects browser already pointed at the `models` connection.
-+
+
+
 [.bordershadow]
 image::../assets/images/02/02-odh-tec.png[]
 

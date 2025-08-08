@@ -1,53 +1,60 @@
-= [Module 4] Analytics and Reporting
+[#model-analytics]
+= [Module 4] Usage Analytics and Reporting
 
-Now that you have created, deployed and interacted with AI workloads, how do we now understand our organization's usage, justify cost, and plan for future growth?
+In this module, you're stepping into the role of a technical decision maker or platform stakeholder - someone responsible not just for building AI services, but for understanding their business impact.
 
-This next module focuses on how to measure and monitor the impact of your AI-powered services using API-level analytics from 3scale, as well as the implications of GPU utilization and overall impact to infrastructure costs.
+You've deployed, exposed, and consumed a model. Now it's time to ask:
+
+* How is it being used?
+* Who's using it the most?
+* What's the cost and what's the return?
+
+Let's walk through how to leverage 3scale API analytics and platform level observability to answer those questions.
 
 == Why This Matters
-As organizations roll out AI services, stakeholders need more than just model quality—they need to know:
 
-* Who’s using it
+As AI adoption grows, visibility is critical. Organizations need to track: 
 
-* How often
+* Model/API usage by team or app
+* Call volume over time
+* Popular endpoints
+* Cost-to-value
+* Infrastructure impact (e.g. GPU usage)
 
-* Which services are most active
-
-* How infrastructure usage maps to real cost
-
-This kind of insight enables:
+This insight enables:
 
 * Cost attribution (per team, per model, per environment)
 
 * Capacity planning (predict future GPU or API scale needs)
 
-* Chargeback/showback for internal billing
-
-* Product insight on model/API usage trends
+* Understanding ROI for AI workloads
 
 [#analytics-overview]
-== Explore Analytics and Model Usage
+== Check Model Usage
 
-Navigate back to the 3Scale Developer Portal dashboard:
+1. Go to your 3Scale Developer Portal dashboard:
 
-https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank]
+https://maas.apps.{openshift_cluster_ingress_domain}/[https://maas.apps.{openshift_cluster_ingress_domain}/]
 
-* In the 3Scale **developer portal**, navigate to the `Statistics` tab at the top.
+2. Click on the `Statistics` tab at the top.
 +
 [.bordershadow]
 image::../assets/images/04/04-dev-stats-panel.png[]
 
-* You have a drop-down with all the applications you have created. Click on any to view its statistics.
-+
+3. From the drop-down, select the application you have been using to see detailed metrics: 
+
 [.bordershadow]
 image::../assets/images/04/04-dev-stats-metrics.png[]
 
-As a developer, you can view the statistics of your applications and monitor their usage. You can also view the number of calls made to the API, and the different methods use.
+As a developer, you can view the statistics of your applications and monitor their usage. You can also view the number of calls made to the API, and the different methods used.
 
-// == Compute Utilization
+This helps you monitor how your AI service is actually being used by your teams.
 
-// RHOAI dashboard or console view
+== Summary: Analytics as a Strategy Tool
 
-// == Tying it All Together
+Usage metrics aren't just operational, they inform:
 
-// Impact of utilization on overall cost, future decisions, planning, etc.
+* Future capacity planning
+* Internal billing models (chargeback)
+* Service quality assessments
+* Product direction based on user trends.

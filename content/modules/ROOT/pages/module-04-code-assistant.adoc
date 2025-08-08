@@ -1,77 +1,57 @@
+[#code-asst]
 = [Module 2] Coding with AI
 
 Welcome to the next stage of our journey!
 
-In this module, we’ll step into the shoes of a developer. 
+Now, you become an AI application developer. Your job: build smarter, faster - with a little help from a language model.
 
-== Introduction to Code Assistants
+== Why Code Assistants Matter
 
-When we think of code assistants, we might imagine simple autocomplete or boilerplate generators. But today’s tools have evolved into powerful, intelligent collaborators—and they’re changing how we write software.
+You're not just here to write code - you're here to collaborate with an **AI-powered teammate**.
 
-Modern code assistants are powered by large language models (LLMs) trained on vast amounts of code, technical documentation, and development patterns. But the real value comes from how they integrate into your workflow—right inside tools like Visual Studio Code—to help you plan, write, review, and refactor your code in real time.
+Modern code assistants can:
 
-What Modern Code Assistants Can Do:
+* **Understand Full Project Context**: Assistants like Cursor, GitHub Copilot, and Roo can read across files and directories, understanding how your code fits together.
 
-**Understand Full Project Context**: Assistants like Cursor, GitHub Copilot, and Roo can read across files and directories, understanding how your code fits together.
+* **Edit code with Natural Language**: You can describe a change—like “add error handling here” or “convert this to async”—and assistants like Roo, Continue, or CodeWhisperer will apply it intelligently.
 
-**Edit with Natural Language**: You can describe a change—like “add error handling here” or “convert this to async”—and assistants like Roo, Continue, or CodeWhisperer will apply it intelligently.
+* **Proactively Suggest Improvements**: They catch bugs, highlight inefficiencies, and recommend best-practice patterns.
 
-**Proactively Suggest Improvements**: They catch bugs, highlight inefficiencies, and recommend best-practice patterns.
-
-**Automate Tedious Tasks**: From generating unit tests and docstrings to scaffolding boilerplate or renaming variables across a project—they take care of the grunt work so you can focus on logic and design.
+* **Automate Tedious Tasks**: From generating unit tests and docstrings to scaffolding boilerplate or renaming variables across a project—they take care of the grunt work so you can focus on logic and design.
 
 These assistants don’t just write code - they understand your project and help you build better software faster. And the best part? Most of them work seamlessly inside popular IDE's like Visual Studio Code, so you don’t need to switch tools to get started.
 
-Sounds pretty useful right? Let's dive in. 
+Let's get set up.
 
-== Setting Up the Code Assistant in VSCode
+== Step 1: Setting Up Your Cloud Integrated Developer Environment (IDE) with OpenShift Dev Spaces
 
-[#dev-spaces-interface]
-== Using OpenShift Dev Spaces
+As a developer, your environment should be fast, consistent, and ready to go for your work. That is what OpenShift Dev Spaces delivers: instant access to pre-configured, containerized workspaces — all running securely on your OpenShift cluster.
 
-We're going to use VSCode via OpenShift DevSpaces, so - let me tell you what that is.
+You could also easily leverage our exposed model API endpoint in your local environment as a developer. However, your company has specific restrictions and require you to work within the OpenShift cluster environment.
 
-OpenShift Dev Spaces is a cloud-based development environment platform that gives developers instant access to pre-configured, containerized workspaces—all running securely on your OpenShift cluster.
+=== Access OpenShift Dev Spaces Console
 
-Instead of asking every developer to configure their laptop or match local environments, Dev Spaces provides on-demand VS Code-like workspaces.
+Your platform engineer has provided you a direct URL to the Dev Spaces console to begin your work.
 
-That being said, of course you could connect to the remote model endpoint via any preferred IDE. We wanted to call out DevSpaces for a few reasons:
+1. Navigate to console: https://devspaces.apps.{openshift_cluster_ingress_domain}/[https://devspaces.apps.{openshift_cluster_ingress_domain}]
 
-* Consistent
-* Fast to Onboard
-* Secure and Centralized
-* Repeatable
+We have a VSCode workspace ready for your use, with the required dependencies. As a developer, you can also create your own workspace without needing to install or configure anything locally. There may however, be some restrictions put in place by your admin around resource limitations or only using approved devfiles (yaml files used to instantiate new workspaces). 
 
-=== Access OpenShift DevSpaces Console
-
-As a developer on a large team, you’ll typically be granted direct access to the OpenShift Dev Spaces console through a dedicated URL provided by your platform administrator or team lead. This ensures you don’t need to navigate through the full OpenShift web console or manage cluster-level details. However, if needed, you can access Dev Spaces from within the OpenShift console under the **Developer Perspective → Dev Spaces**. Once logged in, you’ll see a personalized dashboard where you can launch your workspace with just a few clicks.
-
-=== Select Your Workspace
-
-We have a workspace ready for your use with VSCode and the necessary dependencies. As a developer, you can also create your own workspace without needing to install or configure anything locally. There may however, be some restrictions put in place by your admin around resource limitations or only using approved devfiles (yaml files used to instantiate new workspaces).
-
-Select the `Open` hyperlink next to the pre-created workspace:
+2. Launch the pre-created workspace by clicking `Open`
 
 image::../assets/images/code/workspace_preset.png[]
 
-It will take a moment for the workspace to start. Once ready, you will see the VSCode interface.
-
-It may ask you to trust the authors. We're not so bad, so go ahead and click "Trust". 
+After a moment, you'll see the VSCode interface running in your browser. If prompted, click "Trust" when asked about the authors. We're friendly, I promise! 
 
 image::../assets/images/code/vscode_trust.png[]
 
-Within the workspace, we already have our working repository cloned from GitHub ready for us to work within. We'll get to this in a moment. First, we need to set up our code extension.
+Inside your workspace, you'll find a cloned GitHub repository. This is where you will build and refine. Nothing else needs to be configured locally, everything you need is in place.
 
-[#roo-continue-dev]
-== Experience the Power of Coding with AI
+Before we dive into the code, let's meet **Roo**.
 
-=== Introducing Roo
+== Step 3: Add Roo, Your Coding Teammate
 
-Let's meet Roo!
-
-Roo is more than a code extension, it's an AI-powered coding teammate, built to help you write, understand, and refactor code directly inside VSCode.
-
-Unlike traditional code completion tools, Roo is an intelligent, task-driven assistant that you can talk to. You can ask Roo to perform actions like:
+**Roo Code** is an AI extension that integrates into VS Code. Unlike traditional code completion tools or chatbots, Roo is an intelligent, task-driven assistant that you can talk to. You can ask Roo to perform actions like:
 
 **“Add logging to this function”**
 
@@ -85,7 +65,7 @@ And Roo will do it—right in your project, with full awareness of your codebase
 
 Many leading code extensions operate in similar ways, and Roo is a great **open-source** example of what AI coding can help us be capable of. 
 
-=== Install the Roo Code Extension
+=== Install Roo
 
 Select the bottom navigation item on the left-hand side to open up the extensions marketplace.
 
@@ -101,7 +81,7 @@ image::../assets/images/code/install_roo.png[]
 
 You may get another trust verification message. Select **Trust Publisher & Install**.
 
-Once installed, click on the arrow next to Uninstall -> Install Specific Version as seen below. We are going to select a specific version to install since things move so quickly around here!
+Once installed, click on the arrow next to `Uninstall -> Install Specific Version` as seen below. We are going to select a specific version to install since things move so quickly around here!
 
 Click **Install Specific Version...**
 
@@ -111,11 +91,11 @@ You will see a drop-down appear with different versions. Please select **v3.25.6
 
 Once done installing the proper version, click **Reload Window**
 
-Now, we're ready to configure our model connection!
+You've now installed Roo - next, let's connect it to your private LLM.
 
-== Setup our Code Assistant
+== Step 4: Connect Roo to Your Granite Model
 
-Navigate to the Roo Code extension in the left-hand side navigation bar:
+Navigate to the **Roo sidebar icon** in the left-hand side navigation panel:
 
 image::../assets/images/code/roo_sidebar.png[]
 
@@ -124,17 +104,17 @@ We will do two things in this module:
 1. Connect to our Granite model within our company's MaaS platform
 2. Use our model's "brain" to help us build a Kubernetes deployment
 
-In order to connect our model to the Roo Code extension we must provide the extension our model's API key from our MaaS application in the previous module (if you did not document the API key and URL from the previous step, please go back to the developer portal and grab that information).
+In order to connect our model to the Roo Code extension we must provide the extension our model's endpoint URL and API key from our MaaS application in the previous module.
 
-Developer Portal: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
+NOTE: If needed, go back to the developer portal and the application created in the previous module to retrieve the credentials: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
-=== Input Model Information
+=== Enter Connection Details
 
-1. API Provider field, select **OpenAI Compatible** 
+1. API Provider field: **OpenAI Compatible** 
 
 image::../assets/images/code/api_provider_roo.png[]
 
-2. Base URL: the Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
+2. Base URL: Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
 
 image::../assets/images/code/base_url.png[]
 
@@ -150,4 +130,12 @@ image:../assets/images/code/model_name.png[]
 
 image:../assets/images/code/save_settings.png[]
 
-Now the model is set and we are ready for our coding activity.
+== You're Ready to Code with AI
+
+You've now:
+
+* Set up a cloud IDE
+* Connected to a private enterprise LLM
+* Installed an AI assistant that can refactor, edit and explain your code!
+
+Next, you will use Roo to help you develop a little fun game to get warmed up. 

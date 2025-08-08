@@ -1,37 +1,35 @@
+[#code-game]
 = [Module 2.1] Game Time
 
-Before we dive into enterprise-scale deployments, let’s rewind and channel our inner developer. You are a curious coder who’s just been given access to a new AI assistant tool embedded in their IDE. In this module, you're not solving a business-critical problem… yet! You’re exploring, experimenting, and building confidence with AI-assisted coding through something fun: a simple game.
+You're still the developer. Now that your AI assistant is wired up, it's time to get your hands dirty - by building a simple game using Roo's help. In this module, you're not solving a business-critical problem… yet! You’re exploring, experimenting, and building confidence with AI-assisted coding through something fun: a simple game.
 
-You will have 3 game options to choose from to start building. You **do not** need to complete all 3 activities, and you **do not** need to work on them in any particular order. Just select one. 
+== Choose a Game to Build
 
-As you build the games, you will have the option to work in the following languages:
-
-* Bash
-* Python
-
-You may choose to experiment in other languages. However, I will only provide templates, working scripts and execution instructions for Python and Bash for our games. Our RHEL machines are also limited in terms of what we can execute unless you install additional packages. 
-
-We have template scripts with instructions for you to follow as comments in the files. Let's get working.
-
-== Accessing the activity files
-
-From the left-hand side file explorer, open the `llama-stack-on-ocp->/fun-and-games->/game_starters` folder.
-
-Select the game file of your preference, in the language of your choice. (feel free to do multiple!) Open the file you want to work on in the VS Code editor.
-
-== Game Summaries
+Pick **one** of the following lightweight game projects, available in both Python and Bash:
 
 . **Rock Paper Scissors**: Play rock, paper, scissors against the computer!
 . **Word Scramble**: The program scrambles a word and the user has to guess what it is.
 . **Simple Quiz Game**: The program asks a few trivia questions and then gives a final score.
 
-== Get to Coding!
+You only need to pick one - but feel free to try more if you have time.
 
-Once you have opened the files you wish to work on, click the `Roo` extension tab again on the left-hand side of the VS Code window. You may toggle between the Files and Roo tabs as you need.
+== Open Your Starter File
 
-Follow the guidance in the game starter files. Instructions for each game, including different ways to use the Roo extension are within the comments of the files. Once finished, your file will become your executable game application. 
+From the file explorer, navigate to the `game_starters` directory:
 
-IMPORTANT: Ensure any text that does not contribute to the game code stays as a comment. You will build out the application code in the second half of the files.
+image:../assets/images/code/file_explorer.png[]
+
+Open the game file of your preference, in the language of your choice.
+
+The top half of the file includes working game code. The bottom half of the file includes instructions as comments to extend the game application. 
+
+== Use Roo to Build and Enhance
+
+Once you have opened the file you wish to work on, click the `Roo` extension tab again on the left-hand side of the VS Code window. You may toggle between the `Explorer` and `Roo` tabs as you need.
+
+Follow the guidance in the file comments, or ask your own questions - this is your playground.
+
+IMPORTANT: Ensure any text that does not contribute to the game code stays as a comment. 
 
 == A Note About Roo
 
@@ -41,24 +39,24 @@ Roo Code isn't just a chatbot — it’s an AI coding assistant built into your 
 
 Roo Code works best when you're iterating on *existing* code or working with a clear structure. It's not always ideal for starting a project from scratch or when you're unsure where to begin. In those cases, you may get better results by sketching out basic logic yourself first, or using a simpler AI assistant (like ChatGPT) to help brainstorm before returning to Roo.
 
-== Testing (and playing) Your Game
+== Run (and Play) Your Game
 
-Once you've completed the coding activities, save your file(s) that you wish to test.
+Once complete, save your file(s) that you wish to test.
 
-We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` in the top navigation bar of the VSCode app. Or you may press kbd:[CTRL] + kbd:[`].
+We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` from the hamburger menu in the navigation bar of the VSCode app. Or you may press kbd:[CTRL] + kbd:[`].
 
-Navigate to the directory within which the file you wish to execute is saved.
+Navigate to the file's folder:
 
-Example:
+Example [substitute the correct path to your file]
 
 [source,console]
 ----
 cd /home/dev/rhone_code/game_templates/rock_paper_scissors/
 ----
 
-Please follow the following instructions depending on your chosen language.
+Follow the instructions for the right code language:
 
-=== If you are using Python (.py)
+=== Python (.py)
 
 Run the following command (substitue your filename):
 
@@ -67,7 +65,7 @@ Run the following command (substitue your filename):
 python your_filename.py
 ----
 
-=== If you are using Bash (.sh)
+=== Bash (.sh)
 
 Make the file executable (you only need to do this once). Substitute your filename:
 
@@ -83,7 +81,7 @@ Run the following command (substitue your filename):
 ./your_filename.sh
 ----
 
-=== Troubleshooting Tips and Reminders
+=== Troubleshooting
 
 **If you see a "command not found" or "permission denied" error**:
 
@@ -91,17 +89,17 @@ Run the following command (substitue your filename):
 
 * Make sure you’re in the correct directory (ls to list files)
 
-* For .sh files, try bash yourfile.sh if ./yourfile.sh doesn't work
+* For .sh files, try `bash yourfile.sh` if ``./yourfile.sh` doesn't work.
 
 **Other error or application isn't working as expected**:
 
 * Use your code assistant to help you debug
 
-* Feed the errors or explain any issues in the chat and have the AI help you correct your code
+* Feed the errors or explain any issues in the extension chat and have the AI help you correct your code
 
-== Optional: Game Solutions
+== Stuck? Peek at a Solution
 
-If you had some trouble getting your game to work and/or you would like to see what working code can look like, navigate to the following directory in your VSCode setup (where you should have the entire cloned repository in view in the `Explorer` tab):
+Solutions are available here:
 
 [source,console]
 ----
@@ -109,6 +107,12 @@ If you had some trouble getting your game to work and/or you would like to see w
 ----
 
 Use the execution instructions in the above sections to run the code for any of the provided game programs!
+
+== Taking the Next Step
+
+You've now used Roo in a real, yet low-pressure, context - scaffolding, editing, testing and debugging a working application!
+
+In the next activity, we'll bring our new set of skills into a Kubernetes deployment context.
 
 
 

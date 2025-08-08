@@ -1,3 +1,4 @@
+[#links]
 = Important Links
 
 We navigate across our OpenShift environment to different locations and services throughout our workshop. Below is a reference list to assist you.
@@ -30,10 +31,18 @@ image::../assets/images/02/open-terminal.png[]
 oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}{{if or (eq $key "ADMIN_USER") (eq $key "ADMIN_PASSWORD")}}{{printf "%s: " $key}}{{ $value | base64decode }}{{"\n"}}{{end}}{{end}}'
 ----
 
-== OpenShift DevSpaces
+== 3Scale Developer Portal
 
-// Link
+https://maas.apps.{openshift_cluster_ingress_domain}/[https://maas.apps.{openshift_cluster_ingress_domain}/]
+
+== OpenShift Dev Spaces
+
+https://devspaces.apps.{openshift_cluster_ingress_domain}/[https://devspaces.apps.{openshift_cluster_ingress_domain}]
+
+== OpenShift Dev Spaces Workspace
+
+https://devspaces.apps.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/[https://devspaces.apps.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/]
 
 == LlamaStack Playground
 
-// Link
+https://llama-stack-playground-lls-demo.apps.{openshift_cluster_ingress_domain}/[https://llama-stack-playground-lls-demo.apps.{openshift_cluster_ingress_domain}/]

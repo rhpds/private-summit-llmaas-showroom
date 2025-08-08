@@ -23,7 +23,7 @@ Step into the role of platform engineer. You will see how to provision a scalabl
 Now, shift to the app developer's perspective. Connect to the model endpoint you deployed and then integrate it into a developer facing code assistant to help you develop for your work, bridging infrastructure and app logic.
 
 === **Module 3:** Leverage the power of agentic ai tooling
-With the mindset of a site reliability engineer or app developer monitoring deployments, use model context protocol (mcp) and the LlamaStack API to interact more easily with your openshift cluster.
+With the mindset of a site reliability engineer, you'll use model context protocol (mcp) and the LlamaStack API to interact more easily with your openshift cluster.
 
 === **Module 4:** Analytics
 Take on the role of a platform SRE or product owner responsible for understanding how your private LLM is being used, and whether it's operating effectively at scale by exploring model usage analytics. 
