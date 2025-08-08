@@ -1,4 +1,5 @@
 :imagesdir: ../assets/images
+
 [#maas_introduction]
 = Setting Up Model-as-a-Service Infrastructure
 

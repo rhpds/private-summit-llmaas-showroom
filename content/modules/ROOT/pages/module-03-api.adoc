@@ -8,6 +8,7 @@ Now, in this next step, you’re still acting as a platform engineer - but your 
 Exposing foundation models directly is risky without controls. You’ll now add a governance layer using an API gateway, so other teams can use the model securely, reliably, and at scale—without direct access to the underlying cluster or GPUs.
 
 We'll use 3scale API Management to:
+
 * Secure access to your model
 * Monitor usage
 * Enable future scaling and quotas.
