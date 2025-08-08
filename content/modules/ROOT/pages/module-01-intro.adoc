@@ -1,3 +1,4 @@
+:imagesdir: ../assets/images
 [#maas_introduction]
 = Setting Up Model-as-a-Service Infrastructure
 
@@ -12,7 +13,7 @@ As a **platform engineer**, you may inherit clusters filled with GPU nodes and e
 - Most people just need model access - not to manage their own GPUs.
 
 [.bordershadow]
-image::images/02/iaas.png[]
+image::02/iaas.png[]
 
 == Models-as-a-Service: A Better Abstraction for AI at Scale
 
@@ -28,7 +29,7 @@ To address these challenges as a platform engineer, you will design a centralize
 ** Avoid waste, ensure fairness and reduce cost
 
 [.bordershadow]
-image::../assets/images/02/maas.png[]
+image::02/maas.png[]
 
 == Module 1 Goals: Step into the role of the platform engineer
 

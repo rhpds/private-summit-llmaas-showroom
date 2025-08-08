@@ -1,3 +1,4 @@
+:imagesdir: ../assets/images
 = Private LLM as a Service - A Practical Introduction with OpenShift AI
 
 == Step into the world of enterprise Generative AI deployment - one role at a time!

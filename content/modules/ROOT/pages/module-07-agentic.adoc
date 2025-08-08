@@ -1,3 +1,4 @@
+:imagesdir: ../assets/images
 [#agentic-ai]
 = System Administration with Agentic AI 
 
@@ -52,37 +53,37 @@ https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://co
 
 2. In the Administrator perspective, select API Explorer.
 
-image:../assets/images/llama/api_explorer.png[]
+image:llama/api_explorer.png[]
 
 3. Search `llamastackdistribution` in the search bar and select the resource.
 
-image:../assets/images/llama/llamastackdistribution.png[]
+image:llama/llamastackdistribution.png[]
 
 4. Select `Instances` and the available instance.
 
-image:../assets/images/llama/llamastackinstance.png[]
+image:llama/llamastackinstance.png[]
 
 5. Select `YAML` and scroll down to the highlighted section of text.
 
-image:../assets/images/llama/lsd_yaml.png[]
+image:llama/lsd_yaml.png[]
 
 6. In place of the existing Granite URL, input your endpoint URL from the 3scale developer portal. Ensure `/v1` is appended to the string.
 
-image:../assets/images/llama/maas_endpoint.png[]
+image:llama/maas_endpoint.png[]
 
 7. Click save
 
-image:../assets/images/llama/save_yaml.png[]
+image:llama/save_yaml.png[]
 
 == View Your Deployment
 
 1. Select the `Developer` perspective.
 
-image:../assets/images/llama/dev_perspective.png[]
+image:llama/dev_perspective.png[]
 
 2. Search for the `lls-demo` namespace
 
-image:../assets/images/llama/find-namespace.png[]
+image:llama/find-namespace.png[]
 
 In the Topology view, you will see three pods:
 
@@ -94,7 +95,7 @@ Feel free to poke around and explore the deployment.
 
 3. Select the LlamaStack playground hyperlink to open the UI.
 
-image:../assets/images/llama/playground_link.png[]
+image:llama/playground_link.png[]
 
 Now you will see the "playground" user interface. This application was created in the upstream project for the purposes of demonstration and experimentation and is not a supported component of our downstream OpenShift AI product.
 
@@ -105,19 +106,19 @@ Within the application you'll find a familiar chat interface with some selection
 1. Select our model from the drop down
 
 [.bordershadow]
-image::../assets/images/llama/model_selection.png[]
+image::llama/model_selection.png[]
 
 2. Set `Processing mode` -> `Agent-based`, giving us access to tools.
 
-image::../assets/images/llama/agent_selection.png[]
+image::llama/agent_selection.png[]
 
 3. Enable the OpenShift MCP tool group.
 
-image::../assets/images/llama/mcp_server.png[]
+image::llama/mcp_server.png[]
 
 4. Once the MCP server is selected, you can peruse the active tools available.
 
-image:../assets/images/llama/active_tools.png[]
+image:llama/active_tools.png[]
 
 Everything else can remain with the default settings. You can now query live cluster data using plain English.
 
@@ -155,7 +156,7 @@ NOTE: The provided MCP server is experimental for demo purposes. Some responses 
 
 To enforce guardrails on inputs and outputs, select the **Llama Guard** model under the `Input Shields` and `Output Shields` form fields:
 
-image::../assets/images/llama/guards.png[]
+image::llama/guards.png[]
 
 This helps to filter inappropriate prompts and responses.
 

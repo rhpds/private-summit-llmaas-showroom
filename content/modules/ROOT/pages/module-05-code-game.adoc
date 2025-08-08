@@ -1,3 +1,5 @@
+:imagesdir: ../assets/images
+
 [#code-game]
 = Game Time
 
@@ -17,7 +19,7 @@ You only need to pick one - but feel free to try more if you have time.
 
 From the file explorer, navigate to the `game_starters` directory:
 
-image:../assets/images/code/file_explorer.png[]
+image:code/file_explorer.png[]
 
 Open the game file of your preference, in the language of your choice.
 
