@@ -1,5 +1,5 @@
 [#code-asst]
-= [Module 2] Coding with AI
+= Coding with AI
 
 Welcome to the next stage of our journey!
 

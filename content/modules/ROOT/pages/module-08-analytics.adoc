@@ -1,5 +1,5 @@
 [#model-analytics]
-= [Module 4] Usage Analytics and Reporting
+= Usage Analytics and Reporting
 
 In this module, you're stepping into the role of a technical decision maker or platform stakeholder - someone responsible not just for building AI services, but for understanding their business impact.
 

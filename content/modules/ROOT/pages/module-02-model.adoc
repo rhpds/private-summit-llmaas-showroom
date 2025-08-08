@@ -1,5 +1,5 @@
 [#model-deployment]
-= [Module 1.1] Deploying and Inspecting Your First Foundation Model
+= Deploying and Inspecting Your First Foundation Model
 
 Your first task as a platform engineer begins: standing up an enterprise-ready model on OpenShift AI. 
 

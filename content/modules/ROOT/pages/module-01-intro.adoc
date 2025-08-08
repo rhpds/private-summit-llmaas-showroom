@@ -1,5 +1,5 @@
 [#maas_introduction]
-= [Module 1] Setting Up Model-as-a-Service Infrastructure
+= Setting Up Model-as-a-Service Infrastructure
 
 == Introduction: The Hidden Cost of Infrastructure-as-a-Service
 
@@ -12,7 +12,7 @@ As a **platform engineer**, you may inherit clusters filled with GPU nodes and e
 - Most people just need model access - not to manage their own GPUs.
 
 [.bordershadow]
-image::../assets/images/02/iaas.png[]
+image::images/02/iaas.png[]
 
 == Models-as-a-Service: A Better Abstraction for AI at Scale
 

@@ -1,5 +1,5 @@
 [#code-game]
-= [Module 2.1] Game Time
+= Game Time
 
 You're still the developer. Now that your AI assistant is wired up, it's time to get your hands dirty - by building a simple game using Roo's help. In this module, you're not solving a business-critical problem… yet! You’re exploring, experimenting, and building confidence with AI-assisted coding through something fun: a simple game.
 

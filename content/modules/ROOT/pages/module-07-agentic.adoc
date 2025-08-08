@@ -1,5 +1,5 @@
 [#agentic-ai]
-= [Module 3] System Administration with Agentic AI 
+= System Administration with Agentic AI 
 
 In the last module, you stepped into the developer role building applications using private LLM endpoints. Now, you'll become a site reliability engineer (SRE) or DevOps practitioner focused on observability, diagnostics, and operational scale. 
 

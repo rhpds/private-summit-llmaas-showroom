@@ -1,5 +1,5 @@
 [#api-gateway]
-= [Module 1.2] AI at Scale with an API Gateway
+= AI at Scale with an API Gateway
 
 Now, in this next step, you’re still acting as a platform engineer - but your focus now shifts from deploying a model to making it safely consumable across your organization.
 
