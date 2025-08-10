@@ -41,11 +41,11 @@ We have a VSCode workspace ready for your use, with the required dependencies. A
 
 2. Launch the pre-created workspace by clicking `Open`
 
-image::code/workspace_preset.png[]
+image::code/workspace_preset.png[width="50%"]
 
 After a moment, you'll see the VSCode interface running in your browser. If prompted, click "Trust" when asked about the authors. We're friendly, I promise! 
 
-image::code/vscode_trust.png[]
+image::code/vscode_trust.png[width="50%"]
 
 Inside your workspace, you'll find a cloned GitHub repository. This is where you will build and refine. Nothing else needs to be configured locally, everything you need is in place.
 
@@ -75,11 +75,11 @@ image::code/extensions_tab.png[width=100%]
 
 In the search bar, search for **Roo Code**. You'll see it as the top option, as shown below:
 
-image::code/roo_code.png[]
+image::code/roo_code.png[width="50%"]
 
 Click **Install**
 
-image::code/install_roo.png[]
+image::code/install_roo.png[width="50%"]
 
 You may get another trust verification message. Select **Trust Publisher & Install**.
 
@@ -87,7 +87,7 @@ Once installed, click on the arrow next to `Uninstall -> Install Specific Versio
 
 Click **Install Specific Version...**
 
-image::code/install_specific_version.png[]
+image::code/install_specific_version.png[width="50%"]
 
 You will see a drop-down appear with different versions. Please select **v3.25.6**.
 
@@ -99,7 +99,7 @@ You've now installed Roo - next, let's connect it to your private LLM.
 
 Navigate to the **Roo sidebar icon** in the left-hand side navigation panel:
 
-image::code/roo_sidebar.png[]
+image::code/roo_sidebar.png[width="50%"]
 
 We will do two things in this module:
 
@@ -114,23 +114,23 @@ NOTE: If needed, go back to the developer portal and the application created in 
 
 1. API Provider field: **OpenAI Compatible** 
 
-image::code/api_provider_roo.png[]
+image::code/api_provider_roo.png[width="50%"]
 
 2. Base URL: Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
 
-image::code/base_url.png[]
+image::code/base_url.png[width="50%"]
 
 3. API Key: The API Key from the MaaS application.
 
-image:code/api_key.png[]
+image:code/api_key.png[width="50%"]
 
 4. Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
 
-image:code/model_name.png[]
+image:code/model_name.png[width="50%"]
 
 5. Leave all other fields in their default positions. Select `Let's go!` at the bottom of the form.
 
-image:code/save_settings.png[]
+image:code/save_settings.png[width="50%"]
 
 == You're Ready to Code with AI
 

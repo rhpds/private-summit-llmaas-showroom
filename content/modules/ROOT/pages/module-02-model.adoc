@@ -23,7 +23,7 @@ NOTE: At any point, you can access the OpenShift Container Platform web console 
 * Click on the `Login with OpenShift` button:
 +
 [.bordershadow]
-image::02/02-01-login3.png[]
+image::02/02-01-login3.png[width="50%"]
 
 * Enter your credentials:
 ** Your username: `{user}`
@@ -31,12 +31,12 @@ image::02/02-01-login3.png[]
 
 +
 [.bordershadow]
-image::02/02-01-login1.png[]
+image::02/02-01-login1.png[width="50%"]
 
 * After you authenticate, your browser window should look like:
 +
 [.bordershadow]
-image::02/02-01-rhoai-front-page.png[]
+image::02/02-01-rhoai-front-page.png[width="50%"]
 
 You're now inside the control panel that data scientists and ML engineers use daily. Let's explore what's under the hood.
 
@@ -48,15 +48,15 @@ Think of this as your toolbox. Each component maps to a key responsibility in op
 * As you are cluster admin, you currently see many projects. The one we will be using in the workshop is the `LLM Host` project. To access it, click on `Go to Data Science Projects` at the bottom of the Data Science Projects sections.
 +
 [.bordershadow]
-image::02/02-got-to-dsp.png[]
+image::02/02-got-to-dsp.png[width="50%"]
 
 * In the list of projects, you should see the `LLM Host` project. Click on it to access the project.
 +
 [.bordershadow]
-image::02/02-LLM-Host-project.png[]
+image::02/02-LLM-Host-project.png[width="50%"]
 
 [.bordershadow]
-image::02/02-project-tabs.png[]
+image::02/02-project-tabs.png[width="50%"]
 
 Once inside the project, explore the tabs across the top. Here's a quick rundown:
 
@@ -75,7 +75,7 @@ You're not going to build from scratch just yet. You're here to learn how a work
 Step into the `Models` tab
 
 [.bordershadow]
-image::02/02-granite-model-overview.png[]
+image::02/02-granite-model-overview.png[width="50%"]
 
 Here you'll find the `Granite-3.2` model already deployed. This model is designed to generate human-like text and can be used for various natural language processing tasks.
 
@@ -83,12 +83,12 @@ Here you'll find the `Granite-3.2` model already deployed. This model is designe
 * Click on the expand button at the left of the model to see more information about its configuration, such as the resources allocated to it.
 +
 [.bordershadow]
-image::02/02-granite-details.png[]
+image::02/02-granite-details.png[width="50%"]
 
 * If you click on `Internal endpoint details`, you will see the different endpoints available for the model.
 +
 [.bordershadow]
-image::02/02-granite-endpoints.png[]
+image::02/02-granite-endpoints.png[width="50%"]
 
 The model is **internal-only**, perfect for protected inference behind a gateway!
 
@@ -97,18 +97,18 @@ The model is **internal-only**, perfect for protected inference behind a gateway
 Next, switch to the `Connections` tab. You will see a connection called `models` already configured.
 
 [.bordershadow]
-image::02/02-connections-models-overview.png[]
+image::02/02-connections-models-overview.png[width="50%"]
 
 Let's take a look at the configuration. Click on the three dots on the right of the connection and select `Edit`.
 
 [.bordershadow]
-image::02/02-models-connection-edit.png[]
+image::02/02-models-connection-edit.png[width="50%"]
 
 This connection links to a MinIO S3-compatible object storage holding model artifacts. Parameters like `Access Key`, `Secret Key`, `Bucket`, and `Endpoint` are injected automatically into your environment - no hardcoding required. 
 
 
 [.bordershadow]
-image::02/02-models-connection-details.png[]
+image::02/02-models-connection-details.png[width="50%"]
 
 **Why does this matter?**
 
@@ -123,7 +123,7 @@ Let's inspect the storage bucket.
 
 
 [.bordershadow]
-image::02/02-odh-tec-open.png[]
+image::02/02-odh-tec-open.png[width="50%"]
 
 This will open a new tab. After logging in and accepting the license, you will access `ODH-TEC`. It is a simple tool used to manage and view S3 storage. 
 
@@ -131,7 +131,7 @@ Once inside, you will see a simple S3 objects browser already pointed at the `mo
 
 
 [.bordershadow]
-image::02/02-odh-tec.png[]
+image::02/02-odh-tec.png[width="50%"]
 
 // TODO: remove TinyLlama from storage
 You will see the Granite model that you will work with for the remainder of the workshop. Feel free to explore the bucket and folders, then close this tab once you're done.

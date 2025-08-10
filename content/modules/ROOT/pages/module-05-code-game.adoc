@@ -19,7 +19,7 @@ You only need to pick one - but feel free to try more if you have time.
 
 From the file explorer, navigate to the `game_starters` directory:
 
-image:code/file_explorer.png[]
+image:code/file_explorer.png[width="50%"]
 
 Open the game file of your preference, in the language of your choice.
 
@@ -114,7 +114,7 @@ Use the execution instructions in the above sections to run the code for any of 
 
 You've now used Roo in a real, yet low-pressure, context - scaffolding, editing, testing and debugging a working application!
 
-In the next activity, we'll bring our new set of skills into a Kubernetes deployment context.
+In the next activity, we'll bring our new set of skills to deploying an MCP server into our cluster for our organization.
 
 
 

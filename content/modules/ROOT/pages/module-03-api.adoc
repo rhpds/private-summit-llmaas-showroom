@@ -32,7 +32,7 @@ https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://co
 
 2. Select the terminal icon in the top navigation bar
 
-image::02/open-terminal.png[]
+image::02/open-terminal.png[width="50%"]
 
 3. Copy the following command into the terminal session:
 +
@@ -50,7 +50,7 @@ Use the credentials you just retrieved.
 You will be prompted by a wizard window. Close it by clicking on the top right corner of the screen.
 
 [.bordershadow]
-image::03/03-3scale-close-wizard.png[]
+image::03/03-3scale-close-wizard.png[width="50%"]
 
 == Step 2: Explore the 3Scale Admin Portal
 
@@ -65,7 +65,7 @@ Here is where platform engineers:
 
 +
 [.bordershadow]
-image::03/03-3scale-admin-dashboard.png[]
+image::03/03-3scale-admin-dashboard.png[width="50%"]
 
 Use the dropdown menu at the top to explore these sections:
 
@@ -75,7 +75,7 @@ Use the dropdown menu at the top to explore these sections:
 
 
 [.bordershadow]
-image::03/03-3scale-section-menu.png[]
+image::03/03-3scale-section-menu.png[width="50%"]
 
 For now, note the two key items:
 
@@ -92,12 +92,12 @@ A user was already created for you in 3Scale in (Audience->Accounts->Listing), b
 * In the Audience section, got to Developer Portal->Settings->Domains & Access.
 +
 [.bordershadow]
-image::03/03-3scale-portal-menu.png[]
+image::03/03-3scale-portal-menu.png[width="50%"]
 
 * The Developer Portal Access Code is used to control the access the developer portal. You could use the default value in the next section to connect to it, but for today simply delete it and click on `Update Account`. This will remove the access code and allow anyone to access the developer portal, although they will still need to authenticate. This is what we will do in this workshop.
 +
 [.bordershadow]
-image::03/03-3scale-remove-access-code.png[]
+image::03/03-3scale-remove-access-code.png[width="50%"]
 
 
 == Step 4: Log in to the Developer Portal
@@ -116,17 +116,17 @@ Signing in:
 1. Click on the `Sign In` button in the top right corner of the screen
 +
 [.bordershadow]
-image::03/03-3scale-signin-button.png[]
+image::03/03-3scale-signin-button.png[width="50%"]
 
 2.  Click on `Private login` and enter your credentials.
 +
 [.bordershadow]
-image::03/03-3scale-signin.png[]
+image::03/03-3scale-signin.png[width="50%"]
 
 Once logged in, you will be able to see available APIs, including the model you deployed.
 
 [.bordershadow]
-image::03/03-3scale-developer-loggedin.png[]
+image::03/03-3scale-developer-loggedin.png[width="50%"]
 
 == Step 5: Create an Application and Get an API Key
 
@@ -137,28 +137,28 @@ Let's do that now:
 1. Click on the `See your Applications and their credentials` link on the front page.
 +
 [.bordershadow]
-image::03/03-3scale-see-applications.png[]
+image::03/03-3scale-see-applications.png[width="50%"]
 
 2. You will be taken to the `Apps and API Keys` section, where you can see that there is an application that was already created for you (the 3Scale default Echo API). Start creating a new application by clicking on the `Create new application` button.
 +
 [.bordershadow]
-image::03/03-3scale-create-application.png[]
+image::03/03-3scale-create-application.png[width="50%"]
 
 3. Select the Service you want to use. In this case, we will use the `granite-3dot2-8b-instruct` service that has been pre-deployed.
 +
 [.bordershadow]
-image::03/03-3scale-select-service.png[]
+image::03/03-3scale-select-service.png[width="50%"]
 
 4. Give a name to your application, for example `Granite application`. Click on `Create Application`.
 +
 [.bordershadow]
-image::03/03-3scale-application-name.png[]
+image::03/03-3scale-application-name.png[width="50%"]
 
 5. Your application has been created. You can see the Endpoint URL you can use to connect to the API, the name of the model you must use in your requests, and the API key that has been generated for you.
 
 +
 [.bordershadow]
-image::03/03-3scale-key-generated.png[]
+image::03/03-3scale-key-generated.png[width="50%"]
 
 **Copy and save this information** - you will use it in the next module to make real requests to your model.
 
