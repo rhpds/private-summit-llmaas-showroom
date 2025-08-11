@@ -5,14 +5,15 @@
 
 === Welcome to the Workshop
 
-This isn't a simple tutorial. This is the beginning of an adventure into the command center of an AI-powered enterprise.
+This isn't a simple tutorial, this is the beginning of an adventure into the command center of an AI-powered enterprise!
 
-In this hands-on session, you will rotate between key personas critical to delivering modern, production-level AI services. 
+In this hands-on session, you will rotate between key personas critical to delivering modern, production-level AI services:
 
-* As a platform engineer you will design and deploy model serving environments and prepare the infrastructure that makes scalable model hosting possible.
+* As a **platform engineer** you will design and deploy model serving environments and prepare the infrastructure that makes scalable model hosting possible.
 
-* As an AI application developer, you will connect real applications to private LLM endpoints, integrate code assistant technology and explore the capabilities of agentic AI.
-* Lastly, as an operations engineer, you will see how to monitor and analyze your model usage across the cluster. 
+* As an **AI application developer**, you will connect real applications to private LLM endpoints, integrate code assistant technology and explore the capabilities of agentic AI.
+
+* Lastly, as an **technical decision maker**, you will see how to monitor and analyze your model usage across the cluster. 
 
 At the end, you will walk away with practical experience across the lifecycle of model deployment.
 
@@ -24,7 +25,7 @@ Step into the role of platform engineer. You will see how to provision a scalabl
 === **Module 2:** Activate the Code Assistant and Use AI to Enhance your Coding Skills
 Now, shift to the app developer's perspective. Connect to the model endpoint you deployed and then integrate it into a developer facing code assistant to help you develop for your work, bridging infrastructure and app logic.
 
-=== **Module 3:** Leverage the power of agentic ai tooling
+=== **Module 3:** Leverage the power of Agentic AI tooling
 With the mindset of a site reliability engineer, you'll use model context protocol (mcp) and the LlamaStack API to interact more easily with your openshift cluster.
 
 === **Module 4:** Analytics

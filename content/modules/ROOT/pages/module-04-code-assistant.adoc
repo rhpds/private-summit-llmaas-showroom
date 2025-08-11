@@ -35,11 +35,11 @@ You could also easily leverage our exposed model API endpoint in your local envi
 
 Your platform engineer has provided you a direct URL to the Dev Spaces console to begin your work.
 
-1. Navigate to console: https://devspaces.apps.{openshift_cluster_ingress_domain}/[https://devspaces.apps.{openshift_cluster_ingress_domain}]
+*  Navigate to console: https://devspaces.apps.{openshift_cluster_ingress_domain}/[https://devspaces.apps.{openshift_cluster_ingress_domain}]
 
 We have a VSCode workspace ready for your use, with the required dependencies. As a developer, you can also create your own workspace without needing to install or configure anything locally. There may however, be some restrictions put in place by your admin around resource limitations or only using approved devfiles (yaml files used to instantiate new workspaces). 
 
-2. Launch the pre-created workspace by clicking `Open`
+*  Launch the pre-created workspace by clicking `Open`
 
 image::code/workspace_preset.png[width="50%"]
 
@@ -51,7 +51,7 @@ Inside your workspace, you'll find a cloned GitHub repository. This is where you
 
 Before we dive into the code, let's meet **Roo**.
 
-== Step 3: Add Roo, Your Coding Teammate
+== Step 2: Add Roo, Your Coding Teammate
 
 **Roo Code** is an AI extension that integrates into VS Code. Unlike traditional code completion tools or chatbots, Roo is an intelligent, task-driven assistant that you can talk to. You can ask Roo to perform actions like:
 
@@ -95,7 +95,7 @@ Once done installing the proper version, click **Reload Window**
 
 You've now installed Roo - next, let's connect it to your private LLM.
 
-== Step 4: Connect Roo to Your Granite Model
+== Step 3: Connect Roo to Your Granite Model
 
 Navigate to the **Roo sidebar icon** in the left-hand side navigation panel:
 
@@ -112,23 +112,23 @@ NOTE: If needed, go back to the developer portal and the application created in 
 
 === Enter Connection Details
 
-1. API Provider field: **OpenAI Compatible** 
+*  API Provider field: **OpenAI Compatible** 
 
 image::code/api_provider_roo.png[width="50%"]
 
-2. Base URL: Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
+*  Base URL: Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
 
 image::code/base_url.png[width="50%"]
 
-3. API Key: The API Key from the MaaS application.
+*  API Key: The API Key from the MaaS application.
 
 image:code/api_key.png[width="50%"]
 
-4. Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
+*  Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
 
 image:code/model_name.png[width="50%"]
 
-5. Leave all other fields in their default positions. Select `Let's go!` at the bottom of the form.
+*  Leave all other fields in their default positions. Select `Let's go!` at the bottom of the form.
 
 image:code/save_settings.png[width="50%"]
 

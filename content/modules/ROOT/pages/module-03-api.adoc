@@ -19,29 +19,33 @@ In production, you may also use any preferred API Gateway provider substituted i
 
 Let's log into the 3scale Admin UI and manage access to the `granite-3dot2-8b-instruct` model.
 
-**Get your 3scale credentials**
+=== Get Your 3Scale Credentials
+
 The `admin-user` and `admin-password` values can be found in the `system-seed` secret in the `3scale` namespace.
 
 From a Terminal (in your OpenShift console) you will run a single command to retrieve these values. 
 
 You may also retrieve them by navigating to the location of the secret in the OpenShift console.
 
-1. Navigate to the OpenShift console
+* Navigate to the OpenShift console
 
 https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://console-openshift-console.{openshift_cluster_ingress_domain}/,window=_blank]
 
-2. Select the terminal icon in the top navigation bar
+* Select the terminal icon in the top navigation bar
 
 image::02/open-terminal.png[width="50%"]
 
-3. Copy the following command into the terminal session:
-+
+* Copy the following command into the terminal session:
+
+
 [source,bash,role="execute",subs="+macros,+attributes"]
 ----
 oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}{{if or (eq $key "ADMIN_USER") (eq $key "ADMIN_PASSWORD")}}{{printf "%s: " $key}}{{ $value | base64decode }}{{"\n"}}{{end}}{{end}}'
 ----
 
-**Log into the admin portal**
+NOTE: Save these values separately for the next step.
+
+=== Log into the Admin Portal
 
 Go to: https://maas-admin.{openshift_cluster_ingress_domain}/[https://maas-admin.{openshift_cluster_ingress_domain}/,window=_blank] 
 
@@ -71,7 +75,7 @@ Use the dropdown menu at the top to explore these sections:
 
 * **Audience**: this gives you information about the users, registrations, etc.
 * **Products**: this is where you can create the Products that people will have access to. You can see there are two products already created: `granite-3dot2-8b-instruct`, which is connected to the model that was pre-deployed,  and `API`, which is a default 3Scale echo API for testing.
-* **Backends**: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the the `granite-3dot2-8b-instruct` product.
+* **Backends**: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the `granite-3dot2-8b-instruct` product. The `backend` in this case is simply the model source. 
 
 
 [.bordershadow]
@@ -106,11 +110,6 @@ image::03/03-3scale-remove-access-code.png[width="50%"]
 
 Visit the portal at: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
-You can log in using your workshop credentials:
-
-* Your username: `{user}`
-* Your password: `{password}`
-
 Signing in:
 
 1. Click on the `Sign In` button in the top right corner of the screen
@@ -122,6 +121,11 @@ image::03/03-3scale-signin-button.png[width="50%"]
 +
 [.bordershadow]
 image::03/03-3scale-signin.png[width="50%"]
+
+You can log in using your workshop credentials:
+
+* Your username: `{user}`
+* Your password: `{password}`
 
 Once logged in, you will be able to see available APIs, including the model you deployed.
 
@@ -160,7 +164,7 @@ image::03/03-3scale-application-name.png[width="50%"]
 [.bordershadow]
 image::03/03-3scale-key-generated.png[width="50%"]
 
-**Copy and save this information** - you will use it in the next module to make real requests to your model.
+NOTE: Copy and save this information separately - you will use it in the next module to make real requests to your model.
 
 == Recap: What you just did
 

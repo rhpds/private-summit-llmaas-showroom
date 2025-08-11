@@ -94,12 +94,12 @@ The model is **internal-only**, perfect for protected inference behind a gateway
 
 === Reviewing the Connection
 
-Next, switch to the `Connections` tab. You will see a connection called `models` already configured.
+Next, switch to the `Connections` tab. You will see two connections.
 
 [.bordershadow]
 image::02/02-connections-models-overview.png[width="50%"]
 
-Let's take a look at the configuration. Click on the three dots on the right of the connection and select `Edit`.
+Let's take a look at the `models` configuration. Click on the three dots on the right of the connection and select `Edit`.
 
 [.bordershadow]
 image::02/02-models-connection-edit.png[width="50%"]
@@ -109,6 +109,8 @@ This connection links to a MinIO S3-compatible object storage holding model arti
 
 [.bordershadow]
 image::02/02-models-connection-details.png[width="50%"]
+
+Exit out of the `Edit` view.
 
 **Why does this matter?**
 
