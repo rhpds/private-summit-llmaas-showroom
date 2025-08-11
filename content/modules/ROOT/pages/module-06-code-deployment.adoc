@@ -60,7 +60,7 @@ image:code/sendmsg.png[width="50%"]
 
 // == Add comments 
 
-//== Add a README.md file
+// == Add a README.md file
 
 == Deploy the Slack MCP Server
 

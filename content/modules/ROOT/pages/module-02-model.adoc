@@ -72,7 +72,7 @@ Once inside the project, explore the tabs across the top. Here's a quick rundown
 
 You're not going to build from scratch just yet. You're here to learn how a working deployment is structured. 
 
-Step into the `Models` tab
+Step into the `Models` tab:
 
 [.bordershadow]
 image::02/02-granite-model-overview.png[width="50%"]

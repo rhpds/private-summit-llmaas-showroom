@@ -7,9 +7,10 @@
 
 This isn't a simple tutorial. This is the beginning of an adventure into the command center of an AI-powered enterprise.
 
-In this hands-onsession, you will rotate between key personas critical to delivering modern, production-level AI services. 
+In this hands-on session, you will rotate between key personas critical to delivering modern, production-level AI services. 
 
 * As a platform engineer you will design and deploy model serving environments and prepare the infrastructure that makes scalable model hosting possible.
+
 * As an AI application developer, you will connect real applications to private LLM endpoints, integrate code assistant technology and explore the capabilities of agentic AI.
 * Lastly, as an operations engineer, you will see how to monitor and analyze your model usage across the cluster. 
 

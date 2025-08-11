@@ -75,6 +75,30 @@ image:llama/maas_endpoint.png[width="50%"]
 
 image:llama/save_yaml.png[width="50%"]
 
+// TODO: Add this section to config file to remove the need to do this manually during workshop
+
+=== Add Slack MCP Server to LlamaStack Configuration
+
+* Click on `Workloads` -> `ConfigMaps`
+
+image:llama/configmap-nav.png[width="50%"]
+
+* Click on the `yaml` tab.
+
+* Add the following to the end of llama-stack-config ConfigMap in the `tool_groups` section:
+
+[source,console,role=execute,subs=attributes+]
+----
+- toolgroup_id: mcp::slack
+    provider_id: model-context-protocol
+    mcp_endpoint:
+    uri: "http://slack-mcp-server:80/sse"
+----
+
+image:llama/configmap_tool.png[width="50%"]
+
+* Click "Save"
+
 == View Your Deployment
 
 1. Select the `Developer` perspective.
@@ -144,13 +168,28 @@ Get deployment resources in lls-demo namespace
 
 Feel free to experiment!
 
-NOTE: The provided MCP server is experimental for demo purposes. Some responses may be incomplete or inconssitent, and the model may hallucinate or misinterpret results if the tool output is vague or malformed. The demonstration is meant to highlight the potential of natural language interfaces for interacting with infrastructure, and how emerging tools like LlamaStack and MCP can reduce the barrier to entry for understanding system behavior and save valuable time and effort.
+NOTE: The provided MCP server is experimental for demo purposes. Some responses may be incomplete or inconsistent, and the model may hallucinate or misinterpret results if the tool output is vague or malformed. The demonstration is meant to highlight the potential of natural language interfaces for interacting with infrastructure, and how emerging tools like LlamaStack and MCP can reduce the barrier to entry for understanding system behavior and save valuable time and effort.
 
-// TO DO: === Query Deployed Job
+=== Query Slack Workspace
 
-// Query related to the activity of last module which should have succeeded in a deployment
+With our Slack MCP Server connected to LlamaStack, we can extend our agentic AI experience beyond Kubernetes and into team collaboration tools (among many other possibilities).
 
-// === Engage with slack workspace connection
+This MCP server bridges your AI agent with a Slack workspace to fetch approved data.
+
+Why this matters:
+
+* SREs and DevOps teams often work across multiple collaboration channels.
+
+* By giving your AI visibility into Slack, you can use natural language to check team communication spaces without switching tools.
+
+* This is a safe, read-only example — no messages are read or posted in this activity.
+
+In the LlamaStack Playground chat interface, type:
+
+[source,console,role=execute,subs=attributes+]
+----
+List all Slack channels in our Slack workspace
+----
 
 === Add Responsible AI Shields
 
