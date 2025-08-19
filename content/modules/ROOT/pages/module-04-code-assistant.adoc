@@ -13,9 +13,9 @@ You're not just here to write code - you're here to collaborate with an **AI-pow
 
 Modern code assistants can:
 
-* **Understand Full Project Context**: Assistants like Cursor, GitHub Copilot, and Roo can read across files and directories, understanding how your code fits together.
+* **Understand Full Project Context**: Assistants like Continue, GitHub Copilot, and Cursor can read across files and directories, understanding how your code fits together.
 
-* **Edit code with Natural Language**: You can describe a change—like “add error handling here” or “convert this to async”—and assistants like Roo, Continue, or CodeWhisperer will apply it intelligently.
+* **Edit code with Natural Language**: You can describe a change—like "add error handling here" or "convert this to async"—and assistants like Continue, Cursor, or CodeWhisperer will apply it intelligently.
 
 * **Proactively Suggest Improvements**: They catch bugs, highlight inefficiencies, and recommend best-practice patterns.
 
@@ -47,13 +47,15 @@ After a moment, you'll see the VSCode interface running in your browser. If prom
 
 image::code/vscode_trust.png[width="50%"]
 
-Inside your workspace, you'll find a cloned GitHub repository. This is where you will build and refine. Nothing else needs to be configured locally, everything you need is in place.
+Inside your workspace, you'll find a cloned GitHub repository. This is where you will build and refine. The only thing we need to configure is our code extension.
 
-Before we dive into the code, let's meet **Roo**.
+image::code/file_explorer_repo.png[width="50%"]
 
-== Step 2: Add Roo, Your Coding Teammate
+Before we dive into the code, let's meet **Continue**.
 
-**Roo Code** is an AI extension that integrates into VS Code. Unlike traditional code completion tools or chatbots, Roo is an intelligent, task-driven assistant that you can talk to. You can ask Roo to perform actions like:
+== Step 2: Add Continue, Your Coding Teammate
+
+**Continue** is an open-source AI code assistant that integrates seamlessly into VS Code. Unlike traditional code completion tools, Continue provides an interactive chat interface where you can have natural conversations about your code. You can ask Continue to perform actions like:
 
 **“Add logging to this function”**
 
@@ -63,25 +65,27 @@ Before we dive into the code, let's meet **Roo**.
 
 **“Explain what this code does”**
 
-And Roo will do it—right in your project, with full awareness of your codebase. 
+Continue will execute these requests directly in your editor, with full awareness of your codebase and project context.
 
-Many leading code extensions operate in similar ways, and Roo is a great **open-source** example of what AI coding can help us be capable of. 
+What makes Continue particularly powerful is its flexibility - it supports custom model endpoints, making it perfect for connecting to your private enterprise models. As an **open-source** solution, Continue gives you complete control over your AI coding workflow. 
 
-=== Install Roo
+=== Install Continue
 
 Select the bottom navigation item on the left-hand side to open up the extensions marketplace.
 
 image::code/extensions_tab.png[width=100%]
 
-In the search bar, search for **Roo Code**. You'll see it as the top option, as shown below:
+In the search bar, search for **Continue**. Look for the extension published by "Continue Dev":
 
-image::code/roo_code.png[width="50%"]
+image::code/continue.png[width="50%"]
 
-Click **Install**
+Click **Install Release Version** on the Continue extension.
 
-image::code/install_roo.png[width="50%"]
+image::code/install_release_version.png[width="50%"]
 
-You may get another trust verification message. Select **Trust Publisher & Install**.
+You will get a trust verification message. Select **Trust Publisher & Install**.
+
+image::code/trust_continue.png[width="50%"]
 
 Once installed, click on the arrow next to `Uninstall -> Install Specific Version` as seen below. We are going to select a specific version to install since things move so quickly around here!
 
@@ -89,55 +93,77 @@ Click **Install Specific Version...**
 
 image::code/install_specific_version.png[width="50%"]
 
-You will see a drop-down appear with different versions. Please select **v3.25.6**.
+You will see a drop-down appear with different versions. Please select **v1.0.21**.
 
-Once done installing the proper version, click **Reload Window**
+Once installed, select "Reload Window" to restart the extension.
 
-You've now installed Roo - next, let's connect it to your private LLM.
+image::code/reload_window.png[width="50%"]
 
-== Step 3: Connect Roo to Your Granite Model
+You've now installed Continue - next, let's connect it to your private LLM.
 
-Navigate to the **Roo sidebar icon** in the left-hand side navigation panel:
+== Step 3: Connect Continue to Your Granite Model
 
-image::code/roo_sidebar.png[width="50%"]
+Navigate to the **Continue sidebar icon** in the left-hand side navigation panel:
+
+image::code/continue_sidebar.png[width="50%"]
 
 We will do two things in this module:
 
 1. Connect to our Granite model within our company's MaaS platform
-2. Use our model's "brain" to help us build a Kubernetes deployment
+2. Use our model's "brain" to help us understand and deploy a fun game, and then work on an impactful Kubernetes deployment.
 
-In order to connect our model to the Roo Code extension we must provide the extension our model's endpoint URL and API key from our MaaS application in the previous module.
+In order to connect our model to the Continue code extension we must provide the extension our model's endpoint URL and API key from our MaaS application in the previous module.
 
 NOTE: If needed, go back to the developer portal and the application created in the previous module to retrieve the credentials: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
 === Enter Connection Details
 
-*  API Provider field: **OpenAI Compatible** 
+Click on `Select Model` and then the small settings icon in the **Models** pop up.
 
-image::code/api_provider_roo.png[width="50%"]
+image::code/open_settings.png[width="50%"]
 
-*  Base URL: Endpoint URL from our MaaS application. **Add /v1 to the end of the URL.**
+This will open the `config.yaml` file. Delete the file contents and replace with the following:
 
-image::code/base_url.png[width="50%"]
+[source,yaml]
+----
+name: Local Assistant
+version: 1.0.0
+schema: v1
+models:
+  - name: Granite-3.2-8b-instruct
+    provider: openai
+    model: "ibm-granite/granite-3.2-8b-instruct"
+    apiBase: "https://granite-3dot2-8b-instruct-maas-apicast-production.apps.{openshift_cluster_ingress_domain}:443/v1"
+    apiKey: "YOUR_API_KEY"
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
+----
 
-*  API Key: The API Key from the MaaS application.
+IMPORTANT: Replace the `apiBase` URL with your actual MaaS endpoint URL and `YOUR_API_KEY` with the API key from your MaaS application. 
 
-image:code/api_key.png[width="50%"]
+For example:
 
-*  Model: Select the Granite model from the dropdown (this will populate after inputting the above URL and API Key information)
+* **apiBase**: `https://granite-model-maas.apps.example.com:443/v1` (Ensure you retain the `v1` at the end of the URL)
+* **apiKey**: `your-actual-api-key-here`
 
-image:code/model_name.png[width="50%"]
+Reference the complete configuration documentation here: https://docs.continue.dev/reference[Continue Documentation]
 
-*  Leave all other fields in their default positions. Select `Let's go!` at the bottom of the form.
+When the model is properly configured, you will see the model name, `Granite-3.2-8b-instruct` in the Continue chat sidebar.
 
-image:code/save_settings.png[width="50%"]
+image::code/model_dropdown.png[width="50%"]
 
 == You're Ready to Code with AI
 
 You've now:
 
 * Set up a cloud IDE
-* Connected to a private enterprise LLM
-* Installed an AI assistant that can refactor, edit and explain your code!
+* Installed Continue and configured it to connect to your private Granite model
+* Set up an AI assistant that can refactor, edit and explain your code!
 
-Next, you will use Roo to help you develop a little fun game to get warmed up. 
+Next, you will use Continue to help you develop a little fun game to get warmed up. 

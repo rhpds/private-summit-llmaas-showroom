@@ -1,11 +1,12 @@
 :imagesdir: ../assets/images
 [#code-deployment]
 = Building and Deploying an MCP Server
+
 In the last module, you built and ran a fun application using our MaaS model endpoint to power an agentic AI code extension.
 
 Now, we'll take the next step: building and deploying tooling that teaches our model how to understand interact with real-world systems.
 
-Your task: deploy a Model Context Protocol (MCP) server that lets your model interact with your company's Slack workspace.
+Your task: deploy a **Model Context Protocol (MCP)** server that lets your model interact with your company's Slack workspace.
 
 This is your chance to shape how AI applications are actually built, tested, and deployed — not just in theory, but as part of a larger, evolving platform.
 
@@ -18,14 +19,14 @@ Think of MCP servers as plugins for AI. They give you model safe, governed acces
 
 == Why Deploy MCP on OpenShift AI?
 
-* Security and Governance: Namespaces, RBAC, and network policies keep tools isolated and controlled.
-* Hybrid cloud: Consisten deployment across on-prem, cloud or both.
-* Observability: See exactly what ran, where and when.
-* Scalability: Roll from a demo pod to a fleet when the use case proves out.
+* **Security and Governance**: Namespaces, RBAC, and network policies keep tools isolated and controlled.
+* **Hybrid cloud**: Consisten deployment across on-prem, cloud or both.
+* **Observability**: See exactly what ran, where and when.
+* **Scalability**: Roll from a demo pod to a fleet when the use case proves out.
 
 Takeaway: The right AI platform choice determines whether "AI with tools" is a one-off demo or a repeatable, secure enterprise capability. 
 
-== Explore the Deployment with Roo
+== Explore the Deployment with Continue
 
 Open the `llama-stack-on-ocp` -> `slack-mcp` folder. 
 
@@ -37,30 +38,26 @@ image:code/slack-mcp-folder.png[width="50%"]
 
 image:code/slack_deployment_file.png[width="50%"]
 
-* Highlight the entire file and right-click. Select "Add To Context".
+* Highlight the entire file and right-click. Select "Add Highlighted Code to Context".
 
 image:code/right-click-popup.png[width="50%"]
 
-You may explore the Roo shortcuts however you'd like. The selected text will be sent to the chat interface of the Roo extension. 
+You may explore the Continue shortcuts however you'd like as we did in the last exercise. The selected text will be sent to the chat interface of the Continue extension. 
 
-* At the end of the chat window, add the following:
+* In the chat window, add the following:
 
 [source,text,role="execute"]
 ----
-Explain the code, do not ask me questions.
+Explain this code.
 ----
-
-* Ensure the AI mode is set to `Ask`, as seen below:
 
 image:code/explain_code.png[width="50%"]
 
-* Send Message
+* Press `Enter` to send the message.
 
-image:code/sendmsg.png[width="50%"]
+* You may repeat this action with each file in the slack-mcp folder. 
 
-// == Add comments 
-
-// == Add a README.md file
+* Read the README.md file to understand the deployment a bit better and the tools available.
 
 == Deploy the Slack MCP Server
 
@@ -73,7 +70,7 @@ oc apply -k /projects/llama-stack-on-ocp/slack-mcp/ -n lls-demo
 
 This will create the mcp server deployment and service.
 
-image:code/successful_deploy.png[width="50%"]
+image:code/successful_deploy.png[width="75%"]
 
 == Verify successful deployment
 
@@ -84,7 +81,9 @@ image:code/successful_deploy.png[width="50%"]
 oc get pods -n lls-demo
 ----
 
-This will show all pods in the namespace within which we just deployed our slack mcp server. You should see our `slack-mcp-server` pod up and running.
+This will show all pods in the namespace within which we just deployed our slack mcp server. You should see our `slack-mcp-server` pod up and running, or in the process of starting:
+
+image::code/mcp_status.png[width="75%"]
 
 == Wrap Up: What You Did
 

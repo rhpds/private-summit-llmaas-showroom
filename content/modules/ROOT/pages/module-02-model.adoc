@@ -110,7 +110,9 @@ This connection links to a MinIO S3-compatible object storage holding model arti
 [.bordershadow]
 image::02/02-models-connection-details.png[width="50%"]
 
-Exit out of the `Edit` view.
+Exit out of the `Edit` view by clicking `Cancel` or the `X` in the top right corner.
+
+image::02/02-exit-connection-edit.png[width="50%"]
 
 **Why does this matter?**
 
@@ -120,9 +122,11 @@ As a platform engineer, you want to securely connect runtimes to data without ex
 
 Let's inspect the storage bucket.
 
-1. Open the `Workbench` tab in the data science project.
+1. Open the `Workbenches` tab in the data science project.
++
+image::02/02-workbench-tab.png[width="50%"]
++
 2. Click the link to launch the `ODH-TEC` environment.
-
 
 [.bordershadow]
 image::02/02-odh-tec-open.png[width="50%"]

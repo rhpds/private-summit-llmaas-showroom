@@ -2,7 +2,7 @@
 [#agentic-ai]
 = System Administration with Agentic AI 
 
-In the last module, you stepped into the developer role building applications using private LLM endpoints. Now, you'll become a site reliability engineer (SRE) or DevOps practitioner focused on observability, diagnostics, and operational scale. 
+In the last module, you stepped into the developer role building applications using private LLM endpoints. Now, you'll become a **site reliability engineer (SRE) or DevOps practitioner** focused on observability, diagnostics, and operational scale. 
 
 But you won't go at it alone, you'll work with agentic AI tooling to navigate your OpenShift environment in real time - just like a modern SRE team building insight-driven automation.
 
@@ -41,7 +41,7 @@ IMPORTANT: You could also use frameworks like LangChain or CrewAI instead of Lla
 
 == Connect Your Model to LlamaStack
 
-If you did not save your MaaS application URL, navigate back to the 3Scale developer portal to grab it:
+If you did not save your MaaS model endpointURL, navigate back to the 3Scale developer portal to grab it:
 
 Developer Portal: https://maas.{openshift_cluster_ingress_domain}[https://maas.{openshift_cluster_ingress_domain},window=_blank].
 
@@ -59,17 +59,21 @@ image:llama/api_explorer.png[width="50%"]
 
 image:llama/llamastackdistribution.png[width="50%"]
 
+* Ensure you are in the right project. Type `lls-demo` in the project search bar.
+
+image::llama/lls-project.png[width="50%"]
+
 * Select `Instances` and the available instance.
 
 image:llama/llamastackinstance.png[width="50%"]
 
 * Select `YAML` and scroll down to the highlighted section of text.
 
-image:llama/lsd_yaml.png[width="50%"]
+image:llama/lsd_yaml.png[width="75%"]
 
 * In place of the existing Granite URL, input your endpoint URL from the 3scale developer portal. Ensure `/v1` is appended to the string.
 
-image:llama/maas_endpoint.png[width="50%"]
+image:llama/maas_endpoint.png[width="75%"]
 
 * Click save
 
@@ -83,9 +87,15 @@ image:llama/save_yaml.png[width="50%"]
 
 image:llama/configmap-nav.png[width="50%"]
 
+* Find our `llama-stack-config`
+
+image::llama/lls_config.png[width="50%"]
+
 * Click on the `yaml` tab.
 
-* Add the following to the end of llama-stack-config ConfigMap in the `tool_groups` section:
+image::llama/yaml-tab.png[width="50%"]
+
+* Add the following to the end of llama-stack-config `ConfigMap` in the `tool_groups` section:
 
 [source,console,role=execute,subs=attributes+]
 ----
@@ -97,15 +107,17 @@ image:llama/configmap-nav.png[width="50%"]
 
 image:llama/configmap_tool.png[width="50%"]
 
-* Click "Save"
+Ensure the tab indentations match the example above.
+
+* Click `Save` to persist the changes.
 
 == View Your Deployment
 
-* Select the `Developer` perspective.
+* Now, select the `Developer` perspective.
 
 image:llama/dev_perspective.png[width="50%"]
 
-* Search for the `lls-demo` namespace
+* In case you are not in the specific project, earch for the `lls-demo` namespace
 
 image:llama/find-namespace.png[width="50%"]
 
@@ -136,41 +148,41 @@ image::llama/model_selection.png[width="50%"]
 
 image::llama/agent_selection.png[width="50%"]
 
-* Enable the OpenShift MCP tool group.
+* Enable the OpenShift MCP and Slack MCP tool groups.
 
-image::llama/mcp_server.png[width="50%"]
+image::llama/mcp_servers.png[width="50%"]
 
 * Once the MCP server is selected, you can peruse the active tools available.
 
 image:llama/active_tools.png[width="50%"]
 
-Everything else can remain with the default settings. You can now query live cluster data using plain English.
+Everything else can remain with the default settings.
 
-== Try It Out
+== Investigate our OpenShift Resources
 
 The active tools information will give you guidance into how to interact with the model in chat to activate the tool calls correctly.
 
-NOTE: Our LlamaStack deployment is namespace-scoped. Therefore, in this activity, we will only be able to interact with the resources within the `lls-demo` namespace containing the LlamaStack server and playground.
+NOTE: Our LlamaStack deployment is namespace-scoped. Therefore, in this activity, we will only be able to interact with the OpenShift resources within the `lls-demo` namespace containing the LlamaStack server and playground.
 
 In the chat, enter:
 
 [source,console,role=execute,subs=attributes+]
 ----
-Get pods in the lls-demo namespace
+List all pods in the lls-demo namespace
 ----
 
-Try a few more:
+Let's try something else:
 
 [source,console,role=execute,subs=attributes+]
 ----
-Get deployment resources in lls-demo namespace
+Get logs for the slack-mcp-server pod.
 ----
 
 Feel free to experiment!
 
 NOTE: The provided MCP server is experimental for demo purposes. Some responses may be incomplete or inconsistent, and the model may hallucinate or misinterpret results if the tool output is vague or malformed. The demonstration is meant to highlight the potential of natural language interfaces for interacting with infrastructure, and how emerging tools like LlamaStack and MCP can reduce the barrier to entry for understanding system behavior and save valuable time and effort.
 
-=== Query Slack Workspace
+=== Post a Message to our Slack Workspace
 
 With our Slack MCP Server connected to LlamaStack, we can extend our agentic AI experience beyond Kubernetes and into team collaboration tools (among many other possibilities).
 
@@ -191,13 +203,20 @@ In the LlamaStack Playground chat interface, type:
 List all Slack channels in our Slack workspace
 ----
 
+Now, let's post a message to our Slack workspace:
+
+[source,console,role=execute,subs=attributes+]
+----
+Post the slack-mcp-server pod logs to the #all-summit-connect-2025 channel. Add "Hi from <insert-event-city-name>" to the beginning of the message.
+----
+
 === Add Responsible AI Shields
 
 To enforce guardrails on inputs and outputs, select the **Llama Guard** model under the `Input Shields` and `Output Shields` form fields:
 
 image::llama/guards.png[width="50%"]
 
-This helps to filter inappropriate prompts and responses.
+This helps to filter inappropriate prompts and responses. Test it out!
 
 == Summary: What You Did
 
@@ -206,6 +225,7 @@ In this module, you:
 * Acted as an SRE or DevOps practitioner using AI for cluster resource insight
 * Integrated your own LLM with a tool-using agent.
 * Explored OpenShift resources with natural language
+* Interacted with a Slack workspace using natural language
 * Added AI guardrails with input/output shields.
 
 You just used AI to reduce operational complexity and speed up workflows! 

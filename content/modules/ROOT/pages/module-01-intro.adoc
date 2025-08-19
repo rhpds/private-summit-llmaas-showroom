@@ -7,11 +7,11 @@
 
 As a **platform engineer**, you may inherit clusters filled with GPU nodes and eager teams. But when infrastructure is self-service with no clear guardrails in place, problems can quickly emerge:
 
-- Very few people know how to request or size GPU resources correctly
-- Teams duplicate work by deploying their own models repeatedly
-- Expensive GPUs sit idle or overloaded
-- Overall infrastructure costs spiral with no accountability
-- Most people just need model access - not to manage their own GPUs.
+- Teams struggle to correctly request and size GPU resources
+- Multiple teams may deploy identical models, duplicating effort
+- Expensive GPUs remain idle or become overloaded
+- Infrastructure costs escalate without clear accountability
+- Developers need model access, not GPU management complexity
 
 [.bordershadow]
 image::02/iaas.png[width="50%"]
@@ -20,25 +20,38 @@ image::02/iaas.png[width="50%"]
 
 To address these challenges as a platform engineer, you will design a centralized, reusable, and secure model-serving layer:
 
-* Models are deployed and maintained by platform teams
-** Lifecycle managed: versioning, rollback, testing
-* Served through an API Gateway
-** Authenticated, rate-limited, observable
-* Developers consume the models without touching hardware
-** Build apps, agents, or features - powered by AI
-* Resources are pooled and shared
-** Avoid waste, ensure fairness and reduce cost
+**Centralized Model Management**
+
+* Platform teams deploy and maintain models with proper lifecycle management
+* Versioning, rollbacks, and testing become standardized processes
+
+**Secure API Gateway**
+
+* All model access goes through authenticated, rate-limited endpoints
+* Full observability and monitoring across all model interactions
+
+**Developer-Friendly Access**
+
+* Developers consume models without managing underlying hardware
+* Teams focus on building applications, agents, and features powered by AI
+
+**Efficient Resource Utilization**
+
+* GPU resources are pooled and shared across the organization
+* Eliminates waste while ensuring fair access and cost control
 
 [.bordershadow]
 image::02/maas.png[width="50%"]
 
-== Module 1 Goals: Step into the role of the platform engineer
+== Module 1 Goals: Step into the Platform Engineer Role
 
 In this first module, you will take your first step into the role of a platform engineer enabling Generative AI at scale.
 
-You will:
+**What You'll Accomplish:**
 
-* Explore the architecture of OpenShift AI and how it supports enterprise model serving
-* Configure an API Gateway to expose the model endpoint securely to end users
+* Explore OpenShift AI architecture and its enterprise model-serving capabilities
+* Configure an API Gateway to securely expose model endpoints to end users
 
-By the end, you will understand how to transform raw infrastructure into a scalable, manageable Model-as-a-Service (MaaS) foundation that others in your organization can build on.
+**Your Learning Outcome:**
+
+By completing this module, you'll understand how to transform raw GPU infrastructure into a scalable, manageable Model-as-a-Service foundation. This platform will serve as the cornerstone for AI-powered applications across your organization.
