@@ -106,7 +106,6 @@ image::02/02-models-connection-edit.png[width="50%"]
 
 This connection links to a MinIO S3-compatible object storage holding model artifacts. Parameters like `Access Key`, `Secret Key`, `Bucket`, and `Endpoint` are injected automatically into your environment - no hardcoding required. 
 
-
 [.bordershadow]
 image::02/02-models-connection-details.png[width="50%"]
 

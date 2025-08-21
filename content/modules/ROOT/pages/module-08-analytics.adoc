@@ -51,6 +51,8 @@ As a developer, you can view the statistics of your applications and monitor the
 
 This helps you monitor how your AI service is actually being used by your teams.
 
+NOTE: You will not see the LlamaStack usage metrics here due to the configuration of this workshop. You will see the metrics from the code assistant activities.
+
 == Summary: Analytics as a Strategy Tool
 
 Usage metrics aren't just operational, they inform:

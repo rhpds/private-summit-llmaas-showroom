@@ -132,7 +132,7 @@ schema: v1
 models:
   - name: Granite-3.2-8b-instruct
     provider: openai
-    model: "ibm-granite/granite-3.2-8b-instruct"
+    model: "granite-3dot2-8b-instruct"
     apiBase: "https://granite-3dot2-8b-instruct-maas-apicast-production.apps.{openshift_cluster_ingress_domain}:443/v1"
     apiKey: "YOUR_API_KEY"
 context:
