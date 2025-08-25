@@ -2,7 +2,7 @@
 [#model-analytics]
 = Usage Analytics and Reporting
 
-In this module, you're stepping into the role of a technical decision maker or platform stakeholder - someone responsible not just for building AI services, but for understanding their business impact.
+In this module, you're stepping into the role of a **technical decision maker** - someone responsible not just for building AI services, but for understanding their business impact.
 
 You've deployed, exposed, and consumed a model. Now it's time to ask:
 
@@ -10,7 +10,7 @@ You've deployed, exposed, and consumed a model. Now it's time to ask:
 * Who's using it the most?
 * What's the cost and what's the return?
 
-Let's walk through how to leverage 3scale API analytics and platform level observability to answer those questions.
+Let's walk through how to leverage our API Gateway analytics to answer those questions.
 
 == Why This Matters
 
@@ -35,7 +35,7 @@ This insight enables:
 
 * Go to your 3Scale Developer Portal dashboard:
 
-https://maas.apps.{openshift_cluster_ingress_domain}/[https://maas.apps.{openshift_cluster_ingress_domain}/]
+https://maas.{openshift_cluster_ingress_domain}/[https://maas.{openshift_cluster_ingress_domain}/]
 
 * Click on the `Statistics` tab at the top.
 +

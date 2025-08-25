@@ -12,10 +12,10 @@ This is your chance to shape how AI applications are actually built, tested, and
 
 == What's an MCP Server? (The Plain-English version)
 
-Think of MCP servers as plugins for AI. They give you model safe, governed access to things like databases, internal applications, or company Slack instances.
+Think of MCP servers as plugins for AI. They give your model safe, governed access to things like databases, internal applications, or company Slack instances.
 
-* Without MCP: the model can only talk.
-* With MCP: the model can act-fetch info or take approved actions-under platform controls.
+* **Without MCP**: the model can only talk.
+* **With MCP**: the model can act-fetch info or take approved actions-under platform controls.
 
 == Why Deploy MCP on OpenShift AI?
 
@@ -48,16 +48,18 @@ You may explore the Continue shortcuts however you'd like as we did in the last 
 
 [source,text,role="execute"]
 ----
-Explain this code.
+Explain this code in simple terms.
 ----
 
 image:code/explain_code.png[width="50%"]
 
 * Press `Enter` to send the message.
 
-* You may repeat this action with each file in the slack-mcp folder. 
+* You may repeat this action with each file in the slack-mcp folder or specific sections of the code. 
 
 * Read the README.md file to understand the deployment a bit better and the tools available.
+
+IMPORTANT: Do not edit any of the code. It is in working order. If you do make changes, let us know and we can help you revert them if you are unsure how.
 
 == Deploy the Slack MCP Server
 

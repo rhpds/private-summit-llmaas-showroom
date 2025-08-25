@@ -2,9 +2,9 @@
 [#agentic-ai]
 = System Administration with Agentic AI 
 
-In the last module, you stepped into the developer role building applications using private LLM endpoints. Now, you'll become a **site reliability engineer (SRE) or DevOps practitioner** focused on observability, diagnostics, and operational scale. 
+In the last module, you stepped into the developer role building applications using private LLM endpoints. Now, you'll become a **DevOps engineer** focused on observability, diagnostics, and operational scale. 
 
-But you won't go at it alone, you'll work with agentic AI tooling to navigate your OpenShift environment in real time - just like a modern SRE team building insight-driven automation.
+But you won't go at it alone, you'll work with agentic AI tooling to navigate your OpenShift environment in real time - just like a modern DevOps team building insight-driven automation.
 
 == Why Agentic AI for Admins?
 
@@ -26,14 +26,14 @@ That's an example of the power of agentic AI.
 
 In this module, we'll use a preconfigured stack that includes:
 
-* **https://github.com/meta-llama/llama-stack[LlamaStack]** - a flexible open-source framework developed by Meta to simplify the creation and deployment of advanced AI applications.
+* **https://github.com/meta-llama/llama-stack[Llama Stack]** - a flexible open-source framework developed by Meta to simplify the creation and deployment of advanced AI applications.
 ** LlamaStack provides a unified API layer for inference, RAG, agents, tools, safety, evals and telemetry.
 ** **Why It Matters for Enterprises**:
 *** Codifies best practices across Gen AI tools
 *** Enables reproducible, explainable, and extensible AI workflows
 *** In short, it lets you focus on value creation, not toolchain assembly.
 
-IMPORTANT: You could also use frameworks like LangChain or CrewAI instead of LlamaStack with OpenShift AI. All of these tools help you build agentic AI workflows with reasoning, tool use, and orchestration. LlamaStack is Red Hat's recommended, and supported, framework.
+// IMPORTANT: You could also use frameworks like LangChain or CrewAI instead of LlamaStack with OpenShift AI. All of these tools help you build agentic AI workflows with reasoning, tool use, and orchestration. LlamaStack is Red Hat's recommended, and supported, framework.
 
 * **OpenShift MCP Server**  - allows our LLM agent to interact with our live OpenShift cluster. This MCP server is namespace-scoped. We will use it to interact with the OpenShift resources within the `lls-demo` namespace.
 
@@ -43,7 +43,7 @@ IMPORTANT: You could also use frameworks like LangChain or CrewAI instead of Lla
 
 == Tying it Back to our MaaS Model Endpoint
 
-You can connect your LlamaStack server deployment to any model endpoint you desire. For our purposes of this workshop, this is already configured for us. 
+You can connect your Llama Stack server deployment to any model endpoint you desire, like our MaaS model endpoint configured and utilized in the previous modules. For the purposes of this workshop, this is already configured for us. 
 
 // == Connect Your Model to LlamaStack
 
@@ -131,6 +131,8 @@ image:llama/dev_perspective.png[width="50%"]
 
 image:llama/find-namespace.png[width="50%"]
 
+* Select the `Topology` tab in the navigation bar as seen above.
+
 In the Topology view, you will see four pods:
 
 * **LlamaStack**: core server.
@@ -146,7 +148,7 @@ Feel free to poke around and explore the deployment.
 
 image:llama/playground_link.png[width="50%"]
 
-Now you will see the "playground" user interface. This application was created in the upstream project for the purposes of demonstration and experimentation and is not a supported component of our downstream OpenShift AI product.
+Now you will see the "playground" user interface. This application was created in the upstream project for the purposes of demonstration and experimentation and is **not** a supported component of our downstream OpenShift AI product.
 
 image::llama/playground_ui.png[width="75%"]
 
@@ -159,7 +161,7 @@ Within the application you'll find a familiar chat interface with some selection
 [.bordershadow]
 image::llama/model_selection.png[width="50%"]
 
-* Set `Processing mode` -> `Agent-based`, giving us access to tools.
+* Set `Processing mode` -> `Agent-based`, giving us access to the tools we have configured via the MCP servers.
 
 image::llama/agent_selection.png[width="50%"]
 
@@ -197,7 +199,7 @@ Let's try something else:
 Get logs for the <ocp-mcp-server-pod-name> pod in the lls-demo namespace.
 ----
 
-NOTE: You will need to replace the `<ocp-mcp-server-pod-name>` with the actual pod name. You can find the pod name from the response to the list all pods prompt.
+IMPORTANT: You will need to replace the `<ocp-mcp-server-pod-name>` with the actual pod name. You can find the pod name from the response to the `list all pods` prompt.
 
 You will again see that the associate tool is activated, and the model will then generate a response from the context provided by the tool call.
 
@@ -207,7 +209,7 @@ NOTE: We are using a small model, which is not optimal for agentic AI performanc
 
 === Post a Message to our Slack Workspace
 
-With our Slack MCP Server connected to LlamaStack, we can extend our agentic AI experience beyond Kubernetes and into team collaboration tools (among many other possibilities!).
+With our Slack MCP Server connected to Llama Stack, we can extend our agentic AI experience beyond Kubernetes and into team collaboration tools (among many other possibilities!).
 
 This MCP server bridges your AI agent with a Slack workspace to fetch approved data.
 
@@ -217,11 +219,9 @@ This MCP server bridges your AI agent with a Slack workspace to fetch approved d
 
 * By giving your AI visibility into Slack, you can use natural language to check team communication spaces without switching tools.
 
-* This is a safe, read-only example — no messages are read or posted in this activity.
-
 ==== Activate the Slack MCP Server
 
-In the left-hand menu, select the `Slack MCP Server` tool group. You may keep the OpenShift MCP Server enabled as well or deactivate it. 
+In the left-hand menu, select the `Slack MCP Server` tool group. This will clear the current chat. You may keep the OpenShift MCP Server enabled as well or deactivate it. 
 
 image::llama/mcp_servers_2nd.png[width="50%"]
 
@@ -234,18 +234,20 @@ NOTE: If you experience hallucinations with both MCP servers enabled or after a 
 List all Slack channels in our Slack workspace.
 ----
 
-Now, let's post a message to our Slack workspace:
+Now, let's post a message to our Slack workspace.
+
+NOTE: Substitute `<insert-event-city-name>` with the city name of the event you are attending! Or write whatever appropriate message you fancy to our channel.
 
 [source,console,role=execute,subs=attributes+]
 ----
 Post a message to the #all-summit-connect-2025 channel: "Hi from <insert-event-city-name>".
 ----
 
-==== Send logs to Slack
+=== Send logs to Slack
 
 Now, let's try out a very real use case for this! It may not be done through a chat UI like this, but it's a good example of how you can use agentic AI to help you with your work. In a production environment, you would likely use a more robust automation to send logs or other information from your OpenShift cluster to Slack.
 
-Remember your role! You are an SRE or DevOps practitioner. Let's send the logs for the ocp-mcp-server pod to the #all-summit-connect-2025 channel.
+Remember your role! You are a DevOps engineer. Let's send the logs for the ocp-mcp-server pod to the #all-summit-connect-2025 channel.
 
 If you do not have both MCP servers enabled, make sure they are now.
 
@@ -262,7 +264,7 @@ Now, in a second message, post the logs to the #all-summit-connect-2025 channel:
 
 [source,console,role=execute,subs=attributes+]
 ----
-Post this log information to the #all-summit-connect-2025 slack workspacechannel.
+Post this log information to the #all-summit-connect-2025 slack workspace channel.
 ----
 
 Expected output should look something like this:

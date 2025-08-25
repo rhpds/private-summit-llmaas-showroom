@@ -34,16 +34,16 @@ oc get secret system-seed -n 3scale -o template='{{range $key, $value := .data}}
 
 == 3Scale Developer Portal
 
-https://maas.apps.{openshift_cluster_ingress_domain}/[https://maas.apps.{openshift_cluster_ingress_domain}/]
+https://maas.{openshift_cluster_ingress_domain}/[https://maas.{openshift_cluster_ingress_domain}/]
 
 == OpenShift Dev Spaces
 
-https://devspaces.{openshift_cluster_ingress_domain}/[https://devspaces.apps.{openshift_cluster_ingress_domain}]
+https://devspaces.{openshift_cluster_ingress_domain}/[https://devspaces.{openshift_cluster_ingress_domain}]
 
-== OpenShift Dev Spaces Workspace
+// == OpenShift Dev Spaces Workspace
 
-https://devspaces.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/[https://devspaces.apps.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/]
+// https://devspaces.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/[https://devspaces.{openshift_cluster_ingress_domain}/dashboard/#/ide/devworkspaces/llmaas/]
 
 == LlamaStack Playground
 
-https://llama-stack-playground-lls-demo.{openshift_cluster_ingress_domain}/[https://llama-stack-playground-lls-demo.apps.{openshift_cluster_ingress_domain}/]
+https://llama-stack-playground-lls-demo.{openshift_cluster_ingress_domain}/[https://llama-stack-playground-lls-demo.{openshift_cluster_ingress_domain}/]

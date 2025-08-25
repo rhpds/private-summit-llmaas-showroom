@@ -3,7 +3,7 @@
 [#code-game]
 = Game Time
 
-You're still the developer. Now that your AI assistant is wired up, it's time to get your hands dirty - by building a simple game using Continue's help. In this module, you're not solving a business-critical problem… yet! You're exploring, experimenting, and building confidence with AI-assisted coding through something fun: a simple game.
+You're still the developer. Now that your AI assistant is wired up, it's time to get your hands dirty - by building a simple game using Continue's help. In this module, you're not solving a business-critical problem… **yet**! You're exploring, experimenting, and building confidence with AI-assisted coding through something fun: a simple game.
 
 == Choose a Game to Build
 
@@ -23,17 +23,17 @@ image:code/game_starters.png[width="50%"]
 
 Open the game file of your preference, in the language of your choice.
 
-The top half of the file includes working game code. The bottom half of the file includes instructions as comments to extend the game application. 
+The files in the `game_starters` folder include instructions as comments to build and extend the game application using our Continue AI assistant!
 
 == Use Continue to Build and Enhance
 
 Once you have opened the file you wish to work on, click the `Continue` extension tab again on the left-hand side of the VS Code window. You may toggle between the `Explorer` and `Continue` tabs as you need.
 
-image::code/toggle_sidebar.png[width="10%"]
+image::code/toggle_sidebar.png[width="50%"]
 
 === How to Use Continue
 
-You may use the chat interface function to ask any questions about your code. To interact directly with the code itself, you will need to `highlight` and `right-click` on whatever parts of the code you'd like to work on. When you right-click, you will then click on `Continue` in the pop-up menu:
+You may use the chat interface function to ask any questions about your code or to input the suggested chat prompts from your starter files. To interact directly with the code itself, you will need to `highlight` and `right-click` on whatever parts of the code you'd like to work on. When you right-click, you will then click on `Continue` in the pop-up menu:
 
 image::code/continue_popup.png[width="50%"]
 
@@ -55,11 +55,23 @@ Follow the guidance in the file comments, or ask your own questions - this is yo
 
 IMPORTANT: Ensure any text that does not contribute to the game code stays as a comment. 
 
+=== Begin Building Your Game
+
+Your `game_starter` files are designed to be a starting point for you to build your game. All of the files begin with a **"Start by asking Continue's chat"** suggested prompt to input into your chat interface. This will give you a starting file to build from.
+
+NOTE: Once you have this starting file, **copy/paste** the content from the chatbot into the game file. Ensure the game content is not commented out and that the comments that do not contribute to the game code are properly commented out.
+
+image::code/example-game-file.png[width="75%"]
+
+Follow the guidance in the file comments, or ask your own questions - this is your playground!
+
 == Run (and Play) Your Game
 
 Once complete, save your file(s) that you wish to test.
 
-We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` from the hamburger menu in the navigation bar of the VSCode app. Or you may press kbd:[CTRL] + kbd:[`].
+We will use the Terminal capability within VSCode to test our applications. To open a terminal session navigate to `Terminal` -> `New Terminal` from the hamburger menu in the navigation bar of the VSCode app. Or you may press `CTRL` + ```.
+
+image::code/new-terminal.png[width="75%"]
 
 Navigate to the file's folder:
 
@@ -67,7 +79,7 @@ Example [substitute the correct path to your file]
 
 [source,console]
 ----
-cd /home/dev/rhone_code/game_templates/rock_paper_scissors/
+cd /projects/llama-stack-on-ocp/fun-and-games/game_starters/rock_paper_scissors/rock_paper_scissors.py
 ----
 
 Follow the instructions for the right code language:
@@ -105,7 +117,7 @@ Run the following command (substitute your filename):
 
 * Make sure you’re in the correct directory (ls to list files)
 
-* For .sh files, try `bash yourfile.sh` if ``./yourfile.sh` doesn't work.
+* For .sh files, try `bash yourfile.sh` if `./yourfile.sh` doesn't work.
 
 **Other error or application isn't working as expected**:
 
