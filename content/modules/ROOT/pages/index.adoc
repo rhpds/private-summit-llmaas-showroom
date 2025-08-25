@@ -11,7 +11,9 @@ In this hands-on session, you will rotate between key personas critical to deliv
 
 * As a **platform engineer** you will design and deploy model serving environments and prepare the infrastructure that makes scalable model hosting possible.
 
-* As an **AI application developer**, you will connect real applications to private LLM endpoints, integrate code assistant technology and explore the capabilities of agentic AI.
+* As an **AI application developer**, you will connect real applications to private LLM endpoints, integrate code assistant technology to build and deploy fun, and real-world, applications.
+
+* As a **DevOps Practitioner**, you will then explore the capabilities of agentic AI to monitor your OpenShift cluster resources.
 
 * Lastly, as an **technical decision maker**, you will see how to monitor and analyze your model usage across the cluster. 
 

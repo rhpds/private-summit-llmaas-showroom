@@ -36,7 +36,7 @@ image::02/02-01-login1.png[width="50%"]
 * After you authenticate, your browser window should look like:
 +
 [.bordershadow]
-image::02/02-01-rhoai-front-page.png[width="50%"]
+image::02/02-01-rhoai-front-page.png[width="75%"]
 
 You're now inside the control panel that data scientists and ML engineers use daily. Let's explore what's under the hood.
 
@@ -45,25 +45,24 @@ You're now inside the control panel that data scientists and ML engineers use da
 
 Think of this as your toolbox. Each component maps to a key responsibility in operating an enterprise-ready AI platform.
 
-* As you are cluster admin, you currently see many projects. The one we will be using in the workshop is the `LLM Host` project. To access it, click on `Go to Data Science Projects` at the bottom of the Data Science Projects sections.
-+
+* As you are cluster admin, you currently see many projects. The one we will be using in the workshop is the `LLM Host` project. To access it, click on `Go to Data Science Projects` at the bottom of the Data Science Projects section.
+
 [.bordershadow]
 image::02/02-got-to-dsp.png[width="50%"]
 
-* In the list of projects, you should see the `LLM Host` project. Click on it to access the project.
-+
-[.bordershadow]
-image::02/02-LLM-Host-project.png[width="50%"]
+* In search filter type in `LLM Host` to find the LLM Host project. Click to access the project.
+
+image::02/search-llm-host.png[width="50%"]
 
 [.bordershadow]
 image::02/02-project-tabs.png[width="50%"]
 
 Once inside the project, explore the tabs across the top. Here's a quick rundown:
 
-* **Workbench**: Where you can create and manage various development environments like JupyterLab, VSCode, or other custom Workbenches. It provides a user-friendly interface for data scientists to work with notebooks, libraries, and datasets.
-* **Pipelines**: We won't use Pipelines in this workshop, but you can use them to automate the process of processing data or training and deploying machine learning models.
+* **Workbenches**: Where you can create and manage various development environments like JupyterLab, VSCode, or other custom Workbenches. It provides a user-friendly interface for data scientists to work with notebooks, libraries, and datasets.
+* **Pipelines**: You may use pipelines to automate the process of processing data or training and deploying machine learning models.
 * **Models**: Where you can manage and deploy machine learning models. You can create, update, and delete models, as well as monitor their performance and usage.
-* **Cluster storage**: Here you can manage the storage resources used by your models and workbenches. You can create, update, and delete storage resources, as well as monitor their usage. At the moment you can see the storage used by the workbench we deployed.
+* **Cluster storage**: Here you can manage the storage resources used by your models and workbenches. You can create, update, and delete storage resources, as well as monitor their usage.
 * **Connections**: This is where you can manage the connections between your workbenches or model runtimes and other services, such as storage (S3), databases or APIs. You can create, update, and delete connections, as well as see which environment is using them.
 * **Permissions**: This is where you can manage the permissions for project. You can create, update, and delete permissions, as well as see which users or groups have access to which resources.
 
@@ -75,15 +74,15 @@ You're not going to build from scratch just yet. You're here to learn how a work
 Step into the `Models` tab:
 
 [.bordershadow]
-image::02/02-granite-model-overview.png[width="50%"]
+image::02/02-granite-model-overview.png[width="75%"]
 
-Here you'll find the `Granite-3.2` model already deployed. This model is designed to generate human-like text and can be used for various natural language processing tasks.
+Here you'll find the `Granite` model already deployed. This model is designed to generate human-like text and can be used for various natural language processing tasks.
 
 
 * Click on the expand button at the left of the model to see more information about its configuration, such as the resources allocated to it.
 +
 [.bordershadow]
-image::02/02-granite-details.png[width="50%"]
+image::02/02-granite-details.png[width="75%"]
 
 * If you click on `Internal endpoint details`, you will see the different endpoints available for the model.
 +
@@ -94,20 +93,22 @@ The model is **internal-only**, perfect for protected inference behind a gateway
 
 === Reviewing the Connection
 
-Next, switch to the `Connections` tab. You will see two connections.
+Next, switch to the `Connections` tab. You will see three connections. We will focus on the first two for `granite-3.2-8b-instruct` and `llama-guard-3-1b` with URI connections.
 
 [.bordershadow]
-image::02/02-connections-models-overview.png[width="50%"]
+image::02/02-connections-models-overview.png[width="75%"]
 
-Let's take a look at the `models` configuration. Click on the three dots on the right of the connection and select `Edit`.
+Let's take a look at the `granite-3.2-8b-instruct` configuration. Click on the three dots on the right of the connection and select `Edit`.
 
 [.bordershadow]
-image::02/02-models-connection-edit.png[width="50%"]
+image::02/02-models-connection-edit.png[width="75%"]
 
-This connection links to a MinIO S3-compatible object storage holding model artifacts. Parameters like `Access Key`, `Secret Key`, `Bucket`, and `Endpoint` are injected automatically into your environment - no hardcoding required. 
+This connection links to a model that we will be using in our environment. Think of it like telling the system "here's where my model lives, and here's what I want to call it inside this platform". 
 
 [.bordershadow]
 image::02/02-models-connection-details.png[width="50%"]
+
+NOTE: We are using a model car image for both the **Granite** and **Llama Guard** models. A model car is like a container image for AI models. It packages the model weights, plus everything else needed to run the model reliably. By using this image from quay, we can easily pull down and deploy Granite without the need for extra setup. You may also point to internal storage or an internal container registry instead of the Quay.io location.
 
 Exit out of the `Edit` view by clicking `Cancel` or the `X` in the top right corner.
 
@@ -115,38 +116,14 @@ image::02/02-exit-connection-edit.png[width="50%"]
 
 **Why does this matter?**
 
-As a platform engineer, you want to securely connect runtimes to data without expsoing secrets or rewriting config files every time.
-
-=== Reviewing the Model Files with ODH-TEC
-
-Let's inspect the storage bucket.
-
-1. Open the `Workbenches` tab in the data science project.
-+
-image::02/02-workbench-tab.png[width="50%"]
-+
-2. Click the link to launch the `ODH-TEC` environment.
-
-[.bordershadow]
-image::02/02-odh-tec-open.png[width="50%"]
-
-This will open a new tab. After logging in and accepting the license, you will access `ODH-TEC`. It is a simple tool used to manage and view S3 storage. 
-
-Once inside, you will see a simple S3 objects browser already pointed at the `models` connection.
-
-
-[.bordershadow]
-image::02/02-odh-tec.png[width="50%"]
-
-// TODO: remove TinyLlama from storage
-You will see the Granite model that you will work with for the remainder of the workshop. Feel free to explore the bucket and folders, then close this tab once you're done.
+As a platform engineer, URI connections give you the flexibility to deploy models from various sources - whether that's public registries like Quay.io, internal container registries, or even remote model repositories. This approach eliminates the need to manage large model files in object storage, reduces storage costs, and simplifies model deployment by treating models like any other containerized application. You can version, update, and rollback models just like you would with regular container images.
 
 == Recap: What you just did
 
 You acted as a platform engineer managing an internal LLM deployment:
 
-* Explored a live model deployment
-* Inspected the secure storage configuration
-* Verified model files in object storage
+* Explored the OpenShift AI dashboard and project structure
+* Reviewed a live Granite model deployment and its configuration
+* Inspected URI-based connections that link to containerized models
 
 This foundational experience is critical before exposing models externally, which is exactly what you'll do next using an API Gateway.

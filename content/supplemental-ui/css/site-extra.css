@@ -33,3 +33,12 @@ video {
     width: 100%;
     background-color: #131313;
 }
+
+/* Prevent word wrapping and breaking */
+.doc {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+}
