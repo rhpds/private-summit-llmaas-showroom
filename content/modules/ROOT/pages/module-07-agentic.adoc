@@ -127,7 +127,7 @@ https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://co
 
 image:llama/dev_perspective.png[width="50%"]
 
-* In case you are not in our specific project where the LlamaStack resources are deployed, search for the `lls-demo` namespace:
+* In case you are not in our specific project where the Llama Stack resources are deployed, search for the `lls-demo` namespace:
 
 image:llama/find-namespace.png[width="50%"]
 
@@ -135,7 +135,7 @@ image:llama/find-namespace.png[width="50%"]
 
 In the Topology view, you will see four pods:
 
-* **LlamaStack**: core server.
+* **Llama Stack**: core server that connects Gen AI models to real-world tools and services. Our Llama Stack server handles the complex orchestration of turning natural language requests into real API calls, tool calls, and responses while maintaining context and security.
 * **OCP MCP Server**: an MCP Server with tools to help our model interact with and understand OpenShift.
 * **Slack MCP Server**: an MCP Server with tools to help our model interact with and understand Slack.
 * **LlamaStack Playground**: A streamlit UI to interact with the system.
@@ -282,36 +282,6 @@ To enforce guardrails on inputs and outputs, select the **Llama Guard** model un
 image::llama/guards.png[width="50%"]
 
 Test the guards by asking the AI to perform an inappropriate action - you'll see how Llama Guard intercepts and blocks problematic requests!
-
-=== Understanding Model Size and Production Architecture
-
-Throughout this workshop, you've been working with smaller models (like our 8B parameter Granite model). While these models are impressive for demonstrations, it's important to understand their strengths and limitations in production environments.
-
-**Why Small Models Excel:**
-
-* **Specialized Tasks**: Small models perform exceptionally well when focused on singular, well-defined purposes
-* **Resource Efficiency**: Lower compute requirements mean faster responses and lower operational costs
-* **Deployment Flexibility**: Can be deployed closer to the edge or in resource-constrained environments
-* **Focused Training**: Easier to fine-tune for specific use cases and organizational vocabularies
-
-**Production Architecture: Multiple Specialized Models**
-
-In real enterprise deployments, you typically deploy **multiple small models**, each optimized for specific functions:
-
-* **Infrastructure Model**: Specialized for Kubernetes/OpenShift operations and troubleshooting
-* **Communication Model**: Optimized for Slack interactions, notifications, and team coordination
-* **Security Model**: Focused on threat detection, compliance checking, and audit responses
-* **Code Model**: Specialized for code review, generation, and technical documentation
-
-**Why Our Multi-Tool Demo Has Limitations:**
-
-* **Context Switching**: Small models struggle to maintain context when switching between different tool domains
-* **Knowledge Overlap**: Trying to be "good at everything" dilutes performance in specific areas
-* **Hallucination Risk**: Models may confuse concepts when handling diverse, unrelated tasks simultaneously
-
-**Production Best Practice**: Deploy purpose-built models that excel in their specific domains, then orchestrate them through a routing layer that directs queries to the most appropriate specialist model.
-
-This approach delivers both the efficiency of small models and the comprehensive coverage needed for enterprise operations.
 
 == Summary: What You Did
 

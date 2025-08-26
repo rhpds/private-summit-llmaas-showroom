@@ -73,6 +73,8 @@ Continue will execute these requests directly in your editor, with full awarenes
 
 What makes Continue particularly powerful is its flexibility - it supports custom model endpoints, making it perfect for connecting to your private enterprise models. As an **open-source** solution, Continue gives you complete control over your AI coding workflow. 
 
+NOTE: You could use any preferred code assistant in this setup, like Cursor, Roo Code, or others. For the purposes of this hands-on experience and with the constraints of our workshop environment, we will be using Continue.
+
 === Install Continue
 
 Select the bottom navigation item on the left-hand side to open up the extensions marketplace.

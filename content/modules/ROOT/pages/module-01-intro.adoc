@@ -8,13 +8,10 @@
 As a **platform engineer**, you may inherit clusters filled with GPU nodes and eager teams. But when infrastructure is self-service with no clear guardrails in place, problems can quickly emerge:
 
 - Teams struggle to correctly request and size GPU resources
-- Multiple teams may deploy identical models, duplicating effort
+// - Multiple teams may deploy identical models, duplicating effort
 - Expensive GPUs remain idle or become overloaded
 - Infrastructure costs escalate without clear accountability
-- Developers need model access, not GPU management complexity
-
-[.bordershadow]
-image::02/iaas.png[width="50%"]
+// - Developers need model access, not GPU management complexity
 
 == Models-as-a-Service: A Better Abstraction for AI at Scale
 
@@ -40,8 +37,17 @@ To address these challenges as a platform engineer, you will design a centralize
 * GPU resources are pooled and shared across the organization
 * Eliminates waste while ensuring fair access and cost control
 
-[.bordershadow]
-image::02/maas.png[width="50%"]
+
+
+[cols="1,1", frame=none, grid=cols]
+|===
+a|[.bordershadow]
+image::02/iaas.png[width="100%"]
+a|[.bordershadow]
+image::02/maas.png[width="100%"]
+|===
+
+
 
 == Module 1 Goals: Step into the Platform Engineer Role
 

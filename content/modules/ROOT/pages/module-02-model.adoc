@@ -1,17 +1,17 @@
 :imagesdir: ../assets/images
 
 [#model-deployment]
-= Deploying and Inspecting Your First Foundation Model
+= Deploying and Inspecting Your First Gen AI Model
 
-Your first task as a platform engineer begins: standing up an enterprise-ready model on OpenShift AI. 
+Your first task as a **platform engineer** begins: standing up an enterprise-ready model on **OpenShift AI**. 
+
+Let's get connected.
 
 == Getting connected to OpenShift AI
 
 // If you are accessing these instructions through the workshop, the information below will render properly with unique values. If you are accessing the instructions separately for your own cluster, you will see placeholder values instead.
 
-As a platform engineer, you're now stepping into a live environment! OpenShift AI provides a web-based dashboard interface to deploy and manage models with ease. 
-
-Let's get connected.
+OpenShift AI provides a web-based dashboard interface to easily deploy and manage AI models.
 
 **Open the OpenShift AI Dashboard**
 
@@ -46,6 +46,8 @@ You're now inside the control panel that data scientists and ML engineers use da
 Think of this as your toolbox. Each component maps to a key responsibility in operating an enterprise-ready AI platform.
 
 * As you are cluster admin, you currently see many projects. The one we will be using in the workshop is the `LLM Host` project. To access it, click on `Go to Data Science Projects` at the bottom of the Data Science Projects section.
+
+**Data Science Project**: A dedicated workspace, technically an OpenShift namespace, providing an isolated, collaborate workspace with all the resources and tools needed for your AI workflows and systems.
 
 [.bordershadow]
 image::02/02-got-to-dsp.png[width="50%"]

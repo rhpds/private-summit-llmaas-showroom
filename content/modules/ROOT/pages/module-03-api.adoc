@@ -7,13 +7,13 @@ Now, in this next step, you’re still acting as a platform engineer - but your 
 
 Exposing models directly is risky without controls. You’ll now add a governance layer using an **API gateway**, so other teams can use the model securely, reliably, and at scale—without direct access to the underlying cluster or GPUs.
 
-We'll use 3scale API Management to:
+We'll use 3scale API Management, an enterprise API management tool, to:
 
 * Secure access to your model
 * Monitor usage
 * Enable future scaling and quotas.
 
-In production deployments, you may simply replace 3scale with **your enterprise API Gateway of choice** while following the same architectural patterns.
+In production deployments, you may simply replace 3scale API Managementwith **your enterprise API Gateway of choice** while following the same architectural patterns.
 
 == Step 1: Accessing the 3Scale Admin Portal
 
@@ -21,11 +21,11 @@ Let's log into the 3scale Admin UI and manage access to the `granite-3dot2-8b-in
 
 === Get Your 3Scale Credentials
 
-The `admin-user` and `admin-password` values can be found in the `system-seed` secret in the `3scale` namespace.
+You'll need the right credentials to access the 3scale Admin Portal. We've stashed them away for you when building this workshop environment for our hands-on activities. Let's go grab them.
 
-From a Terminal (in your OpenShift console) you will run a single command to retrieve these values. 
+From a Terminal (in your OpenShift console) you will need to run a single command to retrieve these values. 
 
-NOTE: You could also retrieve the credentials by navigating to the location of the secret in the OpenShift console.
+NOTE: You could also retrieve the credentials by navigating to the location of the secret in the OpenShift console if you prefer!
 
 * Navigate to the OpenShift console
 
@@ -33,11 +33,11 @@ https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://co
 
 * Select the terminal icon in the top navigation bar
 
-image::02/open-terminal.png[width="50%"]
+image::03/open-terminal.png[width="100%"]
 
 * You will need to initialize the terminal by pressing the `Start` button:
 
-image::03/03-initialize-terminal.png[width="50%"]
+image::03/03-initialize-terminal.png[width="75%"]
 
 * Copy the following command into the terminal session:
 
@@ -79,7 +79,7 @@ Use the dropdown menu at the top to explore these sections:
 
 * **Audience**: this gives you information about the users, registrations, etc.
 * **Products**: this is where you can create the Products that people will have access to. You can see there are two products already created: `granite-3dot2-8b-instruct`, which is connected to the model that was pre-deployed,  and `API`, which is a default 3Scale echo API for testing.
-* **Backends**: this is where you can see the backends that can be used by your products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the `granite-3dot2-8b-instruct` product. The `backend` in this case is simply the model source. 
+* **Backends**: this is where you can see the upstream API services that sit behind our API gateway products. You can see that the `granite-3dot2-8b-instruct` backend that is used by the `granite-3dot2-8b-instruct` product. The `backend` in this case is simply the model source API.
 
 
 [.bordershadow]
@@ -93,19 +93,19 @@ For now, note the two key items:
 [#3scale-dev-portal]
 == Step 3: Configure Developer Portal Access
 
-Developers access the models via the Developer Portal - your user-friendly frontend for API onboarding.
+Developers access the models via the Developer Portal - your user-friendly frontend for API onboarding. This is where users may login, perhaps with SSO, to get access to their API keys and endpoints.
 
 Multiple users were already created for you in 3Scale in **(Audience->Accounts->Listing)**, but you still need to configure the developer portal to allow users to access it. In this configuration, our user is automatically subscribed to the `granite-3dot2-8b-instruct` service. In a production environment, you would normally automate this process as part of the deployment of a new product. 
 
-* In the Audience section, go to **Developer Portal->Settings->Domains & Access**.
-+
+=== In the Audience section, go to **Developer Portal->Settings->Domains & Access**.
+
 [.bordershadow]
 image::03/03-3scale-portal-menu.png[width="50%"]
 
-* The Developer Portal Access Code is used to control the access the developer portal. You could use the default value in the next section to connect to it, but for today simply **delete it** and click on `Update Account`. This will remove the access code and allow anyone to access the developer portal, although they will still need to authenticate. This is what we will do in this workshop.
+* The Developer Portal Access Code provides an extra layer of restriction to the developer portal beyond the standard authentication process. YFor today's workshop, simply **delete it** and click on `Update Account`. This will remove the access code and allow anyone, with authentication (like SSO) to access the developer portal. This is what we will do in this workshop.
 +
 [.bordershadow]
-image::03/03-3scale-remove-access-code.png[width="50%"]
+image::03/03-3scale-remove-access-code.png[width="75%"]
 
 
 == Step 4: Log in to the Developer Portal

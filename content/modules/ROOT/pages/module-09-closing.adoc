@@ -20,6 +20,36 @@ You moved between multiple roles today:
 * **DevOp engineer** - enhancing and improving operational insight with agentic tools like MCP and Llama Stack
 * **Technical decision maker** - leveraging analytics to track usage, optimize cost, and plan for growth.
 
+== Understanding Model Size and Production Architecture
+
+Throughout this workshop, you've worked with smaller models (like our 8B parameter Granite model). While these models are impressive for demonstrations, it's important to understand their strengths and limitations in production environments.
+
+**Why Small Models Excel:**
+
+* **Specialized Tasks**: Small models perform exceptionally well when focused on singular, well-defined purposes
+* **Resource Efficiency**: Lower compute requirements mean faster responses and lower operational costs
+* **Deployment Flexibility**: Can be deployed closer to the edge or in resource-constrained environments
+* **Focused Training**: Easier to fine-tune for specific use cases and organizational vocabularies
+
+**Production Architecture: Multiple Specialized Models**
+
+In real enterprise deployments, you typically deploy **multiple small models**, each optimized for specific functions:
+
+* **Infrastructure Model**: Specialized for Kubernetes/OpenShift operations and troubleshooting
+* **Communication Model**: Optimized for Slack interactions, notifications, and team coordination
+* **Security Model**: Focused on threat detection, compliance checking, and audit responses
+* **Code Model**: Specialized for code review, generation, and technical documentation
+
+**Why Our Multi-Tool Demo Has Limitations:**
+
+* **Context Switching**: Small models struggle to maintain context when switching between different tool domains
+* **Knowledge Overlap**: Trying to be "good at everything" dilutes performance in specific areas
+* **Hallucination Risk**: Models may confuse concepts when handling diverse, unrelated tasks simultaneously
+
+**Production Best Practice**: Deploy purpose-built models that excel in their specific domains, then orchestrate them through a routing layer that directs queries to the most appropriate specialist model.
+
+This approach delivers both the efficiency of small models and the comprehensive coverage needed for enterprise operations.
+
 == What's Next?
 
 **Explore More**

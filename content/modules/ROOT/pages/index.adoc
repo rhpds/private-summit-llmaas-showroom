@@ -33,7 +33,7 @@ With the mindset of a site reliability engineer, you'll use model context protoc
 === **Module 4:** Analytics
 Take on the role of a platform SRE or product owner responsible for understanding how your private LLM is being used, and whether it's operating effectively at scale by exploring model usage analytics. 
 
-=== **Module 5:** Reflect and Wrap-Up
+=== Closing Summary
 Assess what you've built. We'll close with key takeaways, architectural guidance, and patterns you can bring back to your organization.
 
 == Workshop Environment

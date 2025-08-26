@@ -87,14 +87,4 @@ This will show all pods in the namespace within which we just deployed our slack
 
 image::code/mcp_status.png[width="75%"]
 
-== Wrap Up: What You Did
-
-In this module, you:
-
-* Learned what an MCP server is and why it matters in enterprise AI.
-
-* Deployed an MCP server on OpenShift AI to extend your model’s capabilities.
-
-* Connected the model to a real-world system (Slack) for governed, auditable interaction.
-
-**Why it matters:** You just demonstrated how an AI developer can safely integrate enterprise systems into AI workflows using OpenShift AI — turning a conversational model into an action-capable assistant.
+In the next module, we will see this Slack MCP server in action and use it to interact with a Slack workspace!
