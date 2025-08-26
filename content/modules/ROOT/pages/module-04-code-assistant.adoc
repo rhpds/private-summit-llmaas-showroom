@@ -41,19 +41,19 @@ We have a VSCode workspace ready for your use, with the required dependencies. A
 
 * Open the `Workspaces` tab:
 
-image::code/workspaces-tab.png[width="50%"]
+image::code/workspaces-tab.png[width="75%"]
 
 *  Launch the pre-created workspace by clicking `Open`. You may need to wait a moment for the workspace to be ready.
 
-image::code/workspace_preset.png[width="50%"]
+image::code/workspace_preset.png[width="75%"]
 
 After a moment, you'll see the VSCode interface running in your browser. If prompted, click "Trust" when asked about the authors. We're friendly, I promise! 
 
-image::code/vscode_trust.png[width="50%"]
+image::code/vscode_trust.png[width="75%"]
 
 Inside your workspace, you'll find a cloned GitHub repository. This is where you will build and refine. The only thing we need to configure is our code extension.
 
-image::code/file_explorer_repo.png[width="50%"]
+image::code/file_explorer_repo.png[width="75%"]
 
 Before we dive into the code, let's meet **Continue**.
 
@@ -83,27 +83,27 @@ image::code/extensions_tab.png[width=100%]
 
 In the search bar, search for **Continue**.
 
-image::code/continue.png[width="50%"]
+image::code/continue.png[width="75%"]
 
 Click on the arrow next to **Install Pre-Release** and instead select **Install Release Version** on the Continue extension.
 
-image::code/install_release_version.png[width="50%"]
+image::code/install_release_version.png[width="75%"]
 
 You will get a trust verification message. Select **Trust Publisher & Install**.
 
-image::code/trust_continue.png[width="50%"]
+image::code/trust_continue.png[width="75%"]
 
 Once installed, click on the arrow next to `Uninstall -> Install Specific Version` as seen below. We are going to select a specific version to install since things move so quickly around here!
 
 Click **Install Specific Version...**
 
-image::code/install_specific_version.png[width="50%"]
+image::code/install_specific_version.png[width="75%"]
 
 You will see a drop-down appear with different versions. Please select **v1.0.21**.
 
 Once installed, select "Reload Window" to restart the extension.
 
-image::code/reload_window.png[width="50%"]
+image::code/reload_window.png[width="75%"]
 
 You've now installed Continue - next, let's connect it to your private LLM.
 
@@ -111,7 +111,7 @@ You've now installed Continue - next, let's connect it to your private LLM.
 
 Navigate to the **Continue sidebar icon** in the left-hand side navigation panel:
 
-image::code/continue_sidebar.png[width="50%"]
+image::code/continue_sidebar.png[width="75%"]
 
 We will do two things in this module:
 
@@ -126,7 +126,7 @@ NOTE: If needed, go back to the developer portal and the application created in 
 
 Click on `Select Model` and then the small settings icon in the **Models** pop up.
 
-image::code/open_config.png[width="50%"]
+image::code/open_config.png[width="75%"]
 
 This will open the `config.yaml` file. Delete the file contents and replace with the following:
 
@@ -162,7 +162,7 @@ Reference the complete configuration documentation here: https://docs.continue.d
 
 When the model is properly configured, you will see the model name, `Granite-3.2-8b-instruct` in the Continue chat sidebar.
 
-image::code/model_dropdown.png[width="50%"]
+image::code/model_dropdown.png[width="75%"]
 
 Go ahead - test it out and chat a bit!
 

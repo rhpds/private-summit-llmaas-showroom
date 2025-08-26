@@ -59,19 +59,19 @@ You can connect your Llama Stack server deployment to any model endpoint you des
 
 // * In the Administrator perspective, select API Explorer.
 
-// image:llama/api_explorer.png[width="50%"]
+// image:llama/api_explorer.png[width="75%"]
 
 // * Search `llamastackdistribution` in the search bar and select the resource.
 
-// image:llama/llamastackdistribution.png[width="50%"]
+// image:llama/llamastackdistribution.png[width="75%"]
 
 // * Ensure you are in the right project. Type `lls-demo` in the project search bar.
 
-// image::llama/lls-project.png[width="50%"]
+// image::llama/lls-project.png[width="75%"]
 
 // * Select `Instances` and the available instance.
 
-// image:llama/llamastackinstance.png[width="50%"]
+// image:llama/llamastackinstance.png[width="75%"]
 
 // * Select `YAML` and scroll down to the highlighted section of text.
 
@@ -83,7 +83,7 @@ You can connect your Llama Stack server deployment to any model endpoint you des
 
 // * Click save
 
-// image:llama/save_yaml.png[width="50%"]
+// image:llama/save_yaml.png[width="75%"]
 
 // // TODO: Add this section to config file to remove the need to do this manually during workshop
 
@@ -91,15 +91,15 @@ You can connect your Llama Stack server deployment to any model endpoint you des
 
 // * Click on `Workloads` -> `ConfigMaps`
 
-// image:llama/configmap-nav.png[width="50%"]
+// image:llama/configmap-nav.png[width="75%"]
 
 // * Find our `llama-stack-config`
 
-// image::llama/lls_config.png[width="50%"]
+// image::llama/lls_config.png[width="75%"]
 
 // * Click on the `yaml` tab.
 
-// image::llama/yaml-tab.png[width="50%"]
+// image::llama/yaml-tab.png[width="75%"]
 
 // * Add the following to the end of llama-stack-config `ConfigMap` in the `tool_groups` section:
 
@@ -111,7 +111,7 @@ You can connect your Llama Stack server deployment to any model endpoint you des
 //     uri: "http://slack-mcp-server:80/sse"
 // ----
 
-// image:llama/configmap_tool.png[width="50%"]
+// image:llama/configmap_tool.png[width="75%"]
 
 // Ensure the tab indentations match the example above.
 
@@ -125,11 +125,11 @@ https://console-openshift-console.{openshift_cluster_ingress_domain}/[https://co
 
 * Now, select the `Developer` perspective.
 
-image:llama/dev_perspective.png[width="50%"]
+image:llama/dev_perspective.png[width="75%"]
 
 * In case you are not in our specific project where the Llama Stack resources are deployed, search for the `lls-demo` namespace:
 
-image:llama/find-namespace.png[width="50%"]
+image:llama/find-namespace.png[width="75%"]
 
 * Select the `Topology` tab in the navigation bar as seen above.
 
@@ -146,7 +146,7 @@ Feel free to poke around and explore the deployment.
 
 * Select the LlamaStack playground hyperlink to open the UI.
 
-image:llama/playground_link.png[width="50%"]
+image:llama/playground_link.png[width="75%"]
 
 Now you will see the "playground" user interface. This application was created in the upstream project for the purposes of demonstration and experimentation and is **not** a supported component of our downstream OpenShift AI product.
 
@@ -159,19 +159,19 @@ Within the application you'll find a familiar chat interface with some selection
 * Select our model from the drop down
 
 [.bordershadow]
-image::llama/model_selection.png[width="50%"]
+image::llama/model_selection.png[width="75%"]
 
 * Set `Processing mode` -> `Agent-based`, giving us access to the tools we have configured via the MCP servers.
 
-image::llama/agent_selection.png[width="50%"]
+image::llama/agent_selection.png[width="75%"]
 
 * Enable the OpenShift MCP tool group.
 
-image::llama/mcp_servers.png[width="50%"]
+image::llama/mcp_servers.png[width="75%"]
 
 * Once the MCP server is selected, you can peruse the active tools available.
 
-image:llama/active_tools.png[width="50%"]
+image:llama/active_tools.png[width="75%"]
 
 Everything else can remain unchanged.
 
@@ -223,7 +223,7 @@ This MCP server bridges your AI agent with a Slack workspace to fetch approved d
 
 In the left-hand menu, select the `Slack MCP Server` tool group. This will clear the current chat. You may keep the OpenShift MCP Server enabled as well or deactivate it. 
 
-image::llama/mcp_servers_2nd.png[width="50%"]
+image::llama/mcp_servers_2nd.png[width="75%"]
 
 NOTE: If you experience hallucinations with both MCP servers enabled or after a few different chat interactions, you may need to refresh your browser to reset the chat.
 
@@ -279,7 +279,7 @@ Enterprise AI deployments require robust safety measures, especially when AI age
 
 To enforce guardrails on inputs and outputs, select the **Llama Guard** model under the `Input Shields` and `Output Shields` form fields:
 
-image::llama/guards.png[width="50%"]
+image::llama/guards.png[width="75%"]
 
 Test the guards by asking the AI to perform an inappropriate action - you'll see how Llama Guard intercepts and blocks problematic requests!
 

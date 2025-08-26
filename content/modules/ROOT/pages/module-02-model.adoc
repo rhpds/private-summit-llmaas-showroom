@@ -23,7 +23,7 @@ NOTE: At any point, you can access the OpenShift Container Platform web console 
 * Click on the `Login with OpenShift` button:
 +
 [.bordershadow]
-image::02/02-01-login3.png[width="50%"]
+image::02/02-01-login3.png[width="75%"]
 
 * Enter your credentials:
 ** Your username: `{user}`
@@ -31,7 +31,7 @@ image::02/02-01-login3.png[width="50%"]
 
 +
 [.bordershadow]
-image::02/02-01-login1.png[width="50%"]
+image::02/02-01-login1.png[width="75%"]
 
 * After you authenticate, your browser window should look like:
 +
@@ -50,14 +50,14 @@ Think of this as your toolbox. Each component maps to a key responsibility in op
 **Data Science Project**: A dedicated workspace, technically an OpenShift namespace, providing an isolated, collaborate workspace with all the resources and tools needed for your AI workflows and systems.
 
 [.bordershadow]
-image::02/02-got-to-dsp.png[width="50%"]
+image::02/02-got-to-dsp.png[width="75%"]
 
 * In search filter type in `LLM Host` to find the LLM Host project. Click to access the project.
 
-image::02/search-llm-host.png[width="50%"]
+image::02/search-llm-host.png[width="75%"]
 
 [.bordershadow]
-image::02/02-project-tabs.png[width="50%"]
+image::02/02-project-tabs.png[width="75%"]
 
 Once inside the project, explore the tabs across the top. Here's a quick rundown:
 
@@ -89,7 +89,7 @@ image::02/02-granite-details.png[width="75%"]
 * If you click on `Internal endpoint details`, you will see the different endpoints available for the model.
 +
 [.bordershadow]
-image::02/02-granite-endpoints.png[width="50%"]
+image::02/02-granite-endpoints.png[width="75%"]
 
 The model is **internal-only**, perfect for protected inference behind a gateway!
 
@@ -108,13 +108,13 @@ image::02/02-models-connection-edit.png[width="75%"]
 This connection links to a model that we will be using in our environment. Think of it like telling the system "here's where my model lives, and here's what I want to call it inside this platform". 
 
 [.bordershadow]
-image::02/02-models-connection-details.png[width="50%"]
+image::02/02-models-connection-details.png[width="75%"]
 
 NOTE: We are using a model car image for both the **Granite** and **Llama Guard** models. A model car is like a container image for AI models. It packages the model weights, plus everything else needed to run the model reliably. By using this image from quay, we can easily pull down and deploy Granite without the need for extra setup. You may also point to internal storage or an internal container registry instead of the Quay.io location.
 
 Exit out of the `Edit` view by clicking `Cancel` or the `X` in the top right corner.
 
-image::02/02-exit-connection-edit.png[width="50%"]
+image::02/02-exit-connection-edit.png[width="75%"]
 
 **Why does this matter?**
 

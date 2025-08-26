@@ -30,17 +30,17 @@ Takeaway: The right AI platform choice determines whether "AI with tools" is a o
 
 Open the `llama-stack-on-ocp` -> `slack-mcp` folder. 
 
-image:code/slack-mcp-folder.png[width="50%"]
+image:code/slack-mcp-folder.png[width="75%"]
 
 === Explain Code
 
 * Click open the `slack-deployment.yaml` file.
 
-image:code/slack_deployment_file.png[width="50%"]
+image:code/slack_deployment_file.png[width="75%"]
 
 * Highlight the entire file and right-click. Select "Add Highlighted Code to Context".
 
-image:code/right-click-popup.png[width="50%"]
+image:code/right-click-popup.png[width="75%"]
 
 You may explore the Continue shortcuts however you'd like as we did in the last exercise. The selected text will be sent to the chat interface of the Continue extension. 
 
@@ -51,7 +51,7 @@ You may explore the Continue shortcuts however you'd like as we did in the last 
 Explain this code in simple terms.
 ----
 
-image:code/explain_code.png[width="50%"]
+image:code/explain_code.png[width="75%"]
 
 * Press `Enter` to send the message.
 
