@@ -20,7 +20,7 @@ asciidoc:
     minio-endpoint: http://minio.shared-minio.svc.cluster.local:9000/
     git-clone-repo-url: https://github.com/rhpds/private-summit-llmaas-showroom.git
     git-clone-repo-branch: main
-    user: userX
+    user: user1
     password: openshift
     openshift_api_url: https://api.cluster-guid.guid.sandbox.opentlc.com:6443
     openshift_cluster_ingress_domain: apps.cluster-guid.guid.sandbox.opentlc.com
